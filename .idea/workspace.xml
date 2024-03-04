@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c868ad42-8da6-4b3a-85e4-405ff5ae5850" name="Changes" comment="Created project: made pom file, made the classes, configured maven.">
-      <change beforePath="$PROJECT_DIR$/src/main/java/BlackjackGameLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BlackjackGameLogic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Card.java" afterDir="false" />
+    <list default="true" id="c868ad42-8da6-4b3a-85e4-405ff5ae5850" name="Changes" comment="Not a requirement but implementing split and insurance are kinda crucial to the gameplay of blackjack. Also implementing a card counting helper would make this actually useful (also not a requirement).">
+      <change beforePath="$PROJECT_DIR$/src/main/java/BlackjackDealer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BlackjackDealer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/BlackjackGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BlackjackGame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +100,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1709409530254</updated>
-      <workItem from="1709409531288" duration="4675000" />
+      <workItem from="1709409531288" duration="5329000" />
     </task>
     <task id="LOCAL-00001" summary="Created project: made pom file, made the classes, configured maven.">
       <option name="closed" value="true" />
@@ -118,7 +118,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709411371836</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Not a requirement but implementing split and insurance are kinda crucial to the gameplay of blackjack. Also implementing a card counting helper would make this actually useful (also not a requirement).">
+      <option name="closed" value="true" />
+      <created>1709522597531</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1709522597531</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -126,6 +134,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Created project: made pom file, made the classes, configured maven." />
-    <option name="LAST_COMMIT_MESSAGE" value="Created project: made pom file, made the classes, configured maven." />
+    <MESSAGE value="Not a requirement but implementing split and insurance are kinda crucial to the gameplay of blackjack. Also implementing a card counting helper would make this actually useful (also not a requirement)." />
+    <option name="LAST_COMMIT_MESSAGE" value="Not a requirement but implementing split and insurance are kinda crucial to the gameplay of blackjack. Also implementing a card counting helper would make this actually useful (also not a requirement)." />
   </component>
 </project>
