@@ -26,6 +26,7 @@ public class BlackjackGameLogic {
     *       C.) The player or the dealer hands sum up to over 21
     * While there are many more niche ways to win, loose, or push (not really just not typing out every possible)
     * The gist is this function should only be called once per hand as you can only win a hand once
+    * TODO Maybe implement a another method('s) everytime a card is drawn to abstract logic from front end file
     * */
     public String whoWon(ArrayList <Card> playerHand1, ArrayList<Card> dealerHand) {
         int playerHand1Total = handTotal(playerHand1);
@@ -39,7 +40,7 @@ public class BlackjackGameLogic {
         else if (dealerHandTotal == playerHand1Total) {
             return "push";
         }
-        // *** REMOVE FOR TESTING ***
+        // *** REMOVE, FOR TESTING ***
         else {
             return "ERROR IN LOGIC";
         }
