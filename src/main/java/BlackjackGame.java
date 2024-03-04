@@ -6,8 +6,10 @@ public class BlackjackGame {
     BlackjackDealer theDealer;
     BlackjackGameLogic gameLogic;
     double currentBet;
-    double currentWinnings;
+    double totalWinnings;
     public double evaluateWinnings() {
-        return 0.0;
+        if ((gameLogic.whoWon(playerHand, bankerHand)).compareTo("dealer") == 0 ) {
+            // todo Do we minus the bet from the totalWinnings here?
+        }
     }
 }
