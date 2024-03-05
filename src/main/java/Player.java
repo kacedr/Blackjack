@@ -15,7 +15,7 @@ public class Player {
     private int deckAmount = 1;
 
     // Lets us know when to shuffle based on percentage of deck used
-    // Default is 40% left
+    // Default is 40% (why 40%?, because 20 cards is the most possible used in one hand)
     private double cutCard = 0.40;
 
     // default constructor, 1 deck
@@ -35,7 +35,7 @@ public class Player {
         this.deckAmount = deckAmount;
 
         // minimum amount is 40%, maximum is 90%, anything else defaults to 40%
-        if(cutCard < 0.90 || cutCard > 0.30) {this.cutCard = cutCard;}
+        if(cutCard < 0.90 || cutCard > 0.40) {this.cutCard = cutCard;}
     }
 
     // this should be called at the beginning of each hand, returns true if deck is shuffled
