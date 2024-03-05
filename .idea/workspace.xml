@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c868ad42-8da6-4b3a-85e4-405ff5ae5850" name="Changes" comment="Finished back end but a lot of logic is still on the table and where it should be implemented. Creating a crap test UI.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Player.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/TestGame.java" afterDir="false" />
+    <list default="true" id="c868ad42-8da6-4b3a-85e4-405ff5ae5850" name="Changes" comment="Ok im understanding more where we are going with this project now. The way we are required to adhere to certain classes definitely limits how I would like to construct this. Player.java (name should be changed probably) will hold most not if all the actual gameplay mechanics.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/BlackjackDealer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BlackjackDealer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/BlackjackGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BlackjackGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/BlackjackGameLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BlackjackGameLogic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/testGame.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Player.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,7 +110,7 @@
       <option name="presentableId" value="Default" />
       <updated>1709409530254</updated>
       <workItem from="1709409531288" duration="5329000" />
-      <workItem from="1709576249734" duration="13904000" />
+      <workItem from="1709576249734" duration="14798000" />
     </task>
     <task id="LOCAL-00001" summary="Created project: made pom file, made the classes, configured maven.">
       <option name="closed" value="true" />
@@ -180,7 +176,23 @@
       <option name="project" value="LOCAL" />
       <updated>1709608809446</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Ok im understanding more where we are going with this project now. The way we are required to adhere to certain classes definitely limits how I would like to construct this. Player.java (name should be changed probably) will hold most not if all the actual gameplay mechanics.">
+      <option name="closed" value="true" />
+      <created>1709665605208</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1709665605208</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Ok im understanding more where we are going with this project now. The way we are required to adhere to certain classes definitely limits how I would like to construct this. Player.java (name should be changed probably) will hold most not if all the actual gameplay mechanics.">
+      <option name="closed" value="true" />
+      <created>1709665659927</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1709665659927</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -191,6 +203,7 @@
     <MESSAGE value="Not a requirement but implementing split and insurance are kinda crucial to the gameplay of blackjack. Also implementing a card counting helper would make this actually useful (also not a requirement)." />
     <MESSAGE value="Implemented most of the back end. Need to finish BlackjackGame.java and then I will start on the actual game. Will create a bare-bones UI to start working on the game." />
     <MESSAGE value="Finished back end but a lot of logic is still on the table and where it should be implemented. Creating a crap test UI." />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished back end but a lot of logic is still on the table and where it should be implemented. Creating a crap test UI." />
+    <MESSAGE value="Ok im understanding more where we are going with this project now. The way we are required to adhere to certain classes definitely limits how I would like to construct this. Player.java (name should be changed probably) will hold most not if all the actual gameplay mechanics." />
+    <option name="LAST_COMMIT_MESSAGE" value="Ok im understanding more where we are going with this project now. The way we are required to adhere to certain classes definitely limits how I would like to construct this. Player.java (name should be changed probably) will hold most not if all the actual gameplay mechanics." />
   </component>
 </project>
