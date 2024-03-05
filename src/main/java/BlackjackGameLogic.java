@@ -1,6 +1,7 @@
 /*
 * Author: Kyle Gleason
 * TODO: If time, implement splitting and insurance (not a requirement but is crucial to blackjack)
+*  Splitting will introduce more logic pertaining to shuffle point
 * */
 import java.util.ArrayList;
 
@@ -28,6 +29,7 @@ public class BlackjackGameLogic {
     * While there are many more niche ways to win, loose, or push (not really just not typing out every possible)
     * The gist is this function should only be called once per hand as you can only win a hand once
     * TODO Maybe implement a another method('s) everytime a card is drawn to abstract logic from front end file
+    *
     * */
     public String whoWon(ArrayList <Card> playerHand1, ArrayList<Card> dealerHand) {
         int playerHand1Total = handTotal(playerHand1);

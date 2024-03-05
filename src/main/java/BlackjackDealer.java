@@ -6,11 +6,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class BlackjackDealer {
-    // the deck of 52 cards
-    private ArrayList<Card> deckOfCards;
+    // the deck of cards
+    ArrayList<Card> deckOfCards;
 
     // amount of decks
-    private int deckAmount;
+    int deckAmount;
 
     // constructor, a new deck is created everytime we construct a class instance
     public BlackjackDealer() {

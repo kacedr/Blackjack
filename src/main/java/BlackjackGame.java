@@ -2,20 +2,21 @@ import java.util.ArrayList;
 
 public class BlackjackGame {
     ArrayList<Card> playerHand, bankerHand;
+    BlackjackGameLogic gameLogic;
+    BlackjackDealer theDealer;
+    double currentBet;
+    double totalWinnings;
 
     // constructor for single deck
     BlackjackGame() {
-        BlackjackDealer theDealer;
+        this.theDealer = new BlackjackDealer();
     }
 
     // constructor for multiple decks, not implemented atm
     BlackjackGame(int deckAmount) {
-        BlackjackDealer theDealer = new BlackjackDealer(deckAmount);
+        this.theDealer = new BlackjackDealer(deckAmount);
     }
 
-    BlackjackGameLogic gameLogic;
-    double currentBet;
-    double totalWinnings;
     public double evaluateWinnings() {
         if ((gameLogic.whoWon(playerHand, bankerHand)).compareTo("dealer") == 0 ) {
             // todo Do we minus the bet from the totalWinnings here? for now yes
