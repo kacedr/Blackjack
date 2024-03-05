@@ -21,7 +21,7 @@ public class BlackjackDealer {
     // Does not have to be implemented for project, lets user specify amount of decks
     public BlackjackDealer(int decks) {
         this.deckOfCards = new ArrayList<>();
-        this.deckAmount = decks;
+        this.deckAmount = Math.max(decks, 0); // no negative or zero amount of decks
     }
 
     /*
