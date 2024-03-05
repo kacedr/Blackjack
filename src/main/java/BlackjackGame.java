@@ -1,3 +1,10 @@
+/*
+* Author: Kyle Gleason
+* The logic implemented here for the game is meant to accurately represent a legitimate game played at a casino.
+* The reason for this is due to the fact that blackjack is actually not a game of total luck. You can learn
+* the blackjack strategy chart and also learn how to count (using Hi-Low method, etc.) to gain an edge against the house.
+* The way the cards are dealt, when the dealer shuffles, and the amount of decks is all crucial to gaining this edge.
+* */
 import java.util.ArrayList;
 
 public class BlackjackGame {
@@ -7,11 +14,15 @@ public class BlackjackGame {
     double currentBet;
     double totalWinnings;
 
+    // since we can not edit the constructor for Card per requirements, this will say if an ace was added
+    boolean containAce = false;
+
     // amount of decks (defaults to 1)
     private int deckAmount = 1;
 
     // Lets us know when to shuffle based on percentage of deck used
     // Default is 40% (why 40%?, because 20 cards is the most possible cards used in one hand)
+    // todo: When splitting gets implemented, this percentage and logic will change
     private double cutCard = 0.40;
 
     // constructor for single deck
@@ -38,21 +49,42 @@ public class BlackjackGame {
     // returns true if the deck('s) where shuffled, false otherwise
     public boolean newHand() {
         // this is where it will be determined if we should shuffle based on cut card
+        boolean shouldShuffle = false;
         double deckRemainingPercentage = (double)theDealer.deckSize() / (deckAmount * 52);
         if (deckRemainingPercentage <= cutCard) {
+            // generate a new deck and clear the old one
+            theDealer.generateDeck();
+
+            // shuffle the deck
             theDealer.shuffleDeck();
-            return true;
+
+            shouldShuffle = true;
         }
-        return false;
+
+        // Deal new hand for the dealer and the player. blackjack is dealt where
+        // one card goes to the player, one to the dealer, one to the player, one to dealer.
+        // Since in the write-up we are required to use dealHand which returns a list of two cards
+        // we must split each hand dealt thus needing to create temp lists to hold the cards.
+
+        ArrayList<Card> temp1 = theDealer.dealHand();
+        playerHand.add(temp1.get(0));
+        bankerHand.add(temp1.get(1));
+        ArrayList<Card> temp2 = theDealer.dealHand();
+        playerHand.add(temp2.get(0));
+        bankerHand.add(temp2.get(1));
+
+        return shouldShuffle;
     }
 
     // this will be called everytime a player decides to "hit" or get dealt another card
     // returns true if the players next dealt card does not go over, false otherwise
+    // this is where it will be decided if an 11 should be a 1 or not, we will also call
+    // the dealer to hit (if applicable) after the player hits
     public boolean hitCard() {
 
     }
 
-    // if a player chooses to stay, this will be called and the dealer will hit until he can not
+    // if a player chooses to stay or dealt 21, this will be called and the dealer will hit until he can not
     public void playerStay() {
 
     }
