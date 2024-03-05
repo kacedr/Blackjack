@@ -9,6 +9,7 @@ public class BlackjackGameLogic {
     /*
     * Counts the value of all the cards in a hand, 2-10 (keep value), face cards (10) ace (1 or 11)
     * Currently has no logic pertaining if an ace should be a 1 or an 11 but will possibly be updated
+    * Think the logic should be in the event handlers? maybe seperated classes idk
     * */
     public int handTotal(ArrayList<Card> hand) {
         int size = 0;
