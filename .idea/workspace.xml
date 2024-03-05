@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c868ad42-8da6-4b3a-85e4-405ff5ae5850" name="Changes" comment="Implemented most of the back end. Need to finish BlackjackGame.java and then I will start on the actual game. Will create a bare-bones UI to start working on the game.">
+    <list default="true" id="c868ad42-8da6-4b3a-85e4-405ff5ae5850" name="Changes" comment="Finished back end but a lot of logic is still on the table and where it should be implemented. Creating a crap test UI.">
+      <change afterPath="$PROJECT_DIR$/src/test/java/testGame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/BlackjackDealer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BlackjackDealer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/BlackjackGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BlackjackGame.java" afterDir="false" />
     </list>
@@ -110,7 +112,7 @@
       <option name="presentableId" value="Default" />
       <updated>1709409530254</updated>
       <workItem from="1709409531288" duration="5329000" />
-      <workItem from="1709576249734" duration="6300000" />
+      <workItem from="1709576249734" duration="7480000" />
     </task>
     <task id="LOCAL-00001" summary="Created project: made pom file, made the classes, configured maven.">
       <option name="closed" value="true" />
@@ -152,7 +154,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709603086896</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Finished back end but a lot of logic is still on the table and where it should be implemented. Creating a crap test UI.">
+      <option name="closed" value="true" />
+      <created>1709604292156</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1709604292156</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -162,6 +172,7 @@
     <MESSAGE value="Created project: made pom file, made the classes, configured maven." />
     <MESSAGE value="Not a requirement but implementing split and insurance are kinda crucial to the gameplay of blackjack. Also implementing a card counting helper would make this actually useful (also not a requirement)." />
     <MESSAGE value="Implemented most of the back end. Need to finish BlackjackGame.java and then I will start on the actual game. Will create a bare-bones UI to start working on the game." />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented most of the back end. Need to finish BlackjackGame.java and then I will start on the actual game. Will create a bare-bones UI to start working on the game." />
+    <MESSAGE value="Finished back end but a lot of logic is still on the table and where it should be implemented. Creating a crap test UI." />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished back end but a lot of logic is still on the table and where it should be implemented. Creating a crap test UI." />
   </component>
 </project>

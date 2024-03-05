@@ -3,7 +3,16 @@ import java.util.ArrayList;
 public class BlackjackGame {
     ArrayList<Card> playerHand, bankerHand;
 
-    BlackjackDealer theDealer;
+    // constructor for single deck
+    BlackjackGame() {
+        BlackjackDealer theDealer;
+    }
+
+    // constructor for multiple decks, not implemented atm
+    BlackjackGame(int deckAmount) {
+        BlackjackDealer theDealer = new BlackjackDealer(deckAmount);
+    }
+
     BlackjackGameLogic gameLogic;
     double currentBet;
     double totalWinnings;
@@ -20,18 +29,16 @@ public class BlackjackGame {
         }
         else if ((gameLogic.whoWon(playerHand, bankerHand)).compareTo("player") == 0 ) {
             // if the player hit a blackjack
-            int deckAmount = 0;
-            for (Card card : playerHand) {
-                deckAmount += card.value;
-            }
-
-            if (deckAmount == 21) {
+            if (gameLogic.handTotal(playerHand) == 21) {
                 totalWinnings += currentBet * 1.5;
                 return currentBet * 1.5;
             }
+
+            totalWinnings += currentBet;
+            return currentBet;
         }
 
-        // must be a push
+        // must be a push so update nothing, no winnings
         return 0;
     }
 }
