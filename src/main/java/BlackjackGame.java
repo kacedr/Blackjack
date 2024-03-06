@@ -5,6 +5,25 @@
 * the blackjack strategy chart and also learn how to count (using Hi-Low method, etc.) to gain an edge against the house.
 * The way the cards are dealt, when the dealer shuffles, and the amount of decks is all crucial to gaining this edge.
 * todo: The only thing we are missing is the implementation of splitting, doubling down, and insurance (not required)
+*
+* Protocol for running the game:
+*   1.) Initialize this class (BlackjackGame.java) ONCE, everything pertaining to the game will be in this instance
+*   2.) To start a new hand, call newHand(), this will create two hands, one for the banker and one for the player.
+*       newHand() will also run logic to determine if the deck should be shuffled or not. newHand() should be only
+*       called once per hand at the beginning
+*   3.) Once the cards are dealt, the player will be up to first choose if he wants to hit or stay.
+*       a.) If he chooses to hit, playerHit() should be called.
+*       b.) If the player chooses to stay, playerStay() will be called. This will initiate the banker to hit until
+*           he either busts or stays.
+*       c.) If the player is dealt an 21, there is no need to call anything, dealHand() will know this and make a call
+*           to the banker to play through.
+*   4.) No matter the outcome of the game, evaluateWinnings() should be called at the end as this handles the winnings.
+*       Knowing if the player or dealer busts will be possible through
+*   EXTRA: If there is time and our game is thoroughly tested, implement choosing deck amount and cut card. This should
+*   not take long as the methods are already here and just need to be attached to the UI.
+*   EXTRA: Methods pertaining to splitting, and doubling down are NOT built yet and will only be built if we really
+*   have time.
+*
 * */
 import java.util.ArrayList;
 
@@ -14,9 +33,6 @@ public class BlackjackGame {
     BlackjackDealer theDealer;
     double currentBet;
     double totalWinnings;
-
-    // since we can not edit the constructor for Card per requirements, this will say if an ace was added
-    boolean containAce = false;
 
     // amount of decks (defaults to 1)
     private int deckAmount = 1;
@@ -32,12 +48,14 @@ public class BlackjackGame {
     }
 
     // constructor for multiple decks, no cutCard
+    // does not need to be implemented for project, implement if time
     BlackjackGame(int deckAmount) {
         this.deckAmount = deckAmount;
         this.theDealer = new BlackjackDealer(deckAmount);
     }
 
     // constructor for multiple decks, cutCard
+    // does not need to be implemented for project, implement if time
     BlackjackGame(int deckAmount, double cutCard) {
         // our limits are 40%-90%
         if(cutCard <= 0.90 && cutCard >= 0.40) {this.cutCard = cutCard;}
@@ -62,7 +80,7 @@ public class BlackjackGame {
             shuffle = true;
         }
 
-        // Deal new hand for the dealer and the player. blackjack is cards are dealt where
+        // Deal new hand for the dealer and the player. Blackjack cards are dealt where
         // one card goes to the player, one to the dealer, one to the player, one to dealer.
         // Since in the write-up we are required to use dealHand which returns a list of two cards
         // we must split each hand dealt thus needing to create temp lists to hold the cards.
@@ -74,50 +92,72 @@ public class BlackjackGame {
         playerHand.add(temp2.get(0));
         bankerHand.add(temp2.get(1));
 
+        // we only check if the player got 21 as the bankers hand is abstracted from user until they stay
+        if (gameLogic.handTotal(playerHand) == 21) {
+            playerStay();
+        }
+
         return shuffle;
     }
 
     // this will be called everytime a player decides to "hit" or get dealt another card
     // returns true if the players next dealt card does not go over, false otherwise
-    // this is where it will be decided if an 11 should be a 1 or not, we will also call
-    // the dealer to hit (if applicable, evaluateBankerDraw figures that out) after the player hits
+    // this is where it will be decided if an 11 should be a 1 or not
     public boolean playerHit() {
         // draw card
         playerHand.add(theDealer.drawOne());
 
-        // player did not bust (could have hit 21)
-        if (gameLogic.handTotal(playerHand) < 22) {
-            // check if there is two or more aces. Only 1 ace can be an 11
-            // we are going to set the value on the remaining aces, if there is more than 1, to 1
-            // when we are checking for aces, check value and ace flag
-
-
-
-            // have the banker hit if 16 or less
-            // call banker function
-
+        // checks if that card results in a 21
+        if (gameLogic.handTotal(playerHand) == 21) {
+            playerStay();
             return true;
         }
-        // the player busted but has an ace (or multiple), so we check if we can switch it
-        else if (gameLogic.handTotal(playerHand) > 21) {
 
-        }
-        // if the player drew a card resulting in a hand over 21, and they do not have an ace
-        else {
-            return false;
+        // player did not bust but did not hit 21
+        if (gameLogic.handTotal(playerHand) < 22) {
+            return true;
         }
 
-        return false; //remove
+        // if it does not pass the first check, the player either busted or has aces that can be converted
+        if (checkAces(playerHand)) {
+            // check if it resulted in a 21
+            if (gameLogic.handTotal(playerHand) == 21) {
+                playerStay();
+            }
+            return true;
+        }
+
+        // after checking all aces, player must have busted
+        return false;
     }
 
-    // returns true if the banker hit or stayed, false if the dealer busted
-    public boolean bankerHit() {
-        return false; //remove
+    // takes in a hand and checks if any of the aces can be converted to 1 to keep the total 21 and under
+    private boolean checkAces(ArrayList<Card> hand) {
+        // too much nesting yuck!
+        for (Card card : hand) { // loops through the player hand
+            if (card.ace && card.value == 11) { // checks if each card is an ace
+                if ((gameLogic.handTotal(hand) - 10) < 22) { // checks if converting that ace does anything
+                    card.value = 1; // converts the 11 to a 1
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     // if a player chooses to stay or dealt 21, this will be called and the dealer will hit until he can not
-    public void playerStay() {
+    // return true if the banker did not bust, false if he did. This function serves to aid in readability
+    // and serves no purpose other than readability. We could just use bankerHit.
+    public boolean playerStay() {
+        return bankerHit();
+    }
 
+    // returns true if the banker stayed, false if busted
+    private boolean bankerHit() {
+        while (gameLogic.evaluateBankerDraw(bankerHand)) {
+            bankerHand.add(theDealer.drawOne());
+        }
+        return gameLogic.handTotal(bankerHand) <= 21;
     }
 
     public double evaluateWinnings() {

@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c868ad42-8da6-4b3a-85e4-405ff5ae5850" name="Changes" comment="Forgot that last commit. BlackjackGame will hold the actual gameplay mechanics.">
+    <list default="true" id="c868ad42-8da6-4b3a-85e4-405ff5ae5850" name="Changes" comment="Still working on logic for the game">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/BlackjackDealer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BlackjackDealer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/BlackjackGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BlackjackGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Card.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +109,7 @@
       <option name="presentableId" value="Default" />
       <updated>1709409530254</updated>
       <workItem from="1709409531288" duration="5329000" />
-      <workItem from="1709576249734" duration="21653000" />
+      <workItem from="1709576249734" duration="26843000" />
     </task>
     <task id="LOCAL-00001" summary="Created project: made pom file, made the classes, configured maven.">
       <option name="closed" value="true" />
@@ -209,7 +207,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709673781207</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Still working on logic for the game">
+      <option name="closed" value="true" />
+      <created>1709698464913</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1709698464913</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -222,6 +228,7 @@
     <MESSAGE value="Finished back end but a lot of logic is still on the table and where it should be implemented. Creating a crap test UI." />
     <MESSAGE value="Ok im understanding more where we are going with this project now. The way we are required to adhere to certain classes definitely limits how I would like to construct this. Player.java (name should be changed probably) will hold most not if all the actual gameplay mechanics." />
     <MESSAGE value="Forgot that last commit. BlackjackGame will hold the actual gameplay mechanics." />
-    <option name="LAST_COMMIT_MESSAGE" value="Forgot that last commit. BlackjackGame will hold the actual gameplay mechanics." />
+    <MESSAGE value="Still working on logic for the game" />
+    <option name="LAST_COMMIT_MESSAGE" value="Still working on logic for the game" />
   </component>
 </project>
