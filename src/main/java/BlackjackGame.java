@@ -29,6 +29,7 @@
 *   playerHit(): Returns a boolean. True: the draw card did not go over 21 False: player busted
 *   playerStay(): Returns a boolean. True: the banker did not bust False: the banker busted
 *   evaluateWinnings(): Returns a double. ==bet: player lost the hand x2bet+: player won hand bet==0: hand pushed
+*   Front end can also access playerHand and bankerHand to see current hands cards
 *
 *   What the front end has set up before calling anything: It must set the totalWinnings to the initial amount of money
 *   What the front end as to set up before each call to newHand(): It must set the currentBet to the requested bet
@@ -74,7 +75,7 @@ public class BlackjackGame {
     }
 
     // this will determine if we need to shuffle or not. Must be called before every hand
-    // returns true if the deck('s) where shuffled, false otherwise
+    // returns true if the deck('s) where shuffled, false otherwise. Other than that, this deals the hands
     public boolean newHand() {
         // this is where it will be determined if we should shuffle based on cut card
         boolean shuffle = false;
