@@ -24,6 +24,15 @@
 *   EXTRA: Methods pertaining to splitting, and doubling down are NOT built yet and will only be built if we really
 *   have time.
 *
+*   What does each function return and what does it tells us (for front end)?
+*   newHand(): Returns a boolean. True: the deck was shuffled False: the deck was not shuffled
+*   playerHit(): Returns a boolean. True: the draw card did not go over 21 False: player busted
+*   playerStay(): Returns a boolean. True: the banker did not bust False: the banker busted
+*   evaluateWinnings(): Returns a double. ==bet: player lost the hand x2bet+: player won hand bet==0: hand pushed
+*
+*   What the front end has set up before calling anything: It must set the totalWinnings to the initial amount of money
+*   What the front end as to set up before each call to newHand(): It must set the currentBet to the requested bet
+*
 * */
 import java.util.ArrayList;
 
