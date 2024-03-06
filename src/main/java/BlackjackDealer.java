@@ -1,6 +1,8 @@
 /*
  * Author: Kyle Gleason
- *
+ * This class represents the dealer at the table (who is usually the banker) and deals with the deck. This class is
+ * responsible for creating the deck('s), shuffling the decks, and dealing cards. It also keeps track of the current
+ * deck size.
  * */
 import java.util.ArrayList;
 import java.util.Collections;
