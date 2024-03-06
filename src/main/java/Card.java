@@ -8,8 +8,16 @@
 public class Card {
     String suit;
     int value;
+    boolean ace; // set true if the card is an ace
     Card(String theSuit, int theValue) {
         suit = theSuit;
         value = theValue;
+        ace = false;
+    }
+
+    // Fluent setter
+    public Card setAce(boolean ace) {
+        this.ace = ace;
+        return this;
     }
 }

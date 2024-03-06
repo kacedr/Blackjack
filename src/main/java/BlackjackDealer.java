@@ -57,7 +57,7 @@ public class BlackjackDealer {
         }
 
         // add the ace (value starts with 11, determining if it should be a 1 will be later)
-        thirteenCards.add(new Card(suit, 11));
+        thirteenCards.add(new Card(suit, 11).setAce(true));
 
         return thirteenCards;
     }
