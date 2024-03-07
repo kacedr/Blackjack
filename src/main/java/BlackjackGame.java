@@ -18,10 +18,6 @@
 *       c.) If the player is dealt an 21, there is no need to call anything, dealHand() will know this and make a call
 *           to the banker to play through.
 *   4.) No matter the outcome of the game, evaluateWinnings() should be called at the end as this handles the winnings.
-*   EXTRA: If there is time and our game is thoroughly tested, implement choosing deck amount and cut card. This should
-*   not take long as the methods are already here and just need to be attached to the UI.
-*   EXTRA: Methods pertaining to splitting, and doubling down are NOT built yet and will only be built if we really
-*   have time.
 *
 *   What does each function return and what does it tells us (for front end)?
 *   newHand(): Returns a boolean. True: the deck was shuffled False: the deck was not shuffled
@@ -32,6 +28,11 @@
 *
 *   What the front end has set up before calling anything: It must set the totalWinnings to the initial amount of money
 *   What the front end as to set up before each call to newHand(): It must set the currentBet to the requested bet
+*
+*   EXTRA: If there is time and our game is thoroughly tested, implement choosing deck amount and cut card. This should
+*   not take long as the methods are already here and just need to be attached to the UI.
+*   EXTRA: Methods pertaining to splitting, and doubling down are NOT built yet and will only be built if we really
+*   have time.
 * */
 import java.util.ArrayList;
 
@@ -60,7 +61,6 @@ public class BlackjackGame {
     }
 
     // constructor for multiple decks, no cutCard
-    // does not need to be implemented for project, implement if time
     BlackjackGame(int deckAmount) {
         this.deckAmount = deckAmount;
         this.theDealer = new BlackjackDealer(deckAmount);
@@ -71,9 +71,8 @@ public class BlackjackGame {
     }
 
     // constructor for multiple decks, cutCard
-    // does not need to be implemented for project, implement if time
     BlackjackGame(int deckAmount, double cutCard) {
-        // our limits are 40%-90%
+        // our lower bound is 40%, upper is 90%, anything else might cause errors
         if(cutCard <= 0.90 && cutCard >= 0.40) {this.cutCard = cutCard;}
 
         this.deckAmount = deckAmount;
@@ -112,7 +111,7 @@ public class BlackjackGame {
         playerHand.add(temp2.get(0));
         bankerHand.add(temp2.get(1));
 
-        // we only check if the player got 21 as the bankers hand is abstracted from user until they stay
+        // we only check if the player got dealt 21 as the bankers hand is abstracted from user until they stay
         if (gameLogic.handTotal(playerHand) == 21) {
             playerStay();
         }
@@ -129,7 +128,7 @@ public class BlackjackGame {
 
         // checks if that card results in a 21
         if (gameLogic.handTotal(playerHand) == 21) {
-            playerStay();
+            playerStay(); // player automatically stays, can be changed
             return true;
         }
 
@@ -180,6 +179,7 @@ public class BlackjackGame {
         return gameLogic.handTotal(bankerHand) <= 21;
     }
 
+    // evaluates who won the hand. This should be called no matter what after each hand finishes
     public double evaluateWinnings() {
         if ((gameLogic.whoWon(playerHand, bankerHand)).compareTo("dealer") == 0 ) {
             // todo Do we minus the bet from the totalWinnings here? for now yes

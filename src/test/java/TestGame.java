@@ -8,11 +8,18 @@ public class TestGame {
     // this test file will serve as a basis for basic testing and extremely rare edge cases
     // the best possible way to test the game is playing it for hours on end
 
-    private BlackjackGame game;
+    private BlackjackGame game, gameDSize, gameDSizeShuf;
 
     @Before
     public void setUp() {
+        // no deck amount, shuffle point
         game = new BlackjackGame();
+
+        // deck amount, no shuffle point
+        gameDSize = new BlackjackGame(6);
+
+        // deck amount, shuffle point
+        gameDSizeShuf = new BlackjackGame(6, 0.60);
     }
 
     @Test
