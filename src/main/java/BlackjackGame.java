@@ -18,7 +18,6 @@
 *       c.) If the player is dealt an 21, there is no need to call anything, dealHand() will know this and make a call
 *           to the banker to play through.
 *   4.) No matter the outcome of the game, evaluateWinnings() should be called at the end as this handles the winnings.
-*       Knowing if the player or dealer busts will be possible through
 *   EXTRA: If there is time and our game is thoroughly tested, implement choosing deck amount and cut card. This should
 *   not take long as the methods are already here and just need to be attached to the UI.
 *   EXTRA: Methods pertaining to splitting, and doubling down are NOT built yet and will only be built if we really
@@ -33,7 +32,6 @@
 *
 *   What the front end has set up before calling anything: It must set the totalWinnings to the initial amount of money
 *   What the front end as to set up before each call to newHand(): It must set the currentBet to the requested bet
-*
 * */
 import java.util.ArrayList;
 
@@ -140,7 +138,7 @@ public class BlackjackGame {
             return true;
         }
 
-        // if it does not pass the first check, the player either busted or has aces that can be converted
+        // if it does not pass the first few checks, the player either busted or has aces that can be converted
         if (checkAces(playerHand)) {
             // check if it resulted in a 21
             if (gameLogic.handTotal(playerHand) == 21) {
@@ -169,7 +167,7 @@ public class BlackjackGame {
 
     // if a player chooses to stay or dealt 21, this will be called and the dealer will hit until he can not
     // return true if the banker did not bust, false if he did. This function serves to aid in readability
-    // and serves no purpose other than readability. We could just use bankerHit.
+    // and serves no purpose other than readability. We could just use bankerHit but that would be confusing.
     public boolean playerStay() {
         return bankerHit();
     }
