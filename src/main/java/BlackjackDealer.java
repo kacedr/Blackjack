@@ -31,6 +31,8 @@ public class BlackjackDealer {
     * Logic for generating a deck of 52 cards (no jokers), 4 suits of 13 cards (2-10, K, Q, J, A)
     * Face cards will be implemented as a 10 (thus 4 10's per suit will be generated) and aces will be initially 11
     * Determining the face card (ie. if it's a K, Q or J) will be done on front end. It does not matter backend
+    * for multiple decks, when assigning face cards, a track needs to be kept on which ones have been assigned for
+    * each deck. (ie. 4 decks must only have 4 kings of each suit)
     * */
     public void generateDeck() {
         // make sure we get a new deck of cards everytime this is called

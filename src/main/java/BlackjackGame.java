@@ -55,6 +55,10 @@ public class BlackjackGame {
     // constructor for single deck
     BlackjackGame() {
         this.theDealer = new BlackjackDealer();
+        this.gameLogic = new BlackjackGameLogic();
+        this.playerHand = new ArrayList<>();
+        this.bankerHand = new ArrayList<>();
+        theDealer.generateDeck();
     }
 
     // constructor for multiple decks, no cutCard
@@ -62,6 +66,10 @@ public class BlackjackGame {
     BlackjackGame(int deckAmount) {
         this.deckAmount = deckAmount;
         this.theDealer = new BlackjackDealer(deckAmount);
+        this.gameLogic = new BlackjackGameLogic();
+        this.playerHand = new ArrayList<>();
+        this.bankerHand = new ArrayList<>();
+        theDealer.generateDeck();
     }
 
     // constructor for multiple decks, cutCard
@@ -72,6 +80,10 @@ public class BlackjackGame {
 
         this.deckAmount = deckAmount;
         this.theDealer = new BlackjackDealer(deckAmount);
+        this.gameLogic = new BlackjackGameLogic();
+        this.playerHand = new ArrayList<>();
+        this.bankerHand = new ArrayList<>();
+        theDealer.generateDeck();
     }
 
     // this will determine if we need to shuffle or not. Must be called before every hand
