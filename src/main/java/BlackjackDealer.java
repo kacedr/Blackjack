@@ -14,6 +14,9 @@ public class BlackjackDealer {
     // amount of decks
     int deckAmount;
 
+    // the hiLowCount class will always be counting no matter if the user hides it or not
+    HiLowCount cardCounter; // todo: Not implemented right now
+
     // constructor, a new deck is created everytime we construct a class instance
     public BlackjackDealer() {
         this.deckOfCards = new ArrayList<>();
@@ -73,13 +76,17 @@ public class BlackjackDealer {
     * */
     public ArrayList<Card> dealHand() {
         ArrayList<Card> newHand = new ArrayList<>();
-        newHand.add(deckOfCards.removeLast());
-        newHand.add(deckOfCards.removeLast());
+        newHand.add(drawOne());
+        newHand.add(drawOne());
         return newHand;
     }
 
-    // Just draws a card off the top of the deck
-    public Card drawOne() {return deckOfCards.removeLast();}
+    // Just draws a card off the top of the deck, sends in card value for hi-low counter
+    public Card drawOne() {
+        Card drawnCard = deckOfCards.removeLast();
+
+        return drawnCard;
+    }
 
     // Uses collections to shuffle deck of cards
     public void shuffleDeck() {Collections.shuffle(deckOfCards);}
