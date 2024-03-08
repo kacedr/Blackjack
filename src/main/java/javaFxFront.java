@@ -12,9 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 import java.util.HashMap;
@@ -29,7 +27,8 @@ public class javaFxFront extends Application {
     Stage primary;
     TextField moneyprompt;
     double money;
-
+    Image cas = new Image("casinobackground.jpg");
+    ImageView casBack = new ImageView(cas);
     @Override
     public void start(Stage primaryStage) throws Exception {
         primary = primaryStage;
@@ -81,16 +80,28 @@ public class javaFxFront extends Application {
         help.setMinWidth(30);
         help.setMinHeight(15);
 
+        Button spaceButton = new Button("Help?");
+        spaceButton.setStyle("-fx-text-fill: transparent;-fx-background-color: transparent;-fx-font-size: 14px;");
+        spaceButton.setMinWidth(30);
+        spaceButton.setMinHeight(15);
+        spaceButton.setOpacity(1);
+
         v1 = new VBox(20, h1, moneyLabel, moneyprompt, play);
         v1.setPrefWidth(500);
         v1.setMaxWidth(500);
         v1.setAlignment(Pos.CENTER);
+        VBox.setMargin(h1, new Insets(0, 0, 0, -35));
         VBox.setMargin(moneyLabel, new Insets(0, 0, -15, 0));
 
         BorderPane borderPane = new BorderPane();
         borderPane.setCenter(v1);
         borderPane.setRight(help);
-        borderPane.setStyle("-fx-background-color: #005e30;");
+        borderPane.setLeft(spaceButton);
+
+        BackgroundSize backgroundSize = new BackgroundSize(100, cas.getHeight() * (1200 / cas.getWidth()), true, false, false, true);
+        BackgroundImage backgroundImage = new BackgroundImage(cas, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
+        borderPane.setBackground(new Background(backgroundImage));
+
         BorderPane.setMargin(help, new Insets(560, 10, 0, 0));
 
         return new Scene(borderPane, 1200, 600);
