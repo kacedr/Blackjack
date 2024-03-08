@@ -95,7 +95,7 @@ public class javaFxFront extends Application {
 
         BorderPane borderPane = new BorderPane();
         borderPane.setCenter(v1);
-        borderPane.setRight(help);
+//        borderPane.setRight(help);
         borderPane.setLeft(spaceButton);
 
         BackgroundSize backgroundSize = new BackgroundSize(100, cas.getHeight() * (1200 / cas.getWidth()), true, false, false, true);

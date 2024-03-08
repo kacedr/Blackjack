@@ -55,16 +55,16 @@ public class BlackjackDealer {
 
         // generate cards 2-10
         for (int i = 2; i <= 10; i++) {
-            thirteenCards.add(new Card(suit, i));
+            thirteenCards.add(new Card(suit, i).setFace("NA"));
         }
 
         // generate face cards (will just be 3 10's)
-        for (int i = 0; i < 3; i++) {
-            thirteenCards.add(new Card(suit, 10));
-        }
+        thirteenCards.add(new Card(suit, 10).setFace("jack"));
+        thirteenCards.add(new Card(suit, 10).setFace("queen"));
+        thirteenCards.add(new Card(suit, 10).setFace("king"));
 
         // add the ace (value starts with 11, determining if it should be a 1 will be later)
-        thirteenCards.add(new Card(suit, 11).setAce(true));
+        thirteenCards.add(new Card(suit, 11).setFace("ace"));
 
         return thirteenCards;
     }

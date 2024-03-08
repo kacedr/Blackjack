@@ -5,8 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c868ad42-8da6-4b3a-85e4-405ff5ae5850" name="Changes" comment="Testing testing testing">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/casinobackground.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/BlackjackDealer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BlackjackDealer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/BlackjackGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BlackjackGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Card.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/javaFxFront.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javaFxFront.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -60,11 +62,6 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\conno\Downloads\project2\src\main\resources" />
-    </key>
-  </component>
   <component name="RunManager">
     <configuration name="project2 [clean,compile,exec:java]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
       <MavenSettings>
@@ -102,7 +99,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-21.0.1-openjdk-21.0.1-f644763e9732-f98dd351" />
+        <option value="jdk-21.0.1-openjdk-21.0.1-f644763e9732-76dd8dae" />
+        <option value="jdk-21.0.2-openjdk-21.0.2-f644763e9732-563d888c" />
       </set>
     </attachedChunks>
   </component>
@@ -116,7 +114,6 @@
       <updated>1709409530254</updated>
       <workItem from="1709409531288" duration="5329000" />
       <workItem from="1709576249734" duration="32651000" />
-      <workItem from="1709922785492" duration="1333000" />
     </task>
     <task id="LOCAL-00001" summary="Created project: made pom file, made the classes, configured maven.">
       <option name="closed" value="true" />
@@ -270,22 +267,19 @@
       <option name="project" value="LOCAL" />
       <updated>1709831162419</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Testing testing testing">
+      <option name="closed" value="true" />
+      <created>1709834977383</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1709834977383</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Created project: made pom file, made the classes, configured maven." />

@@ -35,6 +35,7 @@
 *   have time.
 * */
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class BlackjackGame {
     ArrayList<Card> playerHand, bankerHand;
@@ -157,7 +158,7 @@ public class BlackjackGame {
     private boolean checkAces(ArrayList<Card> hand) {
         // too much nesting yuck!
         for (Card card : hand) { // loops through the player hand
-            if (card.ace && card.value == 11) { // checks if each card is an ace
+            if (Objects.equals(card.face, "ace") && card.value == 11) { // checks if each card is an ace
                 if ((gameLogic.handTotal(hand) - 10) < 22) { // checks if converting that ace does anything
                     card.value = 1; // converts the 11 to a 1
                     return true;
