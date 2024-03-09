@@ -4,82 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c868ad42-8da6-4b3a-85e4-405ff5ae5850" name="Changes" comment="Testing testing testing">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/10_of_clubs.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/10_of_diamonds.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/10_of_hearts.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/10_of_spades.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/2_of_clubs.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/2_of_diamonds.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/2_of_hearts.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/2_of_spades.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/3_of_clubs.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/3_of_diamonds.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/3_of_hearts.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/3_of_spades.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/4_of_clubs.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/4_of_diamonds.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/4_of_hearts.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/4_of_spades.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/5_of_clubs.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/5_of_diamonds.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/5_of_hearts.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/5_of_spades.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/6_of_clubs.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/6_of_diamonds.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/6_of_hearts.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/6_of_spades.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/7_of_clubs.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/7_of_diamonds.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/7_of_hearts.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/7_of_spades.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/8_of_clubs.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/8_of_diamonds.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/8_of_hearts.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/8_of_spades.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/9_of_clubs.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/9_of_diamonds.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/9_of_hearts.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/9_of_spades.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/ace_of_clubs.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/ace_of_diamonds.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/ace_of_hearts.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/ace_of_spades.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/ace_of_spades2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/black_joker.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/jack_of_clubs.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/jack_of_clubs2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/jack_of_diamonds.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/jack_of_diamonds2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/jack_of_hearts.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/jack_of_hearts2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/jack_of_spades.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/jack_of_spades2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/king_of_clubs.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/king_of_clubs2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/king_of_diamonds.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/king_of_diamonds2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/king_of_hearts.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/king_of_hearts2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/king_of_spades.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/king_of_spades2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/queen_of_clubs.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/queen_of_clubs2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/queen_of_diamonds.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/queen_of_diamonds2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/queen_of_hearts.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/queen_of_hearts2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/queen_of_spades.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/queen_of_spades2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PNG-cards-1.3/red_joker.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/card back red.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/BlackjackDealer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BlackjackDealer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/BlackjackGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BlackjackGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Card.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/HiLowCount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/HiLowCount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/TestGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestGame.java" afterDir="false" />
-    </list>
+    <list default="true" id="c868ad42-8da6-4b3a-85e4-405ff5ae5850" name="Changes" comment="Put card pngs" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -131,6 +56,11 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="project2 [clean,compile,exec:java]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
       <MavenSettings>
@@ -360,7 +290,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709939059540</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Put card pngs">
+      <option name="closed" value="true" />
+      <created>1709943690737</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1709943690737</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -377,6 +315,7 @@
     <MESSAGE value="Pretty much finished logic of the game. Still needs to be robustly tested." />
     <MESSAGE value="Ok, you have to actually initialize the classes in the constructor for BlackjackGame not depend on magic or the grace of god to do it for you." />
     <MESSAGE value="Testing testing testing" />
-    <option name="LAST_COMMIT_MESSAGE" value="Testing testing testing" />
+    <MESSAGE value="Put card pngs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Put card pngs" />
   </component>
 </project>
