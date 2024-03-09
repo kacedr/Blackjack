@@ -2,12 +2,14 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Objects;
 
 public class TestGame {
     // this test file will serve as a basis for basic testing and extremely rare edge cases
     // the best possible way to test the game is playing it for hours on end
+    // testing actual gameplay is hard since shuffle is random and seeding would require changing the class files
 
     private BlackjackGame game, gameDSize, gameDSizeShuf;
 

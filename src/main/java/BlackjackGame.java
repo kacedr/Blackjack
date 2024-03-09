@@ -76,7 +76,7 @@ public class BlackjackGame {
     // constructor for multiple decks, cutCard
     BlackjackGame(int deckAmount, double cutCard) {
         // our upper bound is 90%, lower is 40%, anything else might cause errors
-        if(cutCard <= 0.90 && cutCard >= 0.40) {this.cutCard = cutCard;}
+        if (cutCard <= 0.90 && cutCard >= 0.40) {this.cutCard = cutCard;}
 
         this.deckAmount = deckAmount;
         this.theDealer = new BlackjackDealer(deckAmount);

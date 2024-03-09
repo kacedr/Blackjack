@@ -8,15 +8,16 @@
 
 public class Card {
     String suit;
-    String face; // NA means not a face card,
+    String face;
     int value;
 
+    // Constructor per write up
     Card(String theSuit, int theValue) {
         suit = theSuit;
         value = theValue;
     }
 
-    // Fluent setters
+    // Fluent setter (required due to required constructor)
     public Card setFace(String face) {
         this.face = face;
         return this;
