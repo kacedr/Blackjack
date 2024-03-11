@@ -38,7 +38,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class BlackjackGame {
-    ArrayList<Card> playerHand, bankerHand;
+    ArrayList<Card> playerHand, bankerHand; // these are the true hands
     BlackjackGameLogic gameLogic;
     BlackjackDealer theDealer;
     double currentBet;

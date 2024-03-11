@@ -1,4 +1,5 @@
 /*
+* Todo: UNFINISHED not required
 * This is the counter for Hi Low strategy, This is going to automatically count the cards drawn and divide them by the
 * Amount of decks. The user has the option to enable or disable this counter. The logic goes as follows:
 *   2-6 (+1)
@@ -16,7 +17,7 @@ public class HiLowCount {
 
 
     HiLowCount () {
-
+        
     }
 
     // updates the deck of cards

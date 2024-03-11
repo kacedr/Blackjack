@@ -23,6 +23,9 @@ public class javaFxFront extends Application {
         launch(args);
     }
 
+    // initialize blackjack game, this needs to be initialized like bGame = new BlackjackGame()
+    BlackjackGame bGame;
+
     HashMap<String, Scene> sceneMap;
     Stage primary;
     TextField moneyprompt;
@@ -67,6 +70,16 @@ public class javaFxFront extends Application {
             }
         });
         moneyLabel = new Label("Enter starting money amount:");
+
+        // starts game, no deck amount, no cut shuffle percentage, might have to be moved because
+        // this should not start until the user inputs correct input. The input also has to be directed
+        // to the variables to properly set up the game. If the user does not select any input for cut/deck,
+        // they can either be prompted to or values can be set to default. Any actions on bGame must be in scope
+        // of this function. So direct modification of bGame can only happen inside of this function.
+        int deckAmount = 1; // default values
+        double cutCard = 0.30; // default values
+        bGame = new BlackjackGame(deckAmount, cutCard);
+
         moneyLabel.setStyle("-fx-font-size: 16px; -fx-text-fill: black;");
 
         play = new Button("Play");
