@@ -263,6 +263,9 @@ public class javaFxFront extends Application {
         // a variable in scope of javaFxFront class needs to be made for deckAmount and cutCard percentage and
         // input needs to be taken somewhere for those before gameScene method is called. Since im not sure
         // how this wants to be handled, I will initiate the variables here.
+
+        // set money amount for ui
+
         int deckAmount = 1; // default values, must be moved only for development
         double cutCard = 0.30; // default values, must be moved only for development
 
@@ -275,13 +278,12 @@ public class javaFxFront extends Application {
         bGame = new BlackjackGame(deckAmount, cutCard);
 
         // double for bet, string for bet (when taken from text field)
-        final double[] bet = new double[1];
         final String[] betAsString = new String[1];
 
         // sets the starting amount of money, should only happen at start of the game (not the start of each hand)
         bGame.totalWinnings = money;
-        System.out.println(bGame.totalWinnings);
-        System.out.println(money);
+        System.out.println(bGame.totalWinnings); // testing delete
+        System.out.println(money); // testing delete
 
         // the game will run until either the player exits, or their money reaches zero
         // todo Make sure a new game is started every time the player exits, If they reach zero, they should be
@@ -301,6 +303,8 @@ public class javaFxFront extends Application {
                 // get text
                 betAsString[0] = betInput.getText();
 
+                System.out.println(bGame.totalWinnings); // testing delete
+
                 // this will throw an exception if the input is in valid
                 try {
                     betAsString[0] = betInput.getText();
@@ -310,10 +314,14 @@ public class javaFxFront extends Application {
                     else if (Double.parseDouble(betAsString[0]) > bGame.totalWinnings) {
                         showAlert("Must change bet amount, not enough winnings");
                     } else {
-                        bet[0] = Double.parseDouble(betAsString[0]);
+                        bGame.currentBet = Double.parseDouble(betAsString[0]);
+
+                        System.out.println(bGame.currentBet); // testing delete
 
                         // start new hand
-                        bGame.newHand();
+                        if (bGame.newHand()) {
+                            showAlert("Deck was shuffled");
+                        }
 
                         // set boolean too false to not allow new hand until current hand is over
                         isNewHand[0] = false;
@@ -331,9 +339,19 @@ public class javaFxFront extends Application {
         hit.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                bGame.playerHit();
-                System.out.println(bGame.playerHand);
-                System.out.println(bGame.bankerHand);
+                if(!bGame.playerHit()) {
+                    showAlert("You Busted!!!");
+                    // evaluate winnings
+                    bGame.evaluateWinnings();
+
+                    System.out.println(bGame.totalWinnings); // testing delete
+
+                    isNewHand[0] = true;
+                }
+
+
+                System.out.println(bGame.playerHand); // testing delete
+                System.out.println(bGame.bankerHand); // testing delete
 
             }
         });
@@ -341,18 +359,39 @@ public class javaFxFront extends Application {
         stay.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                bGame.playerStay();
-                System.out.println(bGame.playerHand);
-                System.out.println(bGame.bankerHand);
+                double evWiningReturn = bGame.evaluateWinnings();
+
+                if (!bGame.playerStay()) {
+                    showAlert("Banker Busted, You Win!!!");
+                } else {
+                    // evaluate winnings
+                    if (evWiningReturn == bGame.currentBet) {
+                        // player lost
+                        showAlert("You Lost!!!");
+                    } else if (evWiningReturn > bGame.currentBet) {
+                        // player won
+                        showAlert("You Won!!!");
+                    } else {
+                        // push
+                        showAlert("Push!!!");
+                    }
+                }
+                isNewHand[0] = true;
+
+                System.out.println(bGame.totalWinnings); // testing delete
+
+                System.out.println(bGame.playerHand); // testing delete
+                System.out.println(bGame.bankerHand); // testing delete
+
+
             }
         });
 
-            // This returns true when the deck was shuffled, notify the user of this only if the deck is shuffled
 
 
         // this is getting called no matter what
-        System.out.println(bGame.playerHand);
-        System.out.println(bGame.bankerHand);
+        System.out.println(bGame.playerHand); // testing delete
+        System.out.println(bGame.bankerHand); // testing delete
 
 
 

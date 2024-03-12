@@ -191,7 +191,7 @@ public class BlackjackGame {
     public double evaluateWinnings() {
         if ((gameLogic.whoWon(playerHand, bankerHand)).compareTo("dealer") == 0 ) {
             // todo Do we minus the bet from the totalWinnings here? for now yes
-            totalWinnings -= currentBet;
+            totalWinnings =- currentBet;
 
             // player can not go negative
             if (totalWinnings < 0) {totalWinnings = 0;}
