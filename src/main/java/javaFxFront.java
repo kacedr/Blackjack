@@ -42,6 +42,7 @@ public class javaFxFront extends Application {
         primaryStage.setTitle("Blackjack");
         primaryStage.setScene(sceneMap.get("setup"));
         primaryStage.show();
+
     }
     private Scene startScene() {
         VBox v1;
@@ -162,56 +163,69 @@ public class javaFxFront extends Application {
         exitpic.setFitHeight(28);
         exitpic.setFitWidth(28);
         exitpic.setPreserveRatio(true);
-
         exit.setGraphic(exitpic);
+        HBox exitBox = new HBox(exit);
+        VBox.setMargin(exitBox, new Insets(-56, 0, 0, 0));
+        exit.setOnAction(e -> primary.setScene(sceneMap.get("setup")));
+
         int boo = 0;
         String yScoreLabel = String.format("Your Score\n         %d         ", boo);
         yScore = new Label(yScoreLabel);
-        VBox.setMargin(yScore, new Insets(250, 0, 0, 70));
+        VBox.setMargin(yScore, new Insets(250, 0, 0, 0));
         yScore.setStyle("-fx-font-family: 'Constantia'; -fx-text-fill: white; -fx-font-size: 21px; -fx-font-weight: bold;");
         hit = new Button("HIT");
         hit.setStyle("-fx-font-size: 30px; -fx-padding: 10px 30px;-fx-border-radius: 15px; -fx-background-radius: 15px;");
-        VBox.setMargin(hit, new Insets(145, 0, 0, 67));
-        leftGame = new VBox(exit, yScore, hit);
+        VBox.setMargin(hit, new Insets(145, 0, 0, 20));
+        leftGame = new VBox(exitBox, yScore, hit);
 
 
 
 
-        dCards = new HBox(10);
+        dCards = new HBox(16);
         dCards.setAlignment(Pos.CENTER);
-        dCards.setMaxWidth(650);
+        dCards.setMinWidth(800);
+        dCards.setMaxWidth(800);
         dCards.setMinHeight(138);
         dCards.setPadding(new Insets(15, 15, 15, 15));
-        // Optionally set style (background color, etc.)
-        dCards.setStyle("-fx-background-color: black; -fx-border-radius: 5px;");
+        VBox.setMargin(dCards, new Insets(0, 0, 0, 0));
+        dCards.setStyle("-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 1px; -fx-border-radius: 5px;");
 
+        Label betlabel = new Label("Enter bet amount:");
+        betlabel.setStyle("-fx-font-weight: 600;-fx-text-fill: white");
+        VBox.setMargin(betlabel, new Insets(120, 0, 0, 0));
         betInput = new TextField();
         betInput.setMaxWidth(100);
-        centerPop = new Label("      boo        ");
+
+        centerPop = new Label("");
 //        not working correctly
         String moneyamtlabel = String.format("%.2f", money);
+
         moneyamt = new Label(moneyamtlabel);
+        moneyamt.setStyle("-fx-text-fill: white;-fx-font-size: 14;");
+        VBox.setMargin(moneyamt, new Insets(70, 0, 0, 0));
 
-        pCards = new HBox(10);
+        pCards = new HBox(16);
         pCards.setAlignment(Pos.CENTER);
-        pCards.setMaxWidth(650);
+        pCards.setMinWidth(800);
+        pCards.setMaxWidth(800);
+        pCards.setMinHeight(138);
         pCards.setPadding(new Insets(15, 15, 15, 15));
+        VBox.setMargin(pCards, new Insets(10, 0, 0, 0));
+        pCards.setStyle("-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 1px; -fx-border-radius: 5px;");
 
-        pCards.setStyle("-fx-background-color: black; -fx-border-radius: 5px;");
 
-
-        centerGame = new VBox(dCards, betInput, centerPop, moneyamt, pCards);
+        centerGame = new VBox(dCards, betlabel, betInput, centerPop, moneyamt, pCards);
 
 
 
 
         String dScoreLabel = String.format("Dealer Score\n            %d            ", boo);
         dScore = new Label(dScoreLabel);
-        VBox.setMargin(dScore, new Insets(279, 80, 0, 10));
+        VBox.setMargin(dScore, new Insets(226, 0, 0, 0));
         dScore.setStyle("-fx-font-family: 'Constantia'; -fx-text-fill: white; -fx-font-size: 21px; -fx-font-weight: bold;");
 
         stay = new Button("STAY");
-        VBox.setMargin(stay, new Insets(144, 0, 0, 27));
+        VBox.setMargin(stay, new Insets(144, 0, 0, 0));
         stay.setStyle("-fx-font-size: 30px; -fx-padding: 10px 15px;-fx-border-radius: 15px; -fx-background-radius: 15px;");
 
         rightGame = new VBox(dScore, stay);
@@ -224,6 +238,9 @@ public class javaFxFront extends Application {
 
 
         BorderPane gamePane = new BorderPane();
+        centerGame.setAlignment(Pos.CENTER);
+        leftGame.setAlignment(Pos.CENTER);
+        rightGame.setAlignment(Pos.CENTER);
         gamePane.setLeft(leftGame);
         gamePane.setCenter(centerGame);
         gamePane.setRight(rightGame);
