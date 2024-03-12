@@ -11,11 +11,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 import java.util.HashMap;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class javaFxFront extends Application {
 
@@ -267,7 +267,9 @@ public class javaFxFront extends Application {
         double cutCard = 0.30; // default values, must be moved only for development
 
         // boolean for if the deck was shuffled
-        final boolean[] wasShuffled = {false};
+        final boolean[] wasShuffled = {false}; // todo might not be needed
+
+        final boolean[] isNewHand = {true};
 
         // starts a new game with the desired deck amount and shuffle point (cutCard)
         bGame = new BlackjackGame(deckAmount, cutCard);
@@ -292,6 +294,7 @@ public class javaFxFront extends Application {
 
         // Basically this signifies that there is a new hand thus this button needs to be disabled unless a new
         // hand can happen
+
         betlabel.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
@@ -301,29 +304,51 @@ public class javaFxFront extends Application {
                 // this will throw an exception if the input is in valid
                 try {
                     betAsString[0] = betInput.getText();
-                    if (Double.parseDouble(betAsString[0]) > bGame.totalWinnings) {
+                    if (!isNewHand[0]) {
+                        showAlert("Can not change bet during hand");
+                    }
+                    else if (Double.parseDouble(betAsString[0]) > bGame.totalWinnings) {
                         showAlert("Must change bet amount, not enough winnings");
                     } else {
                         bet[0] = Double.parseDouble(betAsString[0]);
 
-                        // deal new hand
-                        wasShuffled[0] = bGame.newHand();
-                        System.out.println(bGame.playerHand);
-                        System.out.println(bGame.bankerHand);
+                        // start new hand
+                        bGame.newHand();
+
+                        // set boolean too false to not allow new hand until current hand is over
+                        isNewHand[0] = false;
                     }
                 } catch (NumberFormatException e) {
                     showAlert("Must enter a valid bet");
                 }
 
+                System.out.println(bGame.bankerHand);
+                System.out.println(bGame.playerHand);
 
             }
         });
 
+        hit.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                bGame.playerHit();
+                System.out.println(bGame.playerHand);
+                System.out.println(bGame.bankerHand);
 
-        // deal the hands
-        if (wasShuffled[0]) {
+            }
+        });
+
+        stay.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                bGame.playerStay();
+                System.out.println(bGame.playerHand);
+                System.out.println(bGame.bankerHand);
+            }
+        });
+
             // This returns true when the deck was shuffled, notify the user of this only if the deck is shuffled
-        }
+
 
         // this is getting called no matter what
         System.out.println(bGame.playerHand);
