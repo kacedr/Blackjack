@@ -90,6 +90,10 @@ public class BlackjackGame {
     // this will determine if we need to shuffle or not. Must be called before every hand
     // returns true if the deck('s) where shuffled, false otherwise. Other than that, this deals the hands
     public boolean newHand() {
+        // clear hands todo might need to change location
+        this.playerHand = new ArrayList<>();
+        this.bankerHand = new ArrayList<>();
+
         // this is where it will be determined if we should shuffle based on cut card
         boolean shuffle = false;
         double deckRemainingPercentage = (double)theDealer.deckSize() / (deckAmount * 52);
