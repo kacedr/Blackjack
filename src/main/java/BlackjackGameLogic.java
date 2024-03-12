@@ -31,23 +31,26 @@ public class BlackjackGameLogic {
     * While there are many more niche ways to win, loose, or push (not really just not typing out every possible)
     * The gist is this function should only be called once per hand as you can only win a hand once
     * */
-    public String whoWon(ArrayList <Card> playerHand1, ArrayList<Card> dealerHand) {
-        int playerHand1Total = handTotal(playerHand1);
+    public String whoWon(ArrayList<Card> playerHand, ArrayList<Card> dealerHand) {
+        int playerHandTotal = handTotal(playerHand);
         int dealerHandTotal = handTotal(dealerHand);
 
-        if ((playerHand1Total > dealerHandTotal) && (playerHand1Total < 22)) {
+        // Check for player bust first
+        if (playerHandTotal > 21) return "dealer"; // Player busts, dealer wins regardless of dealer's total
+
+        // Check for dealer bust next
+        if (dealerHandTotal > 21) return "player"; // Dealer busts, player wins
+
+        // Now handle the non-bust scenarios
+        if (playerHandTotal > dealerHandTotal) {
             return "player";
-        } else if ((dealerHandTotal > playerHand1Total) && (dealerHandTotal < 22)) {
+        } else if (dealerHandTotal > playerHandTotal) {
             return "dealer";
-        }
-        else if (dealerHandTotal == playerHand1Total) {
-            return "push";
-        }
-        // *** REMOVE, FOR TESTING ***
-        else {
-            return "ERROR IN LOGIC";
+        } else {
+            return "push"; // This covers the tie scenario
         }
     }
+
 
 
     // Returns true if the dealer must draw another card (dealer must hit on 16 or less)

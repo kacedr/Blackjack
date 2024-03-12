@@ -40,6 +40,8 @@ public class javaFxFront extends Application {
     HBox pCards, dCards;
     VBox centerGame, leftGame, rightGame;
 
+    String moneyamtlabel;
+
     // pulled from gameScene
     VBox v1;
     HBox h1;
@@ -203,7 +205,7 @@ public class javaFxFront extends Application {
 
         centerPop = new Label("");
 //        not working correctly
-        String moneyamtlabel = String.format("%.2f", money);
+        moneyamtlabel = String.format("%.2f", money);
 
         moneyamt = new Label(moneyamtlabel);
         moneyamt.setStyle("-fx-text-fill: white;-fx-font-size: 14;");
@@ -282,8 +284,10 @@ public class javaFxFront extends Application {
 
         // sets the starting amount of money, should only happen at start of the game (not the start of each hand)
         bGame.totalWinnings = money;
-        System.out.println(bGame.totalWinnings); // testing delete
-        System.out.println(money); // testing delete
+
+        // set the initial amount of money
+        moneyamt.setText(String.format("%.2f", bGame.totalWinnings));
+
 
         // the game will run until either the player exits, or their money reaches zero
         // todo Make sure a new game is started every time the player exits, If they reach zero, they should be
@@ -303,8 +307,6 @@ public class javaFxFront extends Application {
                 // get text
                 betAsString[0] = betInput.getText();
 
-                System.out.println(bGame.totalWinnings); // testing delete
-
                 // this will throw an exception if the input is in valid
                 try {
                     betAsString[0] = betInput.getText();
@@ -316,7 +318,6 @@ public class javaFxFront extends Application {
                     } else {
                         bGame.currentBet = Double.parseDouble(betAsString[0]);
 
-                        System.out.println(bGame.currentBet); // testing delete
 
                         // start new hand
                         if (bGame.newHand()) {
@@ -325,6 +326,9 @@ public class javaFxFront extends Application {
 
                         // set boolean too false to not allow new hand until current hand is over
                         isNewHand[0] = false;
+
+                        // we are going to minus the bet from the money total visually
+                        moneyamt.setText(String.format("%.2f", bGame.totalWinnings - bGame.currentBet));
                     }
                 } catch (NumberFormatException e) {
                     showAlert("Must enter a valid bet");
@@ -344,14 +348,13 @@ public class javaFxFront extends Application {
                     // evaluate winnings
                     bGame.evaluateWinnings();
 
-                    System.out.println(bGame.totalWinnings); // testing delete
-
                     isNewHand[0] = true;
+
+                    // update winnings
+                    moneyamt.setText(String.format("%.2f", bGame.totalWinnings));
                 }
 
 
-                System.out.println(bGame.playerHand); // testing delete
-                System.out.println(bGame.bankerHand); // testing delete
 
             }
         });
@@ -378,23 +381,9 @@ public class javaFxFront extends Application {
                 }
                 isNewHand[0] = true;
 
-                System.out.println(bGame.totalWinnings); // testing delete
-
-                System.out.println(bGame.playerHand); // testing delete
-                System.out.println(bGame.bankerHand); // testing delete
-
-
+                // update winnings
+                moneyamt.setText(String.format("%.2f", bGame.totalWinnings));
             }
         });
-
-
-
-        // this is getting called no matter what
-        System.out.println(bGame.playerHand); // testing delete
-        System.out.println(bGame.bankerHand); // testing delete
-
-
-
-
     }
 }

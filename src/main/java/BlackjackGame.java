@@ -189,9 +189,11 @@ public class BlackjackGame {
 
     // evaluates who won the hand. This should be called no matter what after each hand finishes
     public double evaluateWinnings() {
-        if ((gameLogic.whoWon(playerHand, bankerHand)).compareTo("dealer") == 0 ) {
+        String whoWonRes = (gameLogic.whoWon(playerHand, bankerHand));
+        System.out.println(whoWonRes);
+        if (whoWonRes.compareTo("dealer") == 0 ) {
             // todo Do we minus the bet from the totalWinnings here? for now yes
-            totalWinnings =- currentBet;
+            totalWinnings = totalWinnings - currentBet;
 
             // player can not go negative
             if (totalWinnings < 0) {totalWinnings = 0;}
@@ -199,7 +201,7 @@ public class BlackjackGame {
             // returns how much is lost, but as a positive value
             return currentBet;
         }
-        else if ((gameLogic.whoWon(playerHand, bankerHand)).compareTo("player") == 0 ) {
+        else if (whoWonRes.compareTo("player") == 0 ) {
             // if the player hit a blackjack
             if (gameLogic.handTotal(playerHand) == 21) {
                 totalWinnings += currentBet * 1.5;
