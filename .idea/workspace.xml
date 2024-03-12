@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c868ad42-8da6-4b3a-85e4-405ff5ae5850" name="Changes" comment="Put card pngs">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/javaFxFront.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javaFxFront.java" afterDir="false" />
-    </list>
+    <list default="true" id="c868ad42-8da6-4b3a-85e4-405ff5ae5850" name="Changes" comment="Im getting somewhere, there still might need to be a whole overhall of the front end file though. need more time" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -302,7 +299,23 @@
       <option name="project" value="LOCAL" />
       <updated>1709943690737</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="There is a lot of things with the front end that need to be changed to work with the back end. See the front end code">
+      <option name="closed" value="true" />
+      <created>1710270631178</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1710270631178</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Im getting somewhere, there still might need to be a whole overhall of the front end file though. need more time">
+      <option name="closed" value="true" />
+      <created>1710274258743</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1710274258743</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -320,6 +333,8 @@
     <MESSAGE value="Ok, you have to actually initialize the classes in the constructor for BlackjackGame not depend on magic or the grace of god to do it for you." />
     <MESSAGE value="Testing testing testing" />
     <MESSAGE value="Put card pngs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Put card pngs" />
+    <MESSAGE value="There is a lot of things with the front end that need to be changed to work with the back end. See the front end code" />
+    <MESSAGE value="Im getting somewhere, there still might need to be a whole overhall of the front end file though. need more time" />
+    <option name="LAST_COMMIT_MESSAGE" value="Im getting somewhere, there still might need to be a whole overhall of the front end file though. need more time" />
   </component>
 </project>

@@ -290,7 +290,8 @@ public class javaFxFront extends Application {
         // todo While the hand is running, the user should not be able to change their bet or even edit the bet text
         //  box. It should be greyed out and non traversable.
 
-        // if the user does click the send bet button
+        // Basically this signifies that there is a new hand thus this button needs to be disabled unless a new
+        // hand can happen
         betlabel.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
