@@ -25,7 +25,6 @@ public class javaFxFront extends Application {
 
     // initialize blackjack game, this needs to be initialized like bGame = new BlackjackGame()
     BlackjackGame bGame;
-
     HashMap<String, Scene> sceneMap;
     Stage primary;
     TextField moneyprompt;
@@ -37,6 +36,9 @@ public class javaFxFront extends Application {
         primary = primaryStage;
         sceneMap = new HashMap<>();
         sceneMap.put("setup", startScene());
+
+        // this can not be called until money is inputed, at least i think. What is happening is this is being built
+        // at the start of the application thus the money is grabbed from the text field from the start.
         sceneMap.put("game", gameScene());
 
         primaryStage.setTitle("Blackjack");
@@ -72,14 +74,6 @@ public class javaFxFront extends Application {
         });
         moneyLabel = new Label("Enter starting money amount:");
 
-        // starts game, no deck amount, no cut shuffle percentage, might have to be moved because
-        // this should not start until the user inputs correct input. The input also has to be directed
-        // to the variables to properly set up the game. If the user does not select any input for cut/deck,
-        // they can either be prompted to or values can be set to default. Any actions on bGame must be in scope
-        // of this function. So direct modification of bGame can only happen inside of this function.
-        int deckAmount = 1; // default values
-        double cutCard = 0.30; // default values
-        bGame = new BlackjackGame(deckAmount, cutCard);
 
         moneyLabel.setStyle("-fx-font-size: 16px; -fx-text-fill: black;");
 
@@ -130,7 +124,6 @@ public class javaFxFront extends Application {
         try {
             money = Double.parseDouble(moneyprompt.getText());
             if (money > 0) {
-
                 primary.setScene(sceneMap.get("game"));
             } else {
                 showAlert("Please try a Valid Money input");
@@ -151,6 +144,7 @@ public class javaFxFront extends Application {
     public Scene gameScene() {
 
         Button exit, start, hit, stay;
+        Button betlabel; // sets the bet at the start of each hand
         TextField betInput;
         Label yScore, dScore, centerPop, moneyamt;
         HBox pCards, dCards;
@@ -190,9 +184,12 @@ public class javaFxFront extends Application {
         VBox.setMargin(dCards, new Insets(0, 0, 0, 0));
         dCards.setStyle("-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 1px; -fx-border-radius: 5px;");
 
-        Label betlabel = new Label("Enter bet amount:");
-        betlabel.setStyle("-fx-font-weight: 600;-fx-text-fill: white");
-        VBox.setMargin(betlabel, new Insets(120, 0, 0, 0));
+        // instead of this being a label I changed it to a button to get the text from the text box
+        // Label betlabel = new Label("Enter bet amount:"); did not remove in case still needed
+        betlabel = new Button("Set Bet"); // kept the same name "betLable" should be changed to setBet for readibility
+
+        betlabel.setStyle("-fx-font-weight: 600;-fx-text-fill: black");
+        VBox.setMargin(betlabel, new Insets(120, 15, 15, 15));
         betInput = new TextField();
         betInput.setMaxWidth(100);
 
@@ -245,6 +242,69 @@ public class javaFxFront extends Application {
         gamePane.setCenter(centerGame);
         gamePane.setRight(rightGame);
         gamePane.setStyle("-fx-background-color: #005e30;");
+
+        // these methods pertaining to gameplay can be moved, not sure where they should be inside of this method
+
+        // a variable in scope of javaFxFront class needs to be made for deckAmount and cutCard percentage and
+        // input needs to be taken somewhere for those before gameScene method is called. Since im not sure
+        // how this wants to be handled, I will initiate the variables here.
+        int deckAmount = 1; // default values, must be moved only for development
+        double cutCard = 0.30; // default values, must be moved only for development
+
+        // starts a new game with the desired deck amount and shuffle point (cutCard)
+        bGame = new BlackjackGame(deckAmount, cutCard);
+
+        // double for bet, string for bet (when taken from text field)
+        final double[] bet = new double[1];
+        final String[] betAsString = new String[1];
+
+        // sets the starting amount of money, should only happen at start of the game (not the start of each hand)
+        bGame.totalWinnings = money;
+        System.out.println(bGame.totalWinnings);
+        System.out.println(money);
+
+        // the game will run until either the player exits, or their money reaches zero
+        // todo Make sure a new game is started every time the player exits, If they reach zero, they should be
+        //  able to play a new game (not a new hand) without restarting the application.
+        while (bGame.totalWinnings > 0) {
+            // set the bet, if the user does not set a new bet, the same bet should be used (UNLESS THE PLAYER DOES NOT
+            // HAVE ENOUGH TO BET THAT AMOUNT, then prompt user for new bet)
+            // todo While the hand is running, the user should not be able to change their bet or even edit the bet text
+            //  box. It should be greyed out and non traversable.
+
+            // if the user does click the send bet button
+            betlabel.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent actionEvent) {
+                    // get text
+                    betAsString[0] = betInput.getText();
+
+                    // this will throw an exception if the input is in valid
+                    try {
+                        betAsString[0] = betInput.getText();
+                        if (Double.parseDouble(betAsString[0]) < bGame.totalWinnings) {
+                            showAlert("Must change bet amount, not enough winnings");
+                        } else {
+                            bet[0] = Double.parseDouble(betAsString[0]);
+                        }
+                    } catch (NumberFormatException e) {
+                        showAlert("Must enter a valid bet");
+                    }
+                }
+            });
+
+
+            // deal the hands
+            if (bGame.newHand()) {
+                // This returns true when the deck was shuffled, notify the user of this only if the deck is shuffled
+            }
+
+
+
+        }
+
+
+
         return new Scene(gamePane, 1200, 600);
     }
 }

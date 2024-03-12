@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c868ad42-8da6-4b3a-85e4-405ff5ae5850" name="Changes" comment="2121">
+    <list default="true" id="c868ad42-8da6-4b3a-85e4-405ff5ae5850" name="Changes" comment="Put card pngs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/javaFxFront.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javaFxFront.java" afterDir="false" />
     </list>
@@ -45,6 +45,7 @@
     "Maven.project2 [org.apache.maven.plugins:maven-clean-plugin:3.2.0:clean].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "extract.method.default.visibility": "private",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/home/kyle/Documents/csSpring24/cs342/projects/project2/src/main/resources",
@@ -56,7 +57,6 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "Errors",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -102,7 +102,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021" />
+        <option value="jdk-21.0.1-openjdk-21.0.1-f644763e9732-76dd8dae" />
+        <option value="jdk-21.0.2-openjdk-21.0.2-f644763e9732-563d888c" />
       </set>
     </attachedChunks>
   </component>
@@ -116,10 +117,6 @@
       <updated>1709409530254</updated>
       <workItem from="1709409531288" duration="5329000" />
       <workItem from="1709576249734" duration="32651000" />
-      <workItem from="1710199679043" duration="58000" />
-      <workItem from="1710199777669" duration="4554000" />
-      <workItem from="1710220142445" duration="2680000" />
-      <workItem from="1710222988464" duration="5283000" />
     </task>
     <task id="LOCAL-00001" summary="Created project: made pom file, made the classes, configured maven.">
       <option name="closed" value="true" />
@@ -305,15 +302,7 @@
       <option name="project" value="LOCAL" />
       <updated>1709943690737</updated>
     </task>
-    <task id="LOCAL-00024" summary="2121">
-      <option name="closed" value="true" />
-      <created>1710166079424</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1710166079424</updated>
-    </task>
-    <option name="localTasksCounter" value="25" />
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -331,7 +320,6 @@
     <MESSAGE value="Ok, you have to actually initialize the classes in the constructor for BlackjackGame not depend on magic or the grace of god to do it for you." />
     <MESSAGE value="Testing testing testing" />
     <MESSAGE value="Put card pngs" />
-    <MESSAGE value="2121" />
-    <option name="LAST_COMMIT_MESSAGE" value="2121" />
+    <option name="LAST_COMMIT_MESSAGE" value="Put card pngs" />
   </component>
 </project>
