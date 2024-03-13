@@ -591,7 +591,7 @@ public class javaFxFront extends Application {
         rule9.setStyle("-fx-font-size: 14px; -fx-fill: white;");
         Text help1 = new Text("• To start the game you must first input the amount of money you will be playing with.");
         help1.setStyle("-fx-font-size: 14px; -fx-fill: white;");
-        Text help2 = new Text("• Once the game has started you must input the amount you will be betting for that round of Blackjack");
+        Text help2 = new Text("• Once the game has started you must input the amount you will be betting for that round of Blackjack.");
         help2.setStyle("-fx-font-size: 14px; -fx-fill: white;");
         Text help3 = new Text("• After your bet has been inputted your cards will appear and you can play Blackjack.");
         help3.setStyle("-fx-font-size: 14px; -fx-fill: white;");
