@@ -5,8 +5,6 @@
 * */
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -23,9 +21,11 @@ import java.util.HashMap;
 import java.util.Optional;
 
 
-// this class has been depreciated for the cleaned up class
-// todo: When all mechanics are confirmed working in the new front end file, delete this file
 public class javaFxFront extends Application {
+
+    public javaFxFront() {
+        // Scene components: setup scene
+    }
 
     public static void main(String[] args) {
         launch(args);
@@ -37,38 +37,25 @@ public class javaFxFront extends Application {
     private Stage primary;
 
     // Background elements
-    private Image cas = new Image("casinobackground.jpg");
-    private ImageView casBack = new ImageView(cas);
 
     // User input
-    private TextField moneyprompt;
+    private TextField moneyPrompt;
     private double money;
 
-    // Scene components: setup scene
-    private Button start;
     private TextField betInput;
-    private Label moneyLabel;
-    private VBox v1;
-    private HBox h1;
 
     // Scene components: game scene
-    private Button exit, hit, stay, betlabel; // betlabel sets the bet at the start of each hand
-    private Label yScore, dScore, centerPop, moneyamt;
+    private Button exit, hit, stay, betLabel;
+    private Label moneyAmount;
     private HBox pCards, dCards;
-    private VBox centerGame, leftGame, rightGame;
-    private Button play, help;
-    private Label blackjack;
 
     // Game settings
     private int deckAmount = 1; // Default value
     private double cutCard = 0.30; // Default value
 
-    // Additional fields
-    private String moneyamtlabel;
-
     // start scene
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage) {
         primary = primaryStage;
         sceneMap = new HashMap<>();
         sceneMap.put("setup", startScene());
@@ -80,15 +67,9 @@ public class javaFxFront extends Application {
         primaryStage.show();
     }
     private Scene startScene() {
-        
-        // TODO: For help button, explain to the user what the shuffle percentage/cut card does (it is the percentage
-        //  of the deck('s) left for when the dealer shuffles.) other than that just find blackjack rules somewhere
-        //  also explain to the user how to accesses the secret settings (click blackjack label)
+        ImageView blackJackTitle = getImageView();
 
-
-        ImageView blackjacktitle = getImageView();
-
-        blackjack = new Label("Blackjack");
+        Label blackjack = new Label("Blackjack");
         blackjack.setStyle("-fx-cursor: hand; -fx-font-family: 'Constantia'; -fx-text-fill: black; " +
                 "-fx-font-size: 60px; -fx-font-weight: bold;"); // css styling to allow clickable label
 
@@ -177,24 +158,24 @@ public class javaFxFront extends Application {
             });
         });
 
-        h1 = new HBox(20, blackjacktitle, blackjack);
+        HBox h1 = new HBox(20, blackJackTitle, blackjack);
         h1.setAlignment(Pos.CENTER);
-        moneyprompt = new TextField();
+        moneyPrompt = new TextField();
 
-        moneyprompt.setMaxWidth(200);
-        moneyLabel = new Label("Enter starting money amount:");
+        moneyPrompt.setMaxWidth(200);
+        Label moneyLabel = new Label("Enter starting money amount:");
 
 
         moneyLabel.setStyle("-fx-font-size: 16px; -fx-text-fill: black;");
 
-        play = new Button("Play");
+        Button play = new Button("Play");
         play.setStyle("-fx-font-size: 20px; -fx-padding: 5px 10px; -fx-border-radius: 15px; -fx-background-radius: 1" +
                 "5px; -fx-background-color: black; -fx-text-fill: white;");
         play.setMinWidth(100);
         play.setMinHeight(45);
         play.setOnAction(e -> handlePlayAction());
 
-        help = new Button("Help?");
+        Button help = new Button("Help?");
         help.setStyle("-fx-font-size: 14px; -fx-background-color: black; -fx-text-fill: white;");
         help.setMinWidth(30);
         help.setMinHeight(15);
@@ -206,7 +187,7 @@ public class javaFxFront extends Application {
         spaceButton.setMinHeight(15);
         spaceButton.setOpacity(1);
 
-        v1 = new VBox(20, h1, moneyLabel, moneyprompt, play);
+        VBox v1 = new VBox(20, h1, moneyLabel, moneyPrompt, play);
         v1.setPrefWidth(500);
         v1.setMaxWidth(500);
         v1.setAlignment(Pos.CENTER);
@@ -242,7 +223,7 @@ public class javaFxFront extends Application {
 
     private void validateMoneyInput() {
         try {
-            money = Double.parseDouble(moneyprompt.getText());
+            money = Double.parseDouble(moneyPrompt.getText());
             if (money > 0) {
                 primary.setScene(sceneMap.get("game"));
                 primary.show();
@@ -285,13 +266,11 @@ public class javaFxFront extends Application {
             resetGame();
         });
 
-        int playerScore = bGame.gameLogic.handTotal(bGame.playerHand);
-
         hit = new Button("HIT");
         hit.setStyle("-fx-font-size: 30px; -fx-padding: 10px 30px; -fx-border-radius: 15px;" +
                 " -fx-background-radius: 15px; -fx-background-color: black; -fx-text-fill: white;");
-        VBox.setMargin(hit, new Insets(145, 0, 0, 20));
-        leftGame = new VBox(exitBox, hit);
+        VBox.setMargin(hit, new Insets(495, 20, 20, 20));
+        VBox leftGame = new VBox(exitBox, hit);
 
         dCards = new HBox(16);
         dCards.setAlignment(Pos.CENTER);
@@ -304,19 +283,20 @@ public class javaFxFront extends Application {
 
         // instead of this being a label I changed it to a button to get the text from the text box
         // Label betlabel = new Label("Enter bet amount:"); did not remove in case still needed
-        betlabel = new Button("Set Bet And Start Hand"); // kept the same name "betLable" should be changed to setBet for readibility
+        betLabel = new Button("Set Bet And Start Hand"); // kept the same name "betLable" should be changed to setBet for readibility
 
-        betlabel.setStyle("-fx-font-weight: 600; -fx-background-color: black; -fx-text-fill: white;");
-        VBox.setMargin(betlabel, new Insets(120, 15, 15, 15));
+        betLabel.setStyle("-fx-font-weight: 600; -fx-background-color: black; -fx-text-fill: white;");
+        VBox.setMargin(betLabel, new Insets(120, 15, 15, 15));
         betInput = new TextField();
         betInput.setMaxWidth(100);
 
-        centerPop = new Label("");
-        moneyamtlabel = String.format("%.2f", money);
+        Label centerPop = new Label("");
+        // Additional fields
+        String moneyamtlabel = String.format("%.2f", money);
 
-        moneyamt = new Label(moneyamtlabel);
-        moneyamt.setStyle("-fx-text-fill: white;-fx-font-size: 14;");
-        VBox.setMargin(moneyamt, new Insets(70, 0, 0, 0));
+        moneyAmount = new Label(moneyamtlabel);
+        moneyAmount.setStyle("-fx-text-fill: white;-fx-font-size: 14;");
+        VBox.setMargin(moneyAmount, new Insets(70, 0, 0, 0));
 
         pCards = new HBox(16);
         pCards.setAlignment(Pos.CENTER);
@@ -328,19 +308,19 @@ public class javaFxFront extends Application {
         pCards.setStyle("-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 1px; " +
                 "-fx-border-radius: 5px;");
 
-        centerGame = new VBox(dCards, betlabel, betInput, centerPop, moneyamt, pCards);
+        VBox centerGame = new VBox(dCards, betLabel, betInput, centerPop, moneyAmount, pCards);
 
         stay = new Button("STAY");
         VBox.setMargin(stay, new Insets(144, 20, 20, 20));
         stay.setStyle("-fx-font-size: 30px; -fx-padding: 10px 15px; -fx-border-radius: 15px; " +
                 "-fx-background-radius: 15px; -fx-background-color: black; -fx-text-fill: white;");
 
-        rightGame = new VBox(stay);
+        VBox rightGame = new VBox(stay);
 
         BorderPane gamePane = new BorderPane();
         centerGame.setAlignment(Pos.CENTER);
-        leftGame.setAlignment(Pos.CENTER);
-        rightGame.setAlignment(Pos.CENTER);
+        leftGame.setAlignment(Pos.BOTTOM_LEFT);
+        rightGame.setAlignment(Pos.BOTTOM_RIGHT);
         gamePane.setLeft(leftGame);
         gamePane.setCenter(centerGame);
         gamePane.setRight(rightGame);
@@ -364,182 +344,180 @@ public class javaFxFront extends Application {
         bGame.totalWinnings = money;
 
         // set the initial amount of money
-        moneyamt.setText(String.format("%.2f", bGame.totalWinnings));
+        moneyAmount.setText(String.format("%.2f", bGame.totalWinnings));
+
+        // disable hit and stay buttons until hand starts
+        stay.setDisable(true);
+        hit.setDisable(true);
 
         // Basically this signifies that there is a new hand thus this button needs to be disabled unless a new
         // hand can happen
-        betlabel.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                // get text
+        betLabel.setOnAction(actionEvent -> {
+            // get text
+            betAsString[0] = betInput.getText();
+
+            // this will throw an exception if the input is in valid
+            try {
                 betAsString[0] = betInput.getText();
+                if (!isNewHand[0]) {
+                    showAlert("Can not change bet during hand");
+                } else if (Double.parseDouble(betAsString[0]) > bGame.totalWinnings) {
+                    showAlert("Must change bet amount, not enough winnings");
+                } else {
+                    bGame.currentBet = Double.parseDouble(betAsString[0]);
 
-                // this will throw an exception if the input is in valid
-                try {
-                    betAsString[0] = betInput.getText();
-                    if (!isNewHand[0]) {
-                        showAlert("Can not change bet during hand");
+                    // start new hand
+                    if (bGame.newHand()) {
+                        showAlert("Deck was shuffled");
                     }
-                    else if (Double.parseDouble(betAsString[0]) > bGame.totalWinnings) {
-                        showAlert("Must change bet amount, not enough winnings");
-                    } else {
-                        bGame.currentBet = Double.parseDouble(betAsString[0]);
 
-                        // start new hand
-                        if (bGame.newHand()) {
-                            showAlert("Deck was shuffled");
-                        }
+                    // set boolean too false to not allow new hand until current hand is over
+                    isNewHand[0] = false;
 
-                        // set boolean too false to not allow new hand until current hand is over
-                        isNewHand[0] = false;
-
-                        // we are going to minus the bet from the money total visually
-                        moneyamt.setText(String.format("%.2f", bGame.totalWinnings - bGame.currentBet));
-
-                        // clear old hand
-                        dCards.getChildren().clear();
-                        pCards.getChildren().clear();
-
-                        // set dealers cards pictures
-                        for (int i = 0; i < bGame.bankerHand.size(); i++) {
-                            Image bCard;
-                            ImageView bCardView;
-
-                            // hides last card
-                            if (i == bGame.bankerHand.size() - 1) {
-                                bCard = new Image("theseCardsMightBeBetter/Medium/Back Blue 1.png");
-                                bCardView = new ImageView(bCard);
-                                bCardView.setId("backCard"); // reference so we know which one to flip
-                            } else {
-
-                                // set path name
-                                String cardImageName = "theseCardsMightBeBetter/Medium/" + bGame.bankerHand.get(i).suit
-                                        + " " + bGame.bankerHand.get(i).face + ".png";
-                                bCard = new Image(cardImageName);
-                                bCardView = new ImageView(bCard);
-                            }
-
-                            dCards.getChildren().add(bCardView);
-                        }
-
-                        // set players cards pictures
-                        for (int i = 0; i < bGame.playerHand.size(); i++) {
-                            // set path name
-                            String cardImageName = "theseCardsMightBeBetter/Medium/" + bGame.playerHand.get(i).suit
-                                    + " " + bGame.playerHand.get(i).face + ".png";
-
-                            Image pCard = new Image(cardImageName);
-                            ImageView pCardView = new ImageView(pCard);
-                            pCards.getChildren().add(pCardView);
-                            int newPlayerScore = bGame.gameLogic.handTotal(bGame.playerHand);
-                        }
-                    }
-                } catch (NumberFormatException e) {
-                    showAlert("Must enter a valid bet");
-                }
-            }
-        });
-
-        hit.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                boolean playerHitRes = bGame.playerHit();
-
-                // set card image for player
-                String cardImageName = "theseCardsMightBeBetter/Medium/" + bGame.playerHand.getLast().suit
-                        + " " + bGame.playerHand.getLast().face + ".png";
-                System.out.println(cardImageName);
-
-                Image pCard = new Image(cardImageName);
-                ImageView pCardView = new ImageView(pCard);
-                pCards.getChildren().add(pCardView);
-                int newPlayerScore = bGame.gameLogic.handTotal(bGame.playerHand);
-
-                if(!playerHitRes) {
-                    showAlert("You Busted!!!");
-                    // evaluate winnings
-                    bGame.evaluateWinnings();
-                    if (Math.abs(bGame.totalWinnings) < 0.01) {
-                        showAlert("Out of money, sending you back to the title screen.");
-                        primary.setScene(sceneMap.get("setup"));
-                        betInput.clear();
-                        resetGame();
-
-                    }
-                    isNewHand[0] = true;
-
-                    // update winnings
-                    moneyamt.setText(String.format("%.2f", bGame.totalWinnings));
+                    // we are going to minus the bet from the money total visually
+                    moneyAmount.setText(String.format("%.2f", bGame.totalWinnings - bGame.currentBet));
 
                     // clear old hand
                     dCards.getChildren().clear();
                     pCards.getChildren().clear();
+
+                    // enable hit and stay buttons
+                    stay.setDisable(false);
+                    hit.setDisable(false);
+
+                    // set dealers cards pictures
+                    for (int i = 0; i < bGame.bankerHand.size(); i++) {
+                        Image bCard;
+                        ImageView bCardView;
+
+                        // hides last card
+                        if (i == bGame.bankerHand.size() - 1) {
+                            bCard = new Image("theseCardsMightBeBetter/Medium/Back Blue 1.png");
+                            bCardView = new ImageView(bCard);
+                            bCardView.setId("backCard"); // reference so we know which one to flip
+                        } else {
+
+                            // set path name
+                            String cardImageName = "theseCardsMightBeBetter/Medium/" + bGame.bankerHand.get(i).suit
+                                    + " " + bGame.bankerHand.get(i).face + ".png";
+                            bCard = new Image(cardImageName);
+                            bCardView = new ImageView(bCard);
+                        }
+
+                        dCards.getChildren().add(bCardView);
+                    }
+
+                    // set players cards pictures
+                    for (int i = 0; i < bGame.playerHand.size(); i++) {
+                        // set path name
+                        String cardImageName = "theseCardsMightBeBetter/Medium/" + bGame.playerHand.get(i).suit
+                                + " " + bGame.playerHand.get(i).face + ".png";
+
+                        Image pCard = new Image(cardImageName);
+                        ImageView pCardView = new ImageView(pCard);
+                        pCards.getChildren().add(pCardView);
+                    }
                 }
+            } catch (NumberFormatException e) {
+                showAlert("Must enter a valid bet");
             }
         });
 
-        stay.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                boolean bankerReturn = bGame.playerStay();
-                double evWiningReturn = bGame.evaluateWinnings();
+        hit.setOnAction(actionEvent -> {
+            boolean playerHitRes = bGame.playerHit();
 
-                // flip the flip card
-                Card flippedCard = bGame.bankerHand.get(1); // get the second card
-                String flippedCardImageName = "theseCardsMightBeBetter/Medium/" +
-                        flippedCard.suit + " " + flippedCard.face + ".png";
-                Image flippedCardImage = new Image(flippedCardImageName);
-                ImageView flippedCardView = (ImageView) dCards.lookup("#backCard");
-                flippedCardView.setImage(flippedCardImage); // Update the image of the flipped card
+            // set card image for player
+            String cardImageName = "theseCardsMightBeBetter/Medium/" + bGame.playerHand.getLast().suit
+                    + " " + bGame.playerHand.getLast().face + ".png";
+            System.out.println(cardImageName);
 
-                // shows the dealers cards but with a delay TODO: delay does not work, worry about that if time
-                // loop through the rest of the cards if there are any
-                for (int i = 2; i < bGame.bankerHand.size(); i++) {
-                    // just swap the hidden card
-                    String cardImageName = "theseCardsMightBeBetter/Medium/" + bGame.bankerHand.get(i).suit
-                            + " " + bGame.bankerHand.get(i).face + ".png";
-                    Image bCard = new Image(cardImageName);
-                    ImageView bCardView = new ImageView(bCard);
-                    dCards.getChildren().add(bCardView);
-                }
+            Image pCard = new Image(cardImageName);
+            ImageView pCardView = new ImageView(pCard);
+            pCards.getChildren().add(pCardView);
 
-                if (!bankerReturn) {
-                    showAlert("Banker Busted, You Win!!!");
-                } else {
-                    // evaluate winnings (evaluateWinnings returns negative if player lost)
-                    if (evWiningReturn < 0) {
-                        System.out.println(evWiningReturn);
-                        System.out.println(bGame.currentBet);
-                        // player lost
-                        showAlert("You Lost!!!");
-                    } else if (evWiningReturn > 0) {
-                        System.out.println(evWiningReturn);
-                        System.out.println(bGame.currentBet);
-                        // player won
-                        showAlert("You Won!!!");
-                    } else {
-                        System.out.println(evWiningReturn);
-                        System.out.println(bGame.currentBet);
-                        // push
-                        showAlert("Push!!!");
-                    }
-                }
+            if (!playerHitRes) {
+                showAlert("You Busted!!!");
+                // evaluate winnings
+                bGame.evaluateWinnings();
                 if (Math.abs(bGame.totalWinnings) < 0.01) {
                     showAlert("Out of money, sending you back to the title screen.");
                     primary.setScene(sceneMap.get("setup"));
                     betInput.clear();
                     resetGame();
-
                 }
                 isNewHand[0] = true;
 
                 // update winnings
-                moneyamt.setText(String.format("%.2f", bGame.totalWinnings));
+                moneyAmount.setText(String.format("%.2f", bGame.totalWinnings));
 
                 // clear old hand
                 dCards.getChildren().clear();
                 pCards.getChildren().clear();
             }
+        });
+
+        stay.setOnAction(actionEvent -> {
+            boolean bankerReturn = bGame.playerStay();
+            double evWiningReturn = bGame.evaluateWinnings();
+
+            // disable hit and stay buttons
+            stay.setDisable(true);
+            hit.setDisable(true);
+
+            // flip the flip card
+            Card flippedCard = bGame.bankerHand.get(1); // get the second card
+            String flippedCardImageName = "theseCardsMightBeBetter/Medium/" +
+                    flippedCard.suit + " " + flippedCard.face + ".png";
+            Image flippedCardImage = new Image(flippedCardImageName);
+            ImageView flippedCardView = (ImageView) dCards.lookup("#backCard");
+            flippedCardView.setImage(flippedCardImage); // Update the image of the flipped card
+
+            // shows the dealers cards, loop through the rest of the cards if there are any
+            for (int i = 2; i < bGame.bankerHand.size(); i++) {
+                // just swap the hidden card
+                String cardImageName = "theseCardsMightBeBetter/Medium/" + bGame.bankerHand.get(i).suit
+                        + " " + bGame.bankerHand.get(i).face + ".png";
+                Image bCard = new Image(cardImageName);
+                ImageView bCardView = new ImageView(bCard);
+                dCards.getChildren().add(bCardView);
+            }
+
+            if (!bankerReturn) {
+                showAlert("Banker Busted, You Win!!!");
+            } else {
+                // evaluate winnings (evaluateWinnings returns negative if player lost)
+                if (evWiningReturn < 0) {
+                    System.out.println(evWiningReturn);
+                    System.out.println(bGame.currentBet);
+                    // player lost
+                    showAlert("You Lost!!!");
+                } else if (evWiningReturn > 0) {
+                    System.out.println(evWiningReturn);
+                    System.out.println(bGame.currentBet);
+                    // player won
+                    showAlert("You Won!!!");
+                } else {
+                    System.out.println(evWiningReturn);
+                    System.out.println(bGame.currentBet);
+                    // push
+                    showAlert("Push!!!");
+                }
+            }
+            if (Math.abs(bGame.totalWinnings) < 0.01) {
+                showAlert("Out of money, sending you back to the title screen.");
+                primary.setScene(sceneMap.get("setup"));
+                betInput.clear();
+                resetGame();
+
+            }
+            isNewHand[0] = true;
+
+            // update winnings
+            moneyAmount.setText(String.format("%.2f", bGame.totalWinnings));
+
+            // clear old hand
+            dCards.getChildren().clear();
+            pCards.getChildren().clear();
         });
     }
 
@@ -547,12 +525,13 @@ public class javaFxFront extends Application {
     private void resetGame() {
         bGame = new BlackjackGame();
         money = 0;
-        moneyprompt.clear();
+        moneyPrompt.clear();
         dCards.getChildren().clear();
         pCards.getChildren().clear();
         deckAmount = 1;
         cutCard = 0.30;
     }
+
     private Scene helpScene() {
         // create a back button to return to the setup scene
         Image ebut = new Image("exit.png");
@@ -565,20 +544,16 @@ public class javaFxFront extends Application {
         exit.setGraphic(exitpic);
         HBox exitBox = new HBox(exit);
 //        VBox.setMargin(exitBox, new Insets(-56, 0, 0, 0));
-        exit.setOnAction(e -> {
-                    primary.setScene(sceneMap.get("setup"));
-        });
-        VBox centerV = new VBox();
+        exit.setOnAction(e -> primary.setScene(sceneMap.get("setup")));
+        VBox centerV;
         Label rulesLabel = new Label("Blackjack Rules");
         rulesLabel.setStyle("-fx-font-size: 30px; -fx-text-fill: black; -fx-font-weight: bold; -fx-font-family: 'Constantia'");
         centerV = new VBox(10, rulesLabel);
-
 
         BorderPane helpBorder = new BorderPane();
         helpBorder.setLeft(exitBox);
         helpBorder.setCenter(centerV);
         helpBorder.setStyle("-fx-background-color: #005e30;");
-        //comment
 
         return new Scene(helpBorder, 1200, 600);
     }
