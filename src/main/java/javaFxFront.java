@@ -471,7 +471,6 @@ public class javaFxFront extends Application {
                             ImageView pCardView = new ImageView(pCard);
                             pCards.getChildren().add(pCardView);
                         }
-
                     }
                 } catch (NumberFormatException e) {
                     showAlert("Must enter a valid bet");

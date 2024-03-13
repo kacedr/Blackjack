@@ -119,11 +119,6 @@ public class BlackjackGame {
         playerHand.add(temp2.get(0));
         bankerHand.add(temp2.get(1));
 
-        // we only check if the player got dealt 21 as the bankers hand is abstracted from user until they stay
-        if (gameLogic.handTotal(playerHand) == 21) {
-            playerStay();
-        }
-
         return shuffle;
     }
 
