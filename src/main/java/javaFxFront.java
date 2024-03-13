@@ -274,7 +274,7 @@ public class javaFxFront extends Application {
         });
 
         int playerScore = bGame.gameLogic.handTotal(bGame.playerHand);
-        int dealerScore = bGame.gameLogic.handTotal(bGame.bankerHand);
+
         String yScoreLabel = String.format("Your Score\n         %d         ", playerScore);
         yScore = new Label(yScoreLabel);
         VBox.setMargin(yScore, new Insets(250, 0, 0, 0));
@@ -501,11 +501,23 @@ public class javaFxFront extends Application {
                     showAlert("You Busted!!!");
                     // evaluate winnings
                     bGame.evaluateWinnings();
-                    resetGame();
+                    if (Math.abs(bGame.totalWinnings) < 0.01) {
+                        showAlert("Out of money, sending you back to the title screen.");
+                        primary.setScene(sceneMap.get("setup"));
+                        betInput.clear();
+                        resetGame();
+
+                    }
                     isNewHand[0] = true;
 
                     // update winnings
                     moneyamt.setText(String.format("%.2f", bGame.totalWinnings));
+
+                    // clear old hand
+                    dCards.getChildren().clear();
+                    pCards.getChildren().clear();
+                    yScore.setText("Your Score\n         0         ");
+                    dScore.setText("");
                 }
             }
         });
@@ -558,6 +570,13 @@ public class javaFxFront extends Application {
                         // push
                         showAlert("Push!!!");
                     }
+                }
+                if (Math.abs(bGame.totalWinnings) < 0.01) {
+                    showAlert("Out of money, sending you back to the title screen.");
+                    primary.setScene(sceneMap.get("setup"));
+                    betInput.clear();
+                    resetGame();
+
                 }
                 isNewHand[0] = true;
 
