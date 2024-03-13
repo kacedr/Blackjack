@@ -175,8 +175,6 @@ public class BlackjackGame {
         return converted; // Return true if at least one Ace was converted
     }
 
-
-
     // if a player chooses to stay or dealt 21, this will be called and the dealer will hit until he can not
     // return true if the banker did not bust, false if he did. This function serves to aid in readability
     // and serves no purpose other than readability. We could just use bankerHit but that would be confusing.

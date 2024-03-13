@@ -246,7 +246,7 @@ public class javaFxFront extends Application {
 
     private void showAlert(String msg) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Input Error");
+        alert.setTitle("");
         alert.setHeaderText(null);
         alert.setContentText(msg);
         alert.showAndWait();
