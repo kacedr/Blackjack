@@ -1,5 +1,9 @@
+/*
+* Author: Kyle Gleason, Conor West
+* This class is what runs the front end UI of the black jack game.
+*
+* */
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -7,7 +11,6 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -16,10 +19,8 @@ import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import javafx.util.Pair;
-
 import java.util.HashMap;
 import java.util.Optional;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class javaFxFront extends Application {
 
@@ -27,33 +28,41 @@ public class javaFxFront extends Application {
         launch(args);
     }
 
-    // initialize blackjack game, this needs to be initialized like bGame = new BlackjackGame()
-    BlackjackGame bGame;
-    HashMap<String, Scene> sceneMap;
-    Stage primary;
-    TextField moneyprompt;
-    double money;
-    Image cas = new Image("casinobackground.jpg");
-    ImageView casBack = new ImageView(cas);
+    // Core game components
+    private BlackjackGame bGame; // Initialize like: bGame = new BlackjackGame()
+    private HashMap<String, Scene> sceneMap = new HashMap<>();
+    private Stage primary;
 
-    // pulled from getScene
-    Button exit, start, hit, stay;
-    Button betlabel; // sets the bet at the start of each hand
-    TextField betInput;
-    Label yScore, dScore, centerPop, moneyamt;
-    HBox pCards, dCards;
-    VBox centerGame, leftGame, rightGame;
+    // Background elements
+    private Image cas = new Image("casinobackground.jpg");
+    private ImageView casBack = new ImageView(cas);
 
-    String moneyamtlabel;
+    // User input
+    private TextField moneyprompt;
+    private double money;
 
-    // pulled from gameScene
-    VBox v1;
-    HBox h1;
-    Label blackjack, moneyLabel;
-    Button play, help;
+    // Scene components: setup scene
+    private Button start;
+    private TextField betInput;
+    private Label moneyLabel;
+    private VBox v1;
+    private HBox h1;
 
-    int deckAmount = 1; // default values
-    double cutCard = 0.30; // default values
+    // Scene components: game scene
+    private Button exit, hit, stay, betlabel; // betlabel sets the bet at the start of each hand
+    private Label yScore, dScore, centerPop, moneyamt;
+    private HBox pCards, dCards;
+    private VBox centerGame, leftGame, rightGame;
+    private Button play, help;
+    private Label blackjack;
+
+    // Game settings
+    private int deckAmount = 1; // Default value
+    private double cutCard = 0.30; // Default value
+
+    // Additional fields
+    private String moneyamtlabel;
+
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -106,11 +115,15 @@ public class javaFxFront extends Application {
             cutCardInput.setPromptText("Between 30-90");
             TextField deckAmountInput = new TextField();
             deckAmountInput.setPromptText("Must be > 0");
+            CheckBox hiLowCountShow = new CheckBox("Enable Hi-Low Counter");
+            CheckBox showStrategyChart = new CheckBox("Show Strategy Chart");
 
             grid.add(new Label("Deck Shuffle %:"), 0, 0);
             grid.add(cutCardInput, 1, 0);
             grid.add(new Label("Deck Amount:"), 0, 1);
             grid.add(deckAmountInput, 1, 1);
+            grid.add(hiLowCountShow, 1, 2);
+            grid.add(showStrategyChart, 1, 3);
 
             // enable/disable the apply button depending on whether both inputs are used
             Node applyButton = dialog.getDialogPane().lookupButton(applyButtonType);
@@ -284,9 +297,6 @@ public class javaFxFront extends Application {
         VBox.setMargin(hit, new Insets(145, 0, 0, 20));
         leftGame = new VBox(exitBox, yScore, hit);
 
-
-
-
         dCards = new HBox(16);
         dCards.setAlignment(Pos.CENTER);
         dCards.setMinWidth(800);
@@ -306,7 +316,6 @@ public class javaFxFront extends Application {
         betInput.setMaxWidth(100);
 
         centerPop = new Label("");
-//        not working correctly
         moneyamtlabel = String.format("%.2f", money);
 
         moneyamt = new Label(moneyamtlabel);
@@ -322,13 +331,7 @@ public class javaFxFront extends Application {
         VBox.setMargin(pCards, new Insets(10, 0, 0, 0));
         pCards.setStyle("-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 1px; -fx-border-radius: 5px;");
 
-
         centerGame = new VBox(dCards, betlabel, betInput, centerPop, moneyamt, pCards);
-
-
-
-
-        ;
         dScore = new Label("");
         VBox.setMargin(dScore, new Insets(226, 0, 0, 0));
         dScore.setStyle("-fx-font-family: 'Constantia'; -fx-text-fill: white; -fx-font-size: 21px; -fx-font-weight: bold;");
@@ -338,13 +341,6 @@ public class javaFxFront extends Application {
         stay.setStyle("-fx-font-size: 30px; -fx-padding: 10px 15px;-fx-border-radius: 15px; -fx-background-radius: 15px;");
 
         rightGame = new VBox(dScore, stay);
-
-
-
-
-
-
-
 
         BorderPane gamePane = new BorderPane();
         centerGame.setAlignment(Pos.CENTER);
@@ -359,25 +355,9 @@ public class javaFxFront extends Application {
     }
 
     // this method is what controls the gameplay, this must be called once the starting money amount is set
-    // this method should only work with button actions and grab input from text fields, it should not create elements
-    // name, return type, and inputs might need to be changed
+    // this method should only work with button actions and grab input from text fields, it should not create elements.
     private void gameplay() {
-        // these methods pertaining to gameplay can be moved, not sure where they should be inside of this method
-
-        // a variable in scope of javaFxFront class needs to be made for deckAmount and cutCard percentage and
-        // input needs to be taken somewhere for those before gameScene method is called. Since im not sure
-        // how this wants to be handled, I will initiate the variables here.
-
-        // set money amount for ui
-
-        // boolean for if the deck was shuffled
-        final boolean[] wasShuffled = {false}; // todo might not be needed
-
         final boolean[] isNewHand = {true};
-
-        // todo TESTING DELETE
-        System.out.println(cutCard);
-        System.out.println(deckAmount);
 
         // starts a new game with the desired deck amount and shuffle point (cutCard)
         bGame = new BlackjackGame(deckAmount, cutCard);
@@ -390,16 +370,6 @@ public class javaFxFront extends Application {
 
         // set the initial amount of money
         moneyamt.setText(String.format("%.2f", bGame.totalWinnings));
-
-
-        // the game will run until either the player exits, or their money reaches zero
-        // todo Make sure a new game is started every time the player exits, If they reach zero, they should be
-        //  able to play a new game (not a new hand) without restarting the application.
-
-        // set the bet, if the user does not set a new bet, the same bet should be used (UNLESS THE PLAYER DOES NOT
-        // HAVE ENOUGH TO BET THAT AMOUNT, then prompt user for new bet)
-        // todo While the hand is running, the user should not be able to change their bet or even edit the bet text
-        //  box. It should be greyed out and non traversable.
 
         // Basically this signifies that there is a new hand thus this button needs to be disabled unless a new
         // hand can happen
@@ -435,10 +405,6 @@ public class javaFxFront extends Application {
                         dCards.getChildren().clear();
                         pCards.getChildren().clear();
 
-
-
-
-
                         // set dealers cards pictures
                         for (int i = 0; i < bGame.bankerHand.size(); i++) {
                             Image bCard;
@@ -466,14 +432,12 @@ public class javaFxFront extends Application {
                             // set path name
                             String cardImageName = "theseCardsMightBeBetter/Medium/" + bGame.playerHand.get(i).suit
                                     + " " + bGame.playerHand.get(i).face + ".png";
-                            System.out.println(cardImageName);
 
                             Image pCard = new Image(cardImageName);
                             ImageView pCardView = new ImageView(pCard);
                             pCards.getChildren().add(pCardView);
                             int newPlayerScore = bGame.gameLogic.handTotal(bGame.playerHand);
                             yScore.setText(String.format("Your Score\n         %d         ", newPlayerScore));
-
                         }
                     }
                 } catch (NumberFormatException e) {
@@ -497,6 +461,7 @@ public class javaFxFront extends Application {
                 pCards.getChildren().add(pCardView);
                 int newPlayerScore = bGame.gameLogic.handTotal(bGame.playerHand);
                 yScore.setText(String.format("Your Score\n         %d         ", newPlayerScore));
+
                 if(!playerHitRes) {
                     showAlert("You Busted!!!");
                     // evaluate winnings
@@ -529,6 +494,7 @@ public class javaFxFront extends Application {
                 double evWiningReturn = bGame.evaluateWinnings();
                 int newDealerScore = bGame.gameLogic.handTotal(bGame.bankerHand);
                 dScore.setText(String.format("Dealer Score\n            %d            ", newDealerScore));
+
                 // flip the flip card
                 Card flippedCard = bGame.bankerHand.get(1); // get the second card
                 String flippedCardImageName = "theseCardsMightBeBetter/Medium/" +
@@ -550,8 +516,6 @@ public class javaFxFront extends Application {
 
                 if (!bankerReturn) {
                     showAlert("Banker Busted, You Win!!!");
-
-
                 } else {
                     // evaluate winnings (evaluateWinnings returns negative if player lost)
                     if (evWiningReturn < 0) {
@@ -595,10 +559,8 @@ public class javaFxFront extends Application {
     // Method to reset the game
     private void resetGame() {
         bGame = new BlackjackGame();
-
         money = 0;
         moneyprompt.clear();
-
         dCards.getChildren().clear();
         pCards.getChildren().clear();
         deckAmount = 1;

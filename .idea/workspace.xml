@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c868ad42-8da6-4b3a-85e4-405ff5ae5850" name="Changes" comment="Call reset when bust">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/javaFxFront.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javaFxFront.java" afterDir="false" />
-    </list>
+    <list default="true" id="c868ad42-8da6-4b3a-85e4-405ff5ae5850" name="Changes" comment="Cleaning up code" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -102,7 +99,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021" />
+        <option value="jdk-21.0.1-openjdk-21.0.1-f644763e9732-76dd8dae" />
+        <option value="jdk-21.0.2-openjdk-21.0.2-f644763e9732-563d888c" />
       </set>
     </attachedChunks>
   </component>
@@ -117,8 +115,6 @@
       <workItem from="1709409531288" duration="5329000" />
       <workItem from="1709576249734" duration="32651000" />
       <workItem from="1710276492069" duration="23983000" />
-      <workItem from="1710346724789" duration="53000" />
-      <workItem from="1710346803893" duration="1914000" />
     </task>
     <task id="LOCAL-00001" summary="Created project: made pom file, made the classes, configured maven.">
       <option name="closed" value="true" />
@@ -432,40 +428,38 @@
       <option name="project" value="LOCAL" />
       <updated>1710304564244</updated>
     </task>
-    <task id="LOCAL-00040" summary="Added score functionalitys and made the bet textlabel reset on exit button pressed">
+    <task id="LOCAL-00040" summary="Cleaning up code">
       <option name="closed" value="true" />
-      <created>1710341460448</created>
+      <created>1710347160001</created>
       <option name="number" value="00040" />
       <option name="presentableId" value="LOCAL-00040" />
       <option name="project" value="LOCAL" />
-      <updated>1710341460448</updated>
+      <updated>1710347160001</updated>
     </task>
-    <task id="LOCAL-00041" summary="Call reset when bust">
+    <task id="LOCAL-00041" summary="Cleaning up code">
       <option name="closed" value="true" />
-      <created>1710341747612</created>
+      <created>1710347411980</created>
       <option name="number" value="00041" />
       <option name="presentableId" value="LOCAL-00041" />
       <option name="project" value="LOCAL" />
-      <updated>1710341747612</updated>
+      <updated>1710347411980</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="Cleaning up code">
+      <option name="closed" value="true" />
+      <created>1710347585238</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1710347585238</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
   <component name="VcsManagerConfiguration">
+    <MESSAGE value="Created project: made pom file, made the classes, configured maven." />
     <MESSAGE value="Not a requirement but implementing split and insurance are kinda crucial to the gameplay of blackjack. Also implementing a card counting helper would make this actually useful (also not a requirement)." />
     <MESSAGE value="Implemented most of the back end. Need to finish BlackjackGame.java and then I will start on the actual game. Will create a bare-bones UI to start working on the game." />
     <MESSAGE value="Finished back end but a lot of logic is still on the table and where it should be implemented. Creating a crap test UI." />
@@ -489,8 +483,7 @@
     <MESSAGE value="Fixing more bugs" />
     <MESSAGE value="Fixed settings" />
     <MESSAGE value="Fixed various bugs" />
-    <MESSAGE value="Added score functionalitys and made the bet textlabel reset on exit button pressed" />
-    <MESSAGE value="Call reset when bust" />
-    <option name="LAST_COMMIT_MESSAGE" value="Call reset when bust" />
+    <MESSAGE value="Cleaning up code" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cleaning up code" />
   </component>
 </project>
