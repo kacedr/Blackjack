@@ -115,11 +115,15 @@ public class javaFxFront extends Application {
             cutCardInput.setPromptText("Between 30-90");
             TextField deckAmountInput = new TextField();
             deckAmountInput.setPromptText("Must be > 0");
+            CheckBox hiLowCountShow = new CheckBox("Enable Hi-Low Counter");
+            CheckBox showStrategyChart = new CheckBox("Show Strategy Chart");
 
             grid.add(new Label("Deck Shuffle %:"), 0, 0);
             grid.add(cutCardInput, 1, 0);
             grid.add(new Label("Deck Amount:"), 0, 1);
             grid.add(deckAmountInput, 1, 1);
+            grid.add(hiLowCountShow, 1, 2);
+            grid.add(showStrategyChart, 1, 3);
 
             // enable/disable the apply button depending on whether both inputs are used
             Node applyButton = dialog.getDialogPane().lookupButton(applyButtonType);

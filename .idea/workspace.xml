@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c868ad42-8da6-4b3a-85e4-405ff5ae5850" name="Changes" comment="Fixed various bugs">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/javaFxFront.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javaFxFront.java" afterDir="false" />
-    </list>
+    <list default="true" id="c868ad42-8da6-4b3a-85e4-405ff5ae5850" name="Changes" comment="Cleaning up code" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -431,7 +428,31 @@
       <option name="project" value="LOCAL" />
       <updated>1710304564244</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="Cleaning up code">
+      <option name="closed" value="true" />
+      <created>1710347160001</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1710347160001</updated>
+    </task>
+    <task id="LOCAL-00041" summary="Cleaning up code">
+      <option name="closed" value="true" />
+      <created>1710347411980</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1710347411980</updated>
+    </task>
+    <task id="LOCAL-00042" summary="Cleaning up code">
+      <option name="closed" value="true" />
+      <created>1710347585238</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1710347585238</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -462,6 +483,7 @@
     <MESSAGE value="Fixing more bugs" />
     <MESSAGE value="Fixed settings" />
     <MESSAGE value="Fixed various bugs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed various bugs" />
+    <MESSAGE value="Cleaning up code" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cleaning up code" />
   </component>
 </project>
