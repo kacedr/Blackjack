@@ -269,6 +269,7 @@ public class javaFxFront extends Application {
         VBox.setMargin(exitBox, new Insets(-56, 0, 0, 0));
         exit.setOnAction(e -> {
             primary.setScene(sceneMap.get("setup"));
+            betInput.clear();
             resetGame();
         });
 
@@ -500,7 +501,7 @@ public class javaFxFront extends Application {
                     showAlert("You Busted!!!");
                     // evaluate winnings
                     bGame.evaluateWinnings();
-
+                    resetGame();
                     isNewHand[0] = true;
 
                     // update winnings
@@ -578,7 +579,7 @@ public class javaFxFront extends Application {
 
         money = 0;
         moneyprompt.clear();
-        betInput.clear();
+
         dCards.getChildren().clear();
         pCards.getChildren().clear();
         deckAmount = 1;
