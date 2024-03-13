@@ -362,22 +362,7 @@ public class javaFxFront extends Application {
     // this method should only work with button actions and grab input from text fields, it should not create elements
     // name, return type, and inputs might need to be changed
     private void gameplay() {
-        // these methods pertaining to gameplay can be moved, not sure where they should be inside of this method
-
-        // a variable in scope of javaFxFront class needs to be made for deckAmount and cutCard percentage and
-        // input needs to be taken somewhere for those before gameScene method is called. Since im not sure
-        // how this wants to be handled, I will initiate the variables here.
-
-        // set money amount for ui
-
-        // boolean for if the deck was shuffled
-        final boolean[] wasShuffled = {false}; // todo might not be needed
-
         final boolean[] isNewHand = {true};
-
-        // todo TESTING DELETE
-        System.out.println(cutCard);
-        System.out.println(deckAmount);
 
         // starts a new game with the desired deck amount and shuffle point (cutCard)
         bGame = new BlackjackGame(deckAmount, cutCard);
@@ -390,16 +375,6 @@ public class javaFxFront extends Application {
 
         // set the initial amount of money
         moneyamt.setText(String.format("%.2f", bGame.totalWinnings));
-
-
-        // the game will run until either the player exits, or their money reaches zero
-        // todo Make sure a new game is started every time the player exits, If they reach zero, they should be
-        //  able to play a new game (not a new hand) without restarting the application.
-
-        // set the bet, if the user does not set a new bet, the same bet should be used (UNLESS THE PLAYER DOES NOT
-        // HAVE ENOUGH TO BET THAT AMOUNT, then prompt user for new bet)
-        // todo While the hand is running, the user should not be able to change their bet or even edit the bet text
-        //  box. It should be greyed out and non traversable.
 
         // Basically this signifies that there is a new hand thus this button needs to be disabled unless a new
         // hand can happen
@@ -435,10 +410,6 @@ public class javaFxFront extends Application {
                         dCards.getChildren().clear();
                         pCards.getChildren().clear();
 
-
-
-
-
                         // set dealers cards pictures
                         for (int i = 0; i < bGame.bankerHand.size(); i++) {
                             Image bCard;
@@ -466,14 +437,12 @@ public class javaFxFront extends Application {
                             // set path name
                             String cardImageName = "theseCardsMightBeBetter/Medium/" + bGame.playerHand.get(i).suit
                                     + " " + bGame.playerHand.get(i).face + ".png";
-                            System.out.println(cardImageName);
 
                             Image pCard = new Image(cardImageName);
                             ImageView pCardView = new ImageView(pCard);
                             pCards.getChildren().add(pCardView);
                             int newPlayerScore = bGame.gameLogic.handTotal(bGame.playerHand);
                             yScore.setText(String.format("Your Score\n         %d         ", newPlayerScore));
-
                         }
                     }
                 } catch (NumberFormatException e) {
@@ -497,6 +466,7 @@ public class javaFxFront extends Application {
                 pCards.getChildren().add(pCardView);
                 int newPlayerScore = bGame.gameLogic.handTotal(bGame.playerHand);
                 yScore.setText(String.format("Your Score\n         %d         ", newPlayerScore));
+
                 if(!playerHitRes) {
                     showAlert("You Busted!!!");
                     // evaluate winnings
@@ -517,6 +487,7 @@ public class javaFxFront extends Application {
                 double evWiningReturn = bGame.evaluateWinnings();
                 int newDealerScore = bGame.gameLogic.handTotal(bGame.bankerHand);
                 dScore.setText(String.format("Dealer Score\n            %d            ", newDealerScore));
+
                 // flip the flip card
                 Card flippedCard = bGame.bankerHand.get(1); // get the second card
                 String flippedCardImageName = "theseCardsMightBeBetter/Medium/" +
@@ -538,8 +509,6 @@ public class javaFxFront extends Application {
 
                 if (!bankerReturn) {
                     showAlert("Banker Busted, You Win!!!");
-
-
                 } else {
                     // evaluate winnings (evaluateWinnings returns negative if player lost)
                     if (evWiningReturn < 0) {
@@ -576,10 +545,8 @@ public class javaFxFront extends Application {
     // Method to reset the game
     private void resetGame() {
         bGame = new BlackjackGame();
-
         money = 0;
         moneyprompt.clear();
-
         dCards.getChildren().clear();
         pCards.getChildren().clear();
         deckAmount = 1;
