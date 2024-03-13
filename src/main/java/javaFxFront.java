@@ -349,8 +349,6 @@ public class javaFxFront extends Application {
                             }
                         }
 
-
-
                         // set players cards pictures
                         for (int i = 0; i < bGame.playerHand.size(); i++) {
                             // set path name
@@ -373,7 +371,18 @@ public class javaFxFront extends Application {
         hit.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                if(!bGame.playerHit()) {
+                boolean playerHitRes = bGame.playerHit();
+
+                // set card image for player
+                String cardImageName = "theseCardsMightBeBetter/Large/" + bGame.playerHand.getLast().suit
+                        + " " + bGame.playerHand.getLast().face + ".png";
+                System.out.println(cardImageName);
+
+                Image pCard = new Image(cardImageName);
+                ImageView pCardView = new ImageView(pCard);
+                pCards.getChildren().add(pCardView);
+
+                if(!playerHitRes) {
                     showAlert("You Busted!!!");
                     // evaluate winnings
                     bGame.evaluateWinnings();

@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c868ad42-8da6-4b3a-85e4-405ff5ae5850" name="Changes" comment="Pretty much finished logic kind of, Buttons still need to be grayed out when you should not be using them.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/BlackjackDealer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BlackjackDealer.java" afterDir="false" />
+    <list default="true" id="c868ad42-8da6-4b3a-85e4-405ff5ae5850" name="Changes" comment="Card images where actually pretty easy. Still working on it though.">
       <change beforePath="$PROJECT_DIR$/src/main/java/javaFxFront.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javaFxFront.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -118,7 +116,7 @@
       <updated>1709409530254</updated>
       <workItem from="1709409531288" duration="5329000" />
       <workItem from="1709576249734" duration="32651000" />
-      <workItem from="1710276492069" duration="10694000" />
+      <workItem from="1710276492069" duration="11127000" />
     </task>
     <task id="LOCAL-00001" summary="Created project: made pom file, made the classes, configured maven.">
       <option name="closed" value="true" />
@@ -352,7 +350,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710287322152</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Card images where actually pretty easy. Still working on it though.">
+      <option name="closed" value="true" />
+      <created>1710289957446</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1710289957446</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -375,6 +381,7 @@
     <MESSAGE value="Working on front end" />
     <MESSAGE value="Gameplay still does not work correctly need to fix it" />
     <MESSAGE value="Pretty much finished logic kind of, Buttons still need to be grayed out when you should not be using them." />
-    <option name="LAST_COMMIT_MESSAGE" value="Pretty much finished logic kind of, Buttons still need to be grayed out when you should not be using them." />
+    <MESSAGE value="Card images where actually pretty easy. Still working on it though." />
+    <option name="LAST_COMMIT_MESSAGE" value="Card images where actually pretty easy. Still working on it though." />
   </component>
 </project>
