@@ -117,14 +117,6 @@ public class javaFxFront extends Application {
             Node applyButton = dialog.getDialogPane().lookupButton(applyButtonType);
             applyButton.setDisable(true);
 
-            // some validation
-            cutCardInput.textProperty().addListener((observable, oldValue, newValue) -> {
-                applyButton.setDisable(newValue.trim().isEmpty() || deckAmountInput.getText().trim().isEmpty());
-            });
-            deckAmountInput.textProperty().addListener((observable, oldValue, newValue) -> {
-                applyButton.setDisable(newValue.trim().isEmpty() || cutCardInput.getText().trim().isEmpty());
-            });
-
             // validates input
             ChangeListener<String> validationListener = (observable, oldValue, newValue) -> {
                 boolean isCutCardValid;
