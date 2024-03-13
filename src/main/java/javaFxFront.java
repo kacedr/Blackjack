@@ -70,6 +70,7 @@ public class javaFxFront extends Application {
         sceneMap = new HashMap<>();
         sceneMap.put("setup", startScene());
         sceneMap.put("game", gameScene());
+        sceneMap.put("help", helpScene());
 
         primaryStage.setTitle("Blackjack");
         primaryStage.setScene(sceneMap.get("setup"));
@@ -198,6 +199,7 @@ public class javaFxFront extends Application {
         help.setStyle("-fx-font-size: 14px;");
         help.setMinWidth(30);
         help.setMinHeight(15);
+        help.setOnAction(e -> primary.setScene(sceneMap.get("help")));
 
         Button spaceButton = new Button("Help?");
         spaceButton.setStyle("-fx-text-fill: transparent;-fx-background-color: transparent;-fx-font-size: 14px;");
@@ -565,5 +567,33 @@ public class javaFxFront extends Application {
         cutCard = 0.30;
         yScore.setText("Your Score\n         0         ");
         dScore.setText("");
+    }
+    private Scene helpScene() {
+        // create a back button to return to the setup scene
+        Image ebut = new Image("exit.png");
+        ImageView exitpic = new ImageView(ebut);
+
+        exit = new Button();
+        exitpic.setFitHeight(28);
+        exitpic.setFitWidth(28);
+        exitpic.setPreserveRatio(true);
+        exit.setGraphic(exitpic);
+        HBox exitBox = new HBox(exit);
+//        VBox.setMargin(exitBox, new Insets(-56, 0, 0, 0));
+        exit.setOnAction(e -> {
+                    primary.setScene(sceneMap.get("setup"));
+        });
+        VBox centerV = new VBox();
+        Label rulesLabel = new Label("Blackjack Rules");
+        rulesLabel.setStyle("-fx-font-size: 30px; -fx-text-fill: black; -fx-font-weight: bold; -fx-font-family: 'Constantia'");
+        centerV = new VBox(10, rulesLabel);
+
+
+        BorderPane helpBorder = new BorderPane();
+        helpBorder.setLeft(exitBox);
+        helpBorder.setCenter(centerV);
+        helpBorder.setStyle("-fx-background-color: #005e30;");
+
+        return new Scene(helpBorder, 1200, 600);
     }
 }

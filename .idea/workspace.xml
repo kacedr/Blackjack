@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c868ad42-8da6-4b3a-85e4-405ff5ae5850" name="Changes" comment="Cleaning up code">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/javaFxFront.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javaFxFront.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
