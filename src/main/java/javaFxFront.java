@@ -414,7 +414,6 @@ public class javaFxFront extends Application {
                     } else {
                         bGame.currentBet = Double.parseDouble(betAsString[0]);
 
-
                         // start new hand
                         if (bGame.newHand()) {
                             showAlert("Deck was shuffled");
@@ -547,6 +546,10 @@ public class javaFxFront extends Application {
 
                 // update winnings
                 moneyamt.setText(String.format("%.2f", bGame.totalWinnings));
+
+                // clear old hand
+                dCards.getChildren().clear();
+                pCards.getChildren().clear();
             }
         });
     }
