@@ -436,6 +436,10 @@ public class javaFxFront extends Application {
             pCards.getChildren().add(pCardView);
 
             if (!playerHitRes) {
+                // disable hit and stay buttons until hand starts
+                stay.setDisable(true);
+                hit.setDisable(true);
+
                 showAlert("You Busted!!!");
                 // evaluate winnings
                 bGame.evaluateWinnings();
@@ -453,6 +457,12 @@ public class javaFxFront extends Application {
                 // clear old hand
                 dCards.getChildren().clear();
                 pCards.getChildren().clear();
+
+                // if bet is greater than winnings
+                if (Double.parseDouble(betAsString[0]) > bGame.totalWinnings) {
+                    betInput.setText(String.valueOf(bGame.totalWinnings));
+
+                }
             }
         });
 
@@ -518,6 +528,12 @@ public class javaFxFront extends Application {
             // clear old hand
             dCards.getChildren().clear();
             pCards.getChildren().clear();
+
+            // if bet is greater than winnings
+            if (Double.parseDouble(betAsString[0]) > bGame.totalWinnings) {
+                betInput.setText(String.valueOf(bGame.totalWinnings));
+
+            }
         });
     }
 
