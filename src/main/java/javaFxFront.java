@@ -14,6 +14,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import javafx.util.Pair;
@@ -561,12 +562,35 @@ public class javaFxFront extends Application {
         exitpic.setPreserveRatio(true);
         exit.setGraphic(exitpic);
         HBox exitBox = new HBox(exit);
-//        VBox.setMargin(exitBox, new Insets(-56, 0, 0, 0));
         exit.setOnAction(e -> primary.setScene(sceneMap.get("setup")));
-        VBox centerV;
-        Label rulesLabel = new Label("Blackjack Rules");
+
+        // Create the rules text
+        Label rulesLabel = new Label("Blackjack Rules:");
         rulesLabel.setStyle("-fx-font-size: 30px; -fx-text-fill: black; -fx-font-weight: bold; -fx-font-family: 'Constantia'");
-        centerV = new VBox(10, rulesLabel);
+
+        // Create paragraphs for rules description
+        Text rule1 = new Text("• The goal of blackjack is to beat the dealer's hand without going over 21.");
+        rule1.setStyle("-fx-font-size: 16px; -fx-fill: white;");
+        Text rule2 = new Text("• Face cards are worth 10. Aces are worth 1 or 11, whichever makes a better hand.");
+        rule2.setStyle("-fx-font-size: 16px; -fx-fill: white;");
+        Text rule3 = new Text("• Each player starts with two cards, one of the dealer's cards is hidden until the end.");
+        rule3.setStyle("-fx-font-size: 16px; -fx-fill: white;");
+        Text rule4 = new Text("• To 'Hit' is to ask for another card. To 'Stand' is to hold your total and end your turn.");
+        rule4.setStyle("-fx-font-size: 16px; -fx-fill: white;");
+        Text rule5 = new Text("• If you go over 21 you bust, and the dealer wins regardless of the dealer's hand.");
+        rule5.setStyle("-fx-font-size: 16px; -fx-fill: white;");
+        Text rule6 = new Text("• If you are dealt 21 from the start (Ace & 10), you got a blackjack.");
+        rule6.setStyle("-fx-font-size: 16px; -fx-fill: white;");
+        Text rule7 = new Text("• For advanced settings click on the \"Blackjack\" label at start");
+        rule7.setStyle("-fx-font-size: 16px; -fx-fill: white;");
+        Text rule8 = new Text("• Cut %: The percentage of remaining deck('s) to shuffle at");
+        rule8.setStyle("-fx-font-size: 16px; -fx-fill: white;");
+        Text rule9 = new Text("• Deck Amount: Number of starting decks");
+        rule9.setStyle("-fx-font-size: 16px; -fx-fill: white;");
+
+        // Adding rules to VBox
+        VBox centerV = new VBox(30, rulesLabel, rule1, rule2, rule3, rule4, rule5, rule6, rule7, rule8);
+        centerV.setAlignment(Pos.TOP_CENTER);
 
         BorderPane helpBorder = new BorderPane();
         helpBorder.setLeft(exitBox);
@@ -575,4 +599,5 @@ public class javaFxFront extends Application {
 
         return new Scene(helpBorder, 1200, 600);
     }
+
 }
