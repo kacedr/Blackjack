@@ -593,6 +593,7 @@ public class javaFxFront extends Application {
         helpBorder.setLeft(exitBox);
         helpBorder.setCenter(centerV);
         helpBorder.setStyle("-fx-background-color: #005e30;");
+        //comment
 
         return new Scene(helpBorder, 1200, 600);
     }
