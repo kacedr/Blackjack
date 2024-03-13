@@ -265,8 +265,6 @@ public class javaFxFront extends Application {
     }
 
     public Scene gameScene() {
-
-
         if (bGame == null) {
             bGame = new BlackjackGame();
         }
