@@ -100,8 +100,8 @@ public class javaFxFront extends Application {
             cutCardInput.setPromptText("Between 30-90");
             TextField deckAmountInput = new TextField();
             deckAmountInput.setPromptText("Must be > 0");
-            CheckBox hiLowCountShow = new CheckBox("Enable Hi-Low Counter");
-            CheckBox showStrategyChart = new CheckBox("Show Strategy Chart");
+            CheckBox hiLowCountShow = new CheckBox("Enable Hi-Low Counter"); // NOT IMPLEMENTED, NOT REQUIRED
+            CheckBox showStrategyChart = new CheckBox("Show Strategy Chart"); // NOT IMPLEMENTED, NOT REQUIRED
 
             grid.add(new Label("Deck Shuffle %:"), 0, 0);
             grid.add(cutCardInput, 1, 0);
@@ -363,6 +363,8 @@ public class javaFxFront extends Application {
                     showAlert("Can not change bet during hand");
                 } else if (Double.parseDouble(betAsString[0]) > bGame.totalWinnings) {
                     showAlert("Must change bet amount, not enough winnings");
+                } else if (Double.parseDouble(betAsString[0]) <= 0) {
+                    showAlert("Bet Must Be Valid");
                 } else {
                     bGame.currentBet = Double.parseDouble(betAsString[0]);
 
