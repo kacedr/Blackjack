@@ -437,6 +437,17 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Created project: made pom file, made the classes, configured maven." />
     <MESSAGE value="Not a requirement but implementing split and insurance are kinda crucial to the gameplay of blackjack. Also implementing a card counting helper would make this actually useful (also not a requirement)." />

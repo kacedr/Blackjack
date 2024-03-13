@@ -254,7 +254,9 @@ public class javaFxFront extends Application {
     public Scene gameScene() {
 
 
-
+        if (bGame == null) {
+            bGame = new BlackjackGame();
+        }
         Image ebut = new Image("exit.png");
         ImageView exitpic = new ImageView(ebut);
 
@@ -270,8 +272,9 @@ public class javaFxFront extends Application {
             resetGame();
         });
 
-        int boo = 0;
-        String yScoreLabel = String.format("Your Score\n         %d         ", boo);
+        int playerScore = bGame.gameLogic.handTotal(bGame.playerHand);
+        int dealerScore = bGame.gameLogic.handTotal(bGame.bankerHand);
+        String yScoreLabel = String.format("Your Score\n         %d         ", playerScore);
         yScore = new Label(yScoreLabel);
         VBox.setMargin(yScore, new Insets(250, 0, 0, 0));
         yScore.setStyle("-fx-font-family: 'Constantia'; -fx-text-fill: white; -fx-font-size: 21px; -fx-font-weight: bold;");
@@ -324,8 +327,8 @@ public class javaFxFront extends Application {
 
 
 
-        String dScoreLabel = String.format("Dealer Score\n            %d            ", boo);
-        dScore = new Label(dScoreLabel);
+        ;
+        dScore = new Label("");
         VBox.setMargin(dScore, new Insets(226, 0, 0, 0));
         dScore.setStyle("-fx-font-family: 'Constantia'; -fx-text-fill: white; -fx-font-size: 21px; -fx-font-weight: bold;");
 
@@ -431,6 +434,10 @@ public class javaFxFront extends Application {
                         dCards.getChildren().clear();
                         pCards.getChildren().clear();
 
+
+
+
+
                         // set dealers cards pictures
                         for (int i = 0; i < bGame.bankerHand.size(); i++) {
                             Image bCard;
@@ -463,6 +470,9 @@ public class javaFxFront extends Application {
                             Image pCard = new Image(cardImageName);
                             ImageView pCardView = new ImageView(pCard);
                             pCards.getChildren().add(pCardView);
+                            int newPlayerScore = bGame.gameLogic.handTotal(bGame.playerHand);
+                            yScore.setText(String.format("Your Score\n         %d         ", newPlayerScore));
+
                         }
                     }
                 } catch (NumberFormatException e) {
@@ -484,7 +494,8 @@ public class javaFxFront extends Application {
                 Image pCard = new Image(cardImageName);
                 ImageView pCardView = new ImageView(pCard);
                 pCards.getChildren().add(pCardView);
-
+                int newPlayerScore = bGame.gameLogic.handTotal(bGame.playerHand);
+                yScore.setText(String.format("Your Score\n         %d         ", newPlayerScore));
                 if(!playerHitRes) {
                     showAlert("You Busted!!!");
                     // evaluate winnings
@@ -503,7 +514,8 @@ public class javaFxFront extends Application {
             public void handle(ActionEvent actionEvent) {
                 boolean bankerReturn = bGame.playerStay();
                 double evWiningReturn = bGame.evaluateWinnings();
-
+                int newDealerScore = bGame.gameLogic.handTotal(bGame.bankerHand);
+                dScore.setText(String.format("Dealer Score\n            %d            ", newDealerScore));
                 // flip the flip card
                 Card flippedCard = bGame.bankerHand.get(1); // get the second card
                 String flippedCardImageName = "theseCardsMightBeBetter/Medium/" +
@@ -525,6 +537,8 @@ public class javaFxFront extends Application {
 
                 if (!bankerReturn) {
                     showAlert("Banker Busted, You Win!!!");
+
+
                 } else {
                     // evaluate winnings (evaluateWinnings returns negative if player lost)
                     if (evWiningReturn < 0) {
@@ -552,6 +566,8 @@ public class javaFxFront extends Application {
                 // clear old hand
                 dCards.getChildren().clear();
                 pCards.getChildren().clear();
+                yScore.setText("Your Score\n         0         ");
+                dScore.setText("");
             }
         });
     }
@@ -562,9 +578,12 @@ public class javaFxFront extends Application {
 
         money = 0;
         moneyprompt.clear();
+        betInput.clear();
         dCards.getChildren().clear();
         pCards.getChildren().clear();
         deckAmount = 1;
         cutCard = 0.30;
+        yScore.setText("Your Score\n         0         ");
+        dScore.setText("");
     }
 }
