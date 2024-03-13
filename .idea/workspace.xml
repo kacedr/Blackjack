@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c868ad42-8da6-4b3a-85e4-405ff5ae5850" name="Changes" comment="Cleaning up code" />
+    <list default="true" id="c868ad42-8da6-4b3a-85e4-405ff5ae5850" name="Changes" comment="Fixed margins">
+      <change afterPath="$PROJECT_DIR$/src/main/java/JavaFxFront.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/javaFxFront.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javaFxFrontDEPRECIATED.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -476,14 +480,21 @@
       <option name="project" value="LOCAL" />
       <updated>1710358007314</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="Fixed margins">
+      <option name="closed" value="true" />
+      <created>1710362402722</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1710362402722</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Created project: made pom file, made the classes, configured maven." />
     <MESSAGE value="Not a requirement but implementing split and insurance are kinda crucial to the gameplay of blackjack. Also implementing a card counting helper would make this actually useful (also not a requirement)." />
     <MESSAGE value="Implemented most of the back end. Need to finish BlackjackGame.java and then I will start on the actual game. Will create a bare-bones UI to start working on the game." />
     <MESSAGE value="Finished back end but a lot of logic is still on the table and where it should be implemented. Creating a crap test UI." />
@@ -508,6 +519,7 @@
     <MESSAGE value="Fixed settings" />
     <MESSAGE value="Fixed various bugs" />
     <MESSAGE value="Cleaning up code" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cleaning up code" />
+    <MESSAGE value="Fixed margins" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed margins" />
   </component>
 </project>

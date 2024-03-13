@@ -22,7 +22,10 @@ import javafx.util.Pair;
 import java.util.HashMap;
 import java.util.Optional;
 
-public class javaFxFront extends Application {
+
+// this class has been depreciated for the cleaned up class
+// todo: When all mechanics are confirmed working in the new front end file, delete this file
+public class javaFxFrontDEPRECIATED extends Application {
 
     public static void main(String[] args) {
         launch(args);
