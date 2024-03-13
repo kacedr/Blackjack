@@ -65,7 +65,6 @@ public class javaFxFront extends Application {
         primaryStage.setTitle("Blackjack");
         primaryStage.setScene(sceneMap.get("setup"));
         primaryStage.show();
-
     }
     private Scene startScene() {
         
@@ -266,7 +265,10 @@ public class javaFxFront extends Application {
         exit.setGraphic(exitpic);
         HBox exitBox = new HBox(exit);
         VBox.setMargin(exitBox, new Insets(-56, 0, 0, 0));
-        exit.setOnAction(e -> primary.setScene(sceneMap.get("setup")));
+        exit.setOnAction(e -> {
+            primary.setScene(sceneMap.get("setup"));
+            resetGame();
+        });
 
         int boo = 0;
         String yScoreLabel = String.format("Your Score\n         %d         ", boo);
@@ -552,5 +554,17 @@ public class javaFxFront extends Application {
                 pCards.getChildren().clear();
             }
         });
+    }
+
+    // Method to reset the game
+    private void resetGame() {
+        bGame = new BlackjackGame();
+
+        money = 0;
+        moneyprompt.clear();
+        dCards.getChildren().clear();
+        pCards.getChildren().clear();
+        deckAmount = 1;
+        cutCard = 0.30;
     }
 }
