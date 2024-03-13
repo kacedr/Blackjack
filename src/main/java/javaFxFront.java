@@ -328,7 +328,7 @@ public class javaFxFront extends Application {
         centerGame = new VBox(dCards, betlabel, betInput, centerPop, moneyamt, pCards);
 
         stay = new Button("STAY");
-        VBox.setMargin(stay, new Insets(144, 0, 0, 0));
+        VBox.setMargin(stay, new Insets(144, 20, 20, 20));
         stay.setStyle("-fx-font-size: 30px; -fx-padding: 10px 15px; -fx-border-radius: 15px; " +
                 "-fx-background-radius: 15px; -fx-background-color: black; -fx-text-fill: white;");
 
