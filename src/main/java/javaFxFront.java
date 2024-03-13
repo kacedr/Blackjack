@@ -566,30 +566,45 @@ public class javaFxFront extends Application {
 
         // Create the rules text
         Label rulesLabel = new Label("Blackjack Rules:");
-        rulesLabel.setStyle("-fx-font-size: 30px; -fx-text-fill: black; -fx-font-weight: bold; -fx-font-family: 'Constantia'");
+        rulesLabel.setStyle("-fx-font-size: 25px; -fx-text-fill: black; -fx-font-weight: bold; -fx-font-family: 'Constantia'");
+        Label htp = new Label("How to play:");
+        htp.setStyle("-fx-font-size: 25px; -fx-text-fill: black; -fx-font-weight: bold; -fx-font-family: 'Constantia'");
 
         // Create paragraphs for rules description
         Text rule1 = new Text("• The goal of blackjack is to beat the dealer's hand without going over 21.");
-        rule1.setStyle("-fx-font-size: 16px; -fx-fill: white;");
+        rule1.setStyle("-fx-font-size: 14px; -fx-fill: white;");
         Text rule2 = new Text("• Face cards are worth 10. Aces are worth 1 or 11, whichever makes a better hand.");
-        rule2.setStyle("-fx-font-size: 16px; -fx-fill: white;");
+        rule2.setStyle("-fx-font-size: 14px; -fx-fill: white;");
         Text rule3 = new Text("• Each player starts with two cards, one of the dealer's cards is hidden until the end.");
-        rule3.setStyle("-fx-font-size: 16px; -fx-fill: white;");
+        rule3.setStyle("-fx-font-size: 14px; -fx-fill: white;");
         Text rule4 = new Text("• To 'Hit' is to ask for another card. To 'Stand' is to hold your total and end your turn.");
-        rule4.setStyle("-fx-font-size: 16px; -fx-fill: white;");
+        rule4.setStyle("-fx-font-size: 14px; -fx-fill: white;");
         Text rule5 = new Text("• If you go over 21 you bust, and the dealer wins regardless of the dealer's hand.");
-        rule5.setStyle("-fx-font-size: 16px; -fx-fill: white;");
+        rule5.setStyle("-fx-font-size: 14px; -fx-fill: white;");
         Text rule6 = new Text("• If you are dealt 21 from the start (Ace & 10), you got a blackjack.");
-        rule6.setStyle("-fx-font-size: 16px; -fx-fill: white;");
+        rule6.setStyle("-fx-font-size: 14px; -fx-fill: white;");
         Text rule7 = new Text("• For advanced settings click on the \"Blackjack\" label at start");
-        rule7.setStyle("-fx-font-size: 16px; -fx-fill: white;");
+        rule7.setStyle("-fx-font-size: 14px; -fx-fill: white;");
         Text rule8 = new Text("• Cut %: The percentage of remaining deck('s) to shuffle at");
-        rule8.setStyle("-fx-font-size: 16px; -fx-fill: white;");
+        rule8.setStyle("-fx-font-size: 14px; -fx-fill: white;");
         Text rule9 = new Text("• Deck Amount: Number of starting decks");
-        rule9.setStyle("-fx-font-size: 16px; -fx-fill: white;");
-
+        rule9.setStyle("-fx-font-size: 14px; -fx-fill: white;");
+        Text help1 = new Text("• To start the game you must first input the amount of money you will be playing with.");
+        help1.setStyle("-fx-font-size: 14px; -fx-fill: white;");
+        Text help2 = new Text("• Once the game has started you must input the amount you will be betting for that round of Blackjack");
+        help2.setStyle("-fx-font-size: 14px; -fx-fill: white;");
+        Text help3 = new Text("• After your bet has been inputted your cards will appear and you can play Blackjack.");
+        help3.setStyle("-fx-font-size: 14px; -fx-fill: white;");
+        Text help4 = new Text("• As the round goes you can choose to hit or stay using the buttons.");
+        help4.setStyle("-fx-font-size: 14px; -fx-fill: white;");
+        Text help5 = new Text("• Once the round is finished by pressing hit or stay you will be notified of the outcome.");
+        help5.setStyle("-fx-font-size: 14px; -fx-fill: white;");
+        Text help6 = new Text("• If you play until you're out of money you will be returned to the title screen");
+        help6.setStyle("-fx-font-size: 14px; -fx-fill: white;");
+        Text help7 = new Text("• If you wish to leave before that there is an exit button available.");
+        help7.setStyle("-fx-font-size: 14px; -fx-fill: white;");
         // Adding rules to VBox
-        VBox centerV = new VBox(30, rulesLabel, rule1, rule2, rule3, rule4, rule5, rule6, rule7, rule8);
+        VBox centerV = new VBox(15, rulesLabel, rule1, rule2, rule3, rule4, rule5, rule6, rule7, rule8, htp, help1, help2, help3, help4, help5, help6, help7);
         centerV.setAlignment(Pos.TOP_CENTER);
 
         BorderPane helpBorder = new BorderPane();
