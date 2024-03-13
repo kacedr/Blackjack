@@ -1,20 +1,24 @@
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import javafx.util.Pair;
 
 import java.util.HashMap;
+import java.util.Optional;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class javaFxFront extends Application {
@@ -48,6 +52,9 @@ public class javaFxFront extends Application {
     Label blackjack, moneyLabel;
     Button play, help;
 
+    int deckAmount = 1; // default values
+    double cutCard = 0.30; // default values
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         primary = primaryStage;
@@ -61,18 +68,107 @@ public class javaFxFront extends Application {
 
     }
     private Scene startScene() {
+        
+        // TODO: For help button, explain to the user what the shuffle percentage/cut card does (it is the percentage
+        //  of the deck('s) left for when the dealer shuffles.) other than that just find blackjack rules somewhere
+        //  also explain to the user how to accesses the secret settings (click blackjack label)
 
 
-        Image bj = new Image("blackjack.png");
-        ImageView blackjacktitle = new ImageView(bj);
-        blackjacktitle.setFitWidth(120);
-        blackjacktitle.setFitHeight(120);
-        blackjacktitle.setPreserveRatio(true);
-        blackjacktitle.setSmooth(true);
+        ImageView blackjacktitle = getImageView();
 
         blackjack = new Label("Blackjack");
+        blackjack.setStyle("-fx-cursor: hand; -fx-font-family: 'Constantia'; -fx-text-fill: black; " +
+                "-fx-font-size: 60px; -fx-font-weight: bold;"); // css styling to allow clickable label
 
-        blackjack.setStyle("-fx-font-family: 'Constantia'; -fx-text-fill: black; -fx-font-size: 60px; -fx-font-weight: bold;");
+        // hover text
+        Tooltip blackjackTooltip = new Tooltip("Click for advanced settings");
+        blackjackTooltip.setStyle("-fx-font-size: 10pt;");
+        blackjackTooltip.setShowDelay(Duration.seconds(0.01));
+        Tooltip.install(blackjack, blackjackTooltip);
+
+        // this took way to long, this handles the secret settings for setting deck amount and cut card
+        blackjack.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            // create dialog
+            Dialog<Pair<String, String>> dialog = new Dialog<>();
+            dialog.setTitle("Advanced Settings");
+            dialog.setHeaderText("Defaults Values Are 30% and 1 deck");
+
+            // set the button types
+            ButtonType applyButtonType = new ButtonType("Apply", ButtonBar.ButtonData.OK_DONE);
+            dialog.getDialogPane().getButtonTypes().addAll(applyButtonType, ButtonType.CANCEL);
+
+            // create the cut card and deck amount inputs
+            GridPane grid = new GridPane();
+            grid.setHgap(10);
+            grid.setVgap(10);
+            grid.setPadding(new Insets(20, 150, 10, 10));
+
+            TextField cutCardInput = new TextField();
+            cutCardInput.setPromptText("Between 30-90");
+            TextField deckAmountInput = new TextField();
+            deckAmountInput.setPromptText("Must be > 0");
+
+            grid.add(new Label("Deck Shuffle %:"), 0, 0);
+            grid.add(cutCardInput, 1, 0);
+            grid.add(new Label("Deck Amount:"), 0, 1);
+            grid.add(deckAmountInput, 1, 1);
+
+            // enable/disable the apply button depending on whether both inputs are used
+            Node applyButton = dialog.getDialogPane().lookupButton(applyButtonType);
+            applyButton.setDisable(true);
+
+            // some validation
+            cutCardInput.textProperty().addListener((observable, oldValue, newValue) -> {
+                applyButton.setDisable(newValue.trim().isEmpty() || deckAmountInput.getText().trim().isEmpty());
+            });
+            deckAmountInput.textProperty().addListener((observable, oldValue, newValue) -> {
+                applyButton.setDisable(newValue.trim().isEmpty() || cutCardInput.getText().trim().isEmpty());
+            });
+
+            // validates input
+            ChangeListener<String> validationListener = (observable, oldValue, newValue) -> {
+                boolean isCutCardValid;
+                boolean isDeckAmountValid;
+
+                try {
+                    int cutCardValue = Integer.parseInt(cutCardInput.getText().trim());
+                    isCutCardValid = cutCardValue >= 30 && cutCardValue <= 90;
+                } catch (NumberFormatException e) {
+                    isCutCardValid = false;
+                }
+
+                try {
+                    int deckAmountValue = Integer.parseInt(deckAmountInput.getText().trim());
+                    isDeckAmountValid = deckAmountValue > 0;
+                } catch (NumberFormatException e) {
+                    isDeckAmountValid = false;
+                }
+
+                applyButton.setDisable(!isCutCardValid || !isDeckAmountValid);
+            };
+
+            cutCardInput.textProperty().addListener(validationListener);
+            deckAmountInput.textProperty().addListener(validationListener);
+
+            dialog.getDialogPane().setContent(grid);
+
+            // Convert the result to a pair of cut card and deck amount when the apply button is clicked.
+            dialog.setResultConverter(dialogButton -> {
+                if (dialogButton == applyButtonType) {
+                    return new Pair<>(cutCardInput.getText(), deckAmountInput.getText());
+                }
+                return null;
+            });
+
+            // Show the dialog and wait for the user to click apply or cancel
+            Optional<Pair<String, String>> result = dialog.showAndWait();
+
+            result.ifPresent(cutDeckAmount -> {
+                cutCard = Double.parseDouble(cutDeckAmount.getKey());
+                deckAmount = Integer.parseInt(cutDeckAmount.getValue());
+            });
+        });
+
         h1 = new HBox(20, blackjacktitle, blackjack);
         h1.setAlignment(Pos.CENTER);
         moneyprompt = new TextField();
@@ -124,7 +220,15 @@ public class javaFxFront extends Application {
         return new Scene(borderPane, 1200, 600);
     }
 
-
+    private static ImageView getImageView() {
+        Image bj = new Image("blackjack.png");
+        ImageView blackjacktitle = new ImageView(bj);
+        blackjacktitle.setFitWidth(120);
+        blackjacktitle.setFitHeight(120);
+        blackjacktitle.setPreserveRatio(true);
+        blackjacktitle.setSmooth(true);
+        return blackjacktitle;
+    }
 
 
     private void handlePlayAction() {
@@ -196,7 +300,7 @@ public class javaFxFront extends Application {
 
         // instead of this being a label I changed it to a button to get the text from the text box
         // Label betlabel = new Label("Enter bet amount:"); did not remove in case still needed
-        betlabel = new Button("Set Bet"); // kept the same name "betLable" should be changed to setBet for readibility
+        betlabel = new Button("Set Bet And Start Hand"); // kept the same name "betLable" should be changed to setBet for readibility
 
         betlabel.setStyle("-fx-font-weight: 600;-fx-text-fill: black");
         VBox.setMargin(betlabel, new Insets(120, 15, 15, 15));
@@ -268,13 +372,14 @@ public class javaFxFront extends Application {
 
         // set money amount for ui
 
-        int deckAmount = 1; // default values, must be moved only for development
-        double cutCard = 0.30; // default values, must be moved only for development
-
         // boolean for if the deck was shuffled
         final boolean[] wasShuffled = {false}; // todo might not be needed
 
         final boolean[] isNewHand = {true};
+
+        // todo TESTING DELETE
+        System.out.println(cutCard);
+        System.out.println(deckAmount);
 
         // starts a new game with the desired deck amount and shuffle point (cutCard)
         bGame = new BlackjackGame(deckAmount, cutCard);
@@ -380,7 +485,7 @@ public class javaFxFront extends Application {
                 boolean playerHitRes = bGame.playerHit();
 
                 // set card image for player
-                String cardImageName = "theseCardsMightBeBetter/Large/" + bGame.playerHand.getLast().suit
+                String cardImageName = "theseCardsMightBeBetter/Medium/" + bGame.playerHand.getLast().suit
                         + " " + bGame.playerHand.getLast().face + ".png";
                 System.out.println(cardImageName);
 

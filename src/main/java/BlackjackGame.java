@@ -161,26 +161,25 @@ public class BlackjackGame {
     // takes in a hand and checks if any of the aces can be converted to 1 to keep the total 21 and under
     private boolean checkAces(ArrayList<Card> hand) {
         boolean converted = false;
-        int handTotal = gameLogic.handTotal(hand);
-
-        // If the hand is over 21, look for aces to convert from 11 to 1
-        if (handTotal > 21) {
+        // This will continue to attempt to convert Aces from 11 to 1 as long as the hand is over 21.
+        while (gameLogic.handTotal(hand) > 21) {
+            boolean foundAceToConvert = false;
             for (Card card : hand) {
-                // Check if the card is an ace and its value is 11
                 if ("1".equals(card.face) && card.value == 11) {
-                    card.value = 1; // Convert the ace from 11 to 1
-                    converted = true; // Mark that a conversion has occurred
-
-                    // Recalculate hand total to see if further conversions are necessary
-                    handTotal = gameLogic.handTotal(hand);
-                    if (handTotal <= 21) {
-                        break; // No more conversions are needed
-                    }
+                    card.value = 1; // Convert the Ace from 11 to 1
+                    foundAceToConvert = true;
+                    converted = true;
+                    break; // Break after converting one Ace to recheck the total hand value
                 }
             }
+            // if no Aces were converted in this pass, break out of the while loop to avoid infinite loop
+            if (!foundAceToConvert) {
+                break;
+            }
         }
-        return converted; // Return true if at least one ace was converted
+        return converted; // Return true if at least one Ace was converted
     }
+
 
 
     // if a player chooses to stay or dealt 21, this will be called and the dealer will hit until he can not
@@ -194,7 +193,11 @@ public class BlackjackGame {
     private boolean bankerHit() {
         while (gameLogic.evaluateBankerDraw(bankerHand)) {
             bankerHand.add(theDealer.drawOne());
+
+            // check to see if an ace can be converted to 1
+            checkAces(bankerHand);
         }
+
         return gameLogic.handTotal(bankerHand) <= 21;
     }
 

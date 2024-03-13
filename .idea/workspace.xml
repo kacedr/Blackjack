@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c868ad42-8da6-4b3a-85e4-405ff5ae5850" name="Changes" comment="Game is kinda working but converting aces is broken rn.">
+    <list default="true" id="c868ad42-8da6-4b3a-85e4-405ff5ae5850" name="Changes" comment="A lot of the logic bugs have been fixed. We have to use medium cards rn even though large cards fit the most since there can be up to 11 cards in gameplay.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/BlackjackGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BlackjackGame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/javaFxFront.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javaFxFront.java" afterDir="false" />
@@ -118,7 +118,7 @@
       <updated>1709409530254</updated>
       <workItem from="1709409531288" duration="5329000" />
       <workItem from="1709576249734" duration="32651000" />
-      <workItem from="1710276492069" duration="14941000" />
+      <workItem from="1710276492069" duration="20161000" />
     </task>
     <task id="LOCAL-00001" summary="Created project: made pom file, made the classes, configured maven.">
       <option name="closed" value="true" />
@@ -376,7 +376,23 @@
       <option name="project" value="LOCAL" />
       <updated>1710291819216</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="A lot of the logic bugs have been fixed. We have to use medium cards rn even though large cards fit the most since there can be up to 11 cards in gameplay.">
+      <option name="closed" value="true" />
+      <created>1710294070145</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1710294070145</updated>
+    </task>
+    <task id="LOCAL-00034" summary="A lot of the logic bugs have been fixed. We have to use medium cards rn even though large cards fit the most since there can be up to 11 cards in gameplay.">
+      <option name="closed" value="true" />
+      <created>1710294076498</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1710294076498</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -402,6 +418,7 @@
     <MESSAGE value="Card images where actually pretty easy. Still working on it though." />
     <MESSAGE value="This is starting to look like blackjack. There are still a plethora of bugs but you can play it." />
     <MESSAGE value="Game is kinda working but converting aces is broken rn." />
-    <option name="LAST_COMMIT_MESSAGE" value="Game is kinda working but converting aces is broken rn." />
+    <MESSAGE value="A lot of the logic bugs have been fixed. We have to use medium cards rn even though large cards fit the most since there can be up to 11 cards in gameplay." />
+    <option name="LAST_COMMIT_MESSAGE" value="A lot of the logic bugs have been fixed. We have to use medium cards rn even though large cards fit the most since there can be up to 11 cards in gameplay." />
   </component>
 </project>
