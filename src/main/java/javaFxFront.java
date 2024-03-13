@@ -27,33 +27,41 @@ public class javaFxFront extends Application {
         launch(args);
     }
 
-    // initialize blackjack game, this needs to be initialized like bGame = new BlackjackGame()
-    BlackjackGame bGame;
-    HashMap<String, Scene> sceneMap;
-    Stage primary;
-    TextField moneyprompt;
-    double money;
-    Image cas = new Image("casinobackground.jpg");
-    ImageView casBack = new ImageView(cas);
+    // Core game components
+    private BlackjackGame bGame; // Initialize like: bGame = new BlackjackGame()
+    private HashMap<String, Scene> sceneMap = new HashMap<>();
+    private Stage primary;
 
-    // pulled from getScene
-    Button exit, start, hit, stay;
-    Button betlabel; // sets the bet at the start of each hand
-    TextField betInput;
-    Label yScore, dScore, centerPop, moneyamt;
-    HBox pCards, dCards;
-    VBox centerGame, leftGame, rightGame;
+    // Background elements
+    private Image cas = new Image("casinobackground.jpg");
+    private ImageView casBack = new ImageView(cas);
 
-    String moneyamtlabel;
+    // User input
+    private TextField moneyprompt;
+    private double money;
 
-    // pulled from gameScene
-    VBox v1;
-    HBox h1;
-    Label blackjack, moneyLabel;
-    Button play, help;
+    // Scene components: setup scene
+    private Button start;
+    private TextField betInput;
+    private Label moneyLabel;
+    private VBox v1;
+    private HBox h1;
 
-    int deckAmount = 1; // default values
-    double cutCard = 0.30; // default values
+    // Scene components: game scene
+    private Button exit, hit, stay, betlabel; // betlabel sets the bet at the start of each hand
+    private Label yScore, dScore, centerPop, moneyamt;
+    private HBox pCards, dCards;
+    private VBox centerGame, leftGame, rightGame;
+    private Button play, help;
+    private Label blackjack;
+
+    // Game settings
+    private int deckAmount = 1; // Default value
+    private double cutCard = 0.30; // Default value
+
+    // Additional fields
+    private String moneyamtlabel;
+
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -284,9 +292,6 @@ public class javaFxFront extends Application {
         VBox.setMargin(hit, new Insets(145, 0, 0, 20));
         leftGame = new VBox(exitBox, yScore, hit);
 
-
-
-
         dCards = new HBox(16);
         dCards.setAlignment(Pos.CENTER);
         dCards.setMinWidth(800);
@@ -306,7 +311,6 @@ public class javaFxFront extends Application {
         betInput.setMaxWidth(100);
 
         centerPop = new Label("");
-//        not working correctly
         moneyamtlabel = String.format("%.2f", money);
 
         moneyamt = new Label(moneyamtlabel);
@@ -322,13 +326,7 @@ public class javaFxFront extends Application {
         VBox.setMargin(pCards, new Insets(10, 0, 0, 0));
         pCards.setStyle("-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 1px; -fx-border-radius: 5px;");
 
-
         centerGame = new VBox(dCards, betlabel, betInput, centerPop, moneyamt, pCards);
-
-
-
-
-        ;
         dScore = new Label("");
         VBox.setMargin(dScore, new Insets(226, 0, 0, 0));
         dScore.setStyle("-fx-font-family: 'Constantia'; -fx-text-fill: white; -fx-font-size: 21px; -fx-font-weight: bold;");
@@ -338,13 +336,6 @@ public class javaFxFront extends Application {
         stay.setStyle("-fx-font-size: 30px; -fx-padding: 10px 15px;-fx-border-radius: 15px; -fx-background-radius: 15px;");
 
         rightGame = new VBox(dScore, stay);
-
-
-
-
-
-
-
 
         BorderPane gamePane = new BorderPane();
         centerGame.setAlignment(Pos.CENTER);
@@ -359,8 +350,7 @@ public class javaFxFront extends Application {
     }
 
     // this method is what controls the gameplay, this must be called once the starting money amount is set
-    // this method should only work with button actions and grab input from text fields, it should not create elements
-    // name, return type, and inputs might need to be changed
+    // this method should only work with button actions and grab input from text fields, it should not create elements.
     private void gameplay() {
         final boolean[] isNewHand = {true};
 
