@@ -63,7 +63,7 @@ public class javaFxFront extends Application {
     // Additional fields
     private String moneyamtlabel;
 
-
+    // start scene
     @Override
     public void start(Stage primaryStage) throws Exception {
         primary = primaryStage;
@@ -179,24 +179,20 @@ public class javaFxFront extends Application {
         moneyprompt = new TextField();
 
         moneyprompt.setMaxWidth(200);
-//        moneyprompt.setOnKeyPressed(e -> {
-//            if(e.getCode() == KeyCode.ENTER) {
-//                validateMoneyInput();
-//            }
-//        });
         moneyLabel = new Label("Enter starting money amount:");
 
 
         moneyLabel.setStyle("-fx-font-size: 16px; -fx-text-fill: black;");
 
         play = new Button("Play");
-        play.setStyle("-fx-font-size: 20px; -fx-padding: 5px 10px; -fx-border-radius: 15px; -fx-background-radius: 15px;");
+        play.setStyle("-fx-font-size: 20px; -fx-padding: 5px 10px; -fx-border-radius: 15px; -fx-background-radius: 1" +
+                "5px; -fx-background-color: black; -fx-text-fill: white;");
         play.setMinWidth(100);
         play.setMinHeight(45);
         play.setOnAction(e -> handlePlayAction());
 
         help = new Button("Help?");
-        help.setStyle("-fx-font-size: 14px;");
+        help.setStyle("-fx-font-size: 14px; -fx-background-color: black; -fx-text-fill: white;");
         help.setMinWidth(30);
         help.setMinHeight(15);
         help.setOnAction(e -> primary.setScene(sceneMap.get("help")));
@@ -288,14 +284,11 @@ public class javaFxFront extends Application {
 
         int playerScore = bGame.gameLogic.handTotal(bGame.playerHand);
 
-        String yScoreLabel = String.format("Your Score\n         %d         ", playerScore);
-        yScore = new Label(yScoreLabel);
-        VBox.setMargin(yScore, new Insets(250, 0, 0, 0));
-        yScore.setStyle("-fx-font-family: 'Constantia'; -fx-text-fill: white; -fx-font-size: 21px; -fx-font-weight: bold;");
         hit = new Button("HIT");
-        hit.setStyle("-fx-font-size: 30px; -fx-padding: 10px 30px;-fx-border-radius: 15px; -fx-background-radius: 15px;");
+        hit.setStyle("-fx-font-size: 30px; -fx-padding: 10px 30px; -fx-border-radius: 15px;" +
+                " -fx-background-radius: 15px; -fx-background-color: black; -fx-text-fill: white;");
         VBox.setMargin(hit, new Insets(145, 0, 0, 20));
-        leftGame = new VBox(exitBox, yScore, hit);
+        leftGame = new VBox(exitBox, hit);
 
         dCards = new HBox(16);
         dCards.setAlignment(Pos.CENTER);
@@ -310,7 +303,7 @@ public class javaFxFront extends Application {
         // Label betlabel = new Label("Enter bet amount:"); did not remove in case still needed
         betlabel = new Button("Set Bet And Start Hand"); // kept the same name "betLable" should be changed to setBet for readibility
 
-        betlabel.setStyle("-fx-font-weight: 600;-fx-text-fill: black");
+        betlabel.setStyle("-fx-font-weight: 600; -fx-background-color: black; -fx-text-fill: white;");
         VBox.setMargin(betlabel, new Insets(120, 15, 15, 15));
         betInput = new TextField();
         betInput.setMaxWidth(100);
@@ -329,18 +322,17 @@ public class javaFxFront extends Application {
         pCards.setMinHeight(138);
         pCards.setPadding(new Insets(15, 15, 15, 15));
         VBox.setMargin(pCards, new Insets(10, 0, 0, 0));
-        pCards.setStyle("-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 1px; -fx-border-radius: 5px;");
+        pCards.setStyle("-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 1px; " +
+                "-fx-border-radius: 5px;");
 
         centerGame = new VBox(dCards, betlabel, betInput, centerPop, moneyamt, pCards);
-        dScore = new Label("");
-        VBox.setMargin(dScore, new Insets(226, 0, 0, 0));
-        dScore.setStyle("-fx-font-family: 'Constantia'; -fx-text-fill: white; -fx-font-size: 21px; -fx-font-weight: bold;");
 
         stay = new Button("STAY");
         VBox.setMargin(stay, new Insets(144, 0, 0, 0));
-        stay.setStyle("-fx-font-size: 30px; -fx-padding: 10px 15px;-fx-border-radius: 15px; -fx-background-radius: 15px;");
+        stay.setStyle("-fx-font-size: 30px; -fx-padding: 10px 15px; -fx-border-radius: 15px; " +
+                "-fx-background-radius: 15px; -fx-background-color: black; -fx-text-fill: white;");
 
-        rightGame = new VBox(dScore, stay);
+        rightGame = new VBox(stay);
 
         BorderPane gamePane = new BorderPane();
         centerGame.setAlignment(Pos.CENTER);
@@ -437,7 +429,6 @@ public class javaFxFront extends Application {
                             ImageView pCardView = new ImageView(pCard);
                             pCards.getChildren().add(pCardView);
                             int newPlayerScore = bGame.gameLogic.handTotal(bGame.playerHand);
-                            yScore.setText(String.format("Your Score\n         %d         ", newPlayerScore));
                         }
                     }
                 } catch (NumberFormatException e) {
@@ -460,7 +451,6 @@ public class javaFxFront extends Application {
                 ImageView pCardView = new ImageView(pCard);
                 pCards.getChildren().add(pCardView);
                 int newPlayerScore = bGame.gameLogic.handTotal(bGame.playerHand);
-                yScore.setText(String.format("Your Score\n         %d         ", newPlayerScore));
 
                 if(!playerHitRes) {
                     showAlert("You Busted!!!");
@@ -481,8 +471,6 @@ public class javaFxFront extends Application {
                     // clear old hand
                     dCards.getChildren().clear();
                     pCards.getChildren().clear();
-                    yScore.setText("Your Score\n         0         ");
-                    dScore.setText("");
                 }
             }
         });
@@ -492,8 +480,6 @@ public class javaFxFront extends Application {
             public void handle(ActionEvent actionEvent) {
                 boolean bankerReturn = bGame.playerStay();
                 double evWiningReturn = bGame.evaluateWinnings();
-                int newDealerScore = bGame.gameLogic.handTotal(bGame.bankerHand);
-                dScore.setText(String.format("Dealer Score\n            %d            ", newDealerScore));
 
                 // flip the flip card
                 Card flippedCard = bGame.bankerHand.get(1); // get the second card
@@ -550,8 +536,6 @@ public class javaFxFront extends Application {
                 // clear old hand
                 dCards.getChildren().clear();
                 pCards.getChildren().clear();
-                yScore.setText("Your Score\n         0         ");
-                dScore.setText("");
             }
         });
     }
@@ -565,8 +549,6 @@ public class javaFxFront extends Application {
         pCards.getChildren().clear();
         deckAmount = 1;
         cutCard = 0.30;
-        yScore.setText("Your Score\n         0         ");
-        dScore.setText("");
     }
     private Scene helpScene() {
         // create a back button to return to the setup scene
