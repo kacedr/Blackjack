@@ -42,10 +42,10 @@ public class BlackjackDealer {
         deckOfCards.clear();
 
         for (int i = 0; i < deckAmount; i++) {
-            deckOfCards.addAll(generate13Cards("spade"));
-            deckOfCards.addAll(generate13Cards("club"));
-            deckOfCards.addAll(generate13Cards("heart"));
-            deckOfCards.addAll(generate13Cards("diamond"));
+            deckOfCards.addAll(generate13Cards("Spades"));
+            deckOfCards.addAll(generate13Cards("Clubs"));
+            deckOfCards.addAll(generate13Cards("Hearts"));
+            deckOfCards.addAll(generate13Cards("Diamond"));
         }
     }
 
@@ -55,16 +55,16 @@ public class BlackjackDealer {
 
         // generate cards 2-10
         for (int i = 2; i <= 10; i++) {
-            thirteenCards.add(new Card(suit, i).setFace("NA"));
+            thirteenCards.add(new Card(suit, i).setFace(String.valueOf(i)));
         }
 
         // generate face cards (will just be 3 10's)
-        thirteenCards.add(new Card(suit, 10).setFace("jack"));
-        thirteenCards.add(new Card(suit, 10).setFace("queen"));
-        thirteenCards.add(new Card(suit, 10).setFace("king"));
+        thirteenCards.add(new Card(suit, 10).setFace("11")); // CONTRADICTION, THIS IS A JACK NOT A ACE
+        thirteenCards.add(new Card(suit, 10).setFace("12")); // THIS IS A QUEEN
+        thirteenCards.add(new Card(suit, 10).setFace("13")); // THIS IS A KING
 
         // add the ace (value starts with 11, determining if it should be a 1 will be later)
-        thirteenCards.add(new Card(suit, 11).setFace("ace"));
+        thirteenCards.add(new Card(suit, 11).setFace("1")); // 1 == ACE FOR setFace
 
         return thirteenCards;
     }

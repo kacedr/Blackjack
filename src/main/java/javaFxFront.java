@@ -300,7 +300,6 @@ public class javaFxFront extends Application {
 
         // Basically this signifies that there is a new hand thus this button needs to be disabled unless a new
         // hand can happen
-
         betlabel.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
@@ -329,14 +328,45 @@ public class javaFxFront extends Application {
 
                         // we are going to minus the bet from the money total visually
                         moneyamt.setText(String.format("%.2f", bGame.totalWinnings - bGame.currentBet));
+
+                        // set dealers cards pictures
+                        for (int i = 0; i < bGame.bankerHand.size(); i++) {
+                            // hides last card
+                            if (i == bGame.bankerHand.size() - 1) {
+                                Image bCard = new Image("theseCardsMightBeBetter/Large/Back Blue 1.png");
+                                ImageView bCardView = new ImageView(bCard);
+                                dCards.getChildren().add(bCardView);
+                            } else {
+
+                                // set path name
+                                String cardImageName = "theseCardsMightBeBetter/Large/" + bGame.bankerHand.get(i).suit
+                                        + " " + bGame.bankerHand.get(i).face + ".png";
+                                System.out.println(cardImageName);
+
+                                Image bCard = new Image(cardImageName);
+                                ImageView bCardView = new ImageView(bCard);
+                                dCards.getChildren().add(bCardView);
+                            }
+                        }
+
+
+
+                        // set players cards pictures
+                        for (int i = 0; i < bGame.playerHand.size(); i++) {
+                            // set path name
+                            String cardImageName = "theseCardsMightBeBetter/Large/" + bGame.playerHand.get(i).suit
+                                    + " " + bGame.playerHand.get(i).face + ".png";
+                            System.out.println(cardImageName);
+
+                            Image pCard = new Image(cardImageName);
+                            ImageView pCardView = new ImageView(pCard);
+                            pCards.getChildren().add(pCardView);
+                        }
+
                     }
                 } catch (NumberFormatException e) {
                     showAlert("Must enter a valid bet");
                 }
-
-                System.out.println(bGame.bankerHand);
-                System.out.println(bGame.playerHand);
-
             }
         });
 
@@ -353,9 +383,6 @@ public class javaFxFront extends Application {
                     // update winnings
                     moneyamt.setText(String.format("%.2f", bGame.totalWinnings));
                 }
-
-
-
             }
         });
 
