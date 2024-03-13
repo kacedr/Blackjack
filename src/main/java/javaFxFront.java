@@ -25,7 +25,7 @@ import java.util.Optional;
 
 // this class has been depreciated for the cleaned up class
 // todo: When all mechanics are confirmed working in the new front end file, delete this file
-public class javaFxFrontDEPRECIATED extends Application {
+public class javaFxFront extends Application {
 
     public static void main(String[] args) {
         launch(args);
