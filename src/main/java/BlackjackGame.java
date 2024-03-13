@@ -160,17 +160,28 @@ public class BlackjackGame {
 
     // takes in a hand and checks if any of the aces can be converted to 1 to keep the total 21 and under
     private boolean checkAces(ArrayList<Card> hand) {
-        // too much nesting yuck!
-        for (Card card : hand) { // loops through the player hand
-            if (Objects.equals(card.face, "ace") && card.value == 11) { // checks if each card is an ace
-                if ((gameLogic.handTotal(hand) - 10) < 22) { // checks if converting that ace does anything
-                    card.value = 1; // converts the 11 to a 1
-                    return true;
+        boolean converted = false;
+        int handTotal = gameLogic.handTotal(hand);
+
+        // If the hand is over 21, look for aces to convert from 11 to 1
+        if (handTotal > 21) {
+            for (Card card : hand) {
+                // Check if the card is an ace and its value is 11
+                if ("1".equals(card.face) && card.value == 11) {
+                    card.value = 1; // Convert the ace from 11 to 1
+                    converted = true; // Mark that a conversion has occurred
+
+                    // Recalculate hand total to see if further conversions are necessary
+                    handTotal = gameLogic.handTotal(hand);
+                    if (handTotal <= 21) {
+                        break; // No more conversions are needed
+                    }
                 }
             }
         }
-        return false;
+        return converted; // Return true if at least one ace was converted
     }
+
 
     // if a player chooses to stay or dealt 21, this will be called and the dealer will hit until he can not
     // return true if the banker did not bust, false if he did. This function serves to aid in readability
@@ -198,8 +209,8 @@ public class BlackjackGame {
             // player can not go negative
             if (totalWinnings < 0) {totalWinnings = 0;}
 
-            // returns how much is lost, but as a positive value
-            return currentBet;
+            // returns how much is lost, but as a negative value
+            return -currentBet;
         }
         else if (whoWonRes.compareTo("player") == 0 ) {
             // if the player hit a blackjack
@@ -209,7 +220,7 @@ public class BlackjackGame {
             }
 
             totalWinnings += currentBet;
-            return currentBet;
+            return currentBet; // this is just used to signify to the ui the player
         }
 
         // must be a push so update nothing, no winnings

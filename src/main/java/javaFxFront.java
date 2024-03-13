@@ -340,13 +340,13 @@ public class javaFxFront extends Application {
 
                             // hides last card
                             if (i == bGame.bankerHand.size() - 1) {
-                                bCard = new Image("theseCardsMightBeBetter/Large/Back Blue 1.png");
+                                bCard = new Image("theseCardsMightBeBetter/Medium/Back Blue 1.png");
                                 bCardView = new ImageView(bCard);
                                 bCardView.setId("backCard"); // reference so we know which one to flip
                             } else {
 
                                 // set path name
-                                String cardImageName = "theseCardsMightBeBetter/Large/" + bGame.bankerHand.get(i).suit
+                                String cardImageName = "theseCardsMightBeBetter/Medium/" + bGame.bankerHand.get(i).suit
                                         + " " + bGame.bankerHand.get(i).face + ".png";
                                 bCard = new Image(cardImageName);
                                 bCardView = new ImageView(bCard);
@@ -358,7 +358,7 @@ public class javaFxFront extends Application {
                         // set players cards pictures
                         for (int i = 0; i < bGame.playerHand.size(); i++) {
                             // set path name
-                            String cardImageName = "theseCardsMightBeBetter/Large/" + bGame.playerHand.get(i).suit
+                            String cardImageName = "theseCardsMightBeBetter/Medium/" + bGame.playerHand.get(i).suit
                                     + " " + bGame.playerHand.get(i).face + ".png";
                             System.out.println(cardImageName);
 
@@ -409,7 +409,7 @@ public class javaFxFront extends Application {
 
                 // flip the flip card
                 Card flippedCard = bGame.bankerHand.get(1); // get the second card
-                String flippedCardImageName = "theseCardsMightBeBetter/Large/" +
+                String flippedCardImageName = "theseCardsMightBeBetter/Medium/" +
                         flippedCard.suit + " " + flippedCard.face + ".png";
                 Image flippedCardImage = new Image(flippedCardImageName);
                 ImageView flippedCardView = (ImageView) dCards.lookup("#backCard");
@@ -419,7 +419,7 @@ public class javaFxFront extends Application {
                 // loop through the rest of the cards if there are any
                 for (int i = 2; i < bGame.bankerHand.size(); i++) {
                     // just swap the hidden card
-                    String cardImageName = "theseCardsMightBeBetter/Large/" + bGame.bankerHand.get(i).suit
+                    String cardImageName = "theseCardsMightBeBetter/Medium/" + bGame.bankerHand.get(i).suit
                             + " " + bGame.bankerHand.get(i).face + ".png";
                     Image bCard = new Image(cardImageName);
                     ImageView bCardView = new ImageView(bCard);
@@ -429,14 +429,20 @@ public class javaFxFront extends Application {
                 if (!bankerReturn) {
                     showAlert("Banker Busted, You Win!!!");
                 } else {
-                    // evaluate winnings
-                    if (evWiningReturn == bGame.currentBet) {
+                    // evaluate winnings (evaluateWinnings returns negative if player lost)
+                    if (evWiningReturn < 0) {
+                        System.out.println(evWiningReturn);
+                        System.out.println(bGame.currentBet);
                         // player lost
                         showAlert("You Lost!!!");
-                    } else if (evWiningReturn > bGame.currentBet) {
+                    } else if (evWiningReturn > 0) {
+                        System.out.println(evWiningReturn);
+                        System.out.println(bGame.currentBet);
                         // player won
                         showAlert("You Won!!!");
-                    } else if (evWiningReturn == 0) {
+                    } else {
+                        System.out.println(evWiningReturn);
+                        System.out.println(bGame.currentBet);
                         // push
                         showAlert("Push!!!");
                     }
