@@ -57,19 +57,21 @@ public class javaFxFront extends Application {
     // start scene
     @Override
     public void start(Stage primaryStage) {
+        // creates sceneMap and adds the defined scenes to it
         primary = primaryStage;
         sceneMap = new HashMap<>();
         sceneMap.put("setup", startScene());
         sceneMap.put("game", gameScene());
         sceneMap.put("help", helpScene());
-
+        // sets the scene to the setup/start screen
         primaryStage.setTitle("Blackjack");
         primaryStage.setScene(sceneMap.get("setup"));
         primaryStage.show();
     }
     private Scene startScene() {
+        // set cards image
         ImageView blackJackTitle = getImageView();
-
+        // create big Blackjack in center of screen
         Label blackjack = new Label("Blackjack");
         blackjack.setStyle("-fx-cursor: hand; -fx-font-family: 'Constantia'; -fx-text-fill: black; " +
                 "-fx-font-size: 60px; -fx-font-weight: bold;"); // css styling to allow clickable label
@@ -158,17 +160,18 @@ public class javaFxFront extends Application {
                 deckAmount = Integer.parseInt(cutDeckAmount.getValue());
             });
         });
-
+        // put card picture and blackjack word together
         HBox h1 = new HBox(20, blackJackTitle, blackjack);
         h1.setAlignment(Pos.CENTER);
+
+        // create field for entering money and label telling you to do it
         moneyPrompt = new TextField();
-
         moneyPrompt.setMaxWidth(200);
+
         Label moneyLabel = new Label("Enter starting money amount:");
-
-
         moneyLabel.setStyle("-fx-font-size: 16px; -fx-text-fill: black;");
 
+        // play button creation and styling
         Button play = new Button("Play");
         play.setStyle("-fx-font-size: 20px; -fx-padding: 5px 10px; -fx-border-radius: 15px; -fx-background-radius: 1" +
                 "5px; -fx-background-color: black; -fx-text-fill: white;");
@@ -176,18 +179,21 @@ public class javaFxFront extends Application {
         play.setMinHeight(45);
         play.setOnAction(e -> handlePlayAction());
 
+        // help button creation and styling with switching scenes
         Button help = new Button("Help?");
         help.setStyle("-fx-font-size: 14px; -fx-background-color: black; -fx-text-fill: white;");
         help.setMinWidth(30);
         help.setMinHeight(15);
         help.setOnAction(e -> primary.setScene(sceneMap.get("help")));
 
+        // invisible button to help with spacing in the borderpane
         Button spaceButton = new Button("Help?");
         spaceButton.setStyle("-fx-text-fill: transparent;-fx-background-color: transparent;-fx-font-size: 14px;");
         spaceButton.setMinWidth(30);
         spaceButton.setMinHeight(15);
         spaceButton.setOpacity(1);
 
+        // set center elements into a VBox and style
         VBox v1 = new VBox(20, h1, moneyLabel, moneyPrompt, play);
         v1.setPrefWidth(500);
         v1.setMaxWidth(500);
@@ -195,6 +201,7 @@ public class javaFxFront extends Application {
         VBox.setMargin(h1, new Insets(0, 0, 0, -35));
         VBox.setMargin(moneyLabel, new Insets(0, 0, -15, 0));
 
+        // add elements to borderpane for setup scene
         BorderPane borderPane = new BorderPane();
         borderPane.setCenter(v1);
         borderPane.setRight(help);
@@ -219,10 +226,12 @@ public class javaFxFront extends Application {
 
 
     private void handlePlayAction() {
+        // check for money input to be valid
         validateMoneyInput();
     }
 
     private void validateMoneyInput() {
+        // try catch to show an alert if the moneyprompt is valid or not
         try {
             money = Double.parseDouble(moneyPrompt.getText());
             if (money > 0) {
@@ -240,6 +249,7 @@ public class javaFxFront extends Application {
     }
 
     private void showAlert(String msg) {
+        // shows an alert box on the screen
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("");
         alert.setHeaderText(null);
@@ -248,12 +258,13 @@ public class javaFxFront extends Application {
     }
 
     public Scene gameScene() {
+        // instantiate game if not / edge case
         if (bGame == null) {
             bGame = new BlackjackGame();
         }
+        // create exit button and add functionality and picture to it, places in top left
         Image ebut = new Image("exit.png");
         ImageView exitpic = new ImageView(ebut);
-
         exit = new Button();
         exitpic.setFitHeight(28);
         exitpic.setFitWidth(28);
@@ -267,12 +278,14 @@ public class javaFxFront extends Application {
             resetGame();
         });
 
+        // create the hit button with styling and functionality, adds to VBox with exit
         hit = new Button("HIT");
         hit.setStyle("-fx-font-size: 30px; -fx-padding: 10px 30px; -fx-border-radius: 15px;" +
                 " -fx-background-radius: 15px; -fx-background-color: black; -fx-text-fill: white;");
         VBox.setMargin(hit, new Insets(495, 20, 20, 20));
         VBox leftGame = new VBox(exitBox, hit);
 
+        // dealer cards HBox, saved to show the dealers cards during the game
         dCards = new HBox(16);
         dCards.setAlignment(Pos.CENTER);
         dCards.setMinWidth(800);
@@ -292,13 +305,14 @@ public class javaFxFront extends Application {
         betInput.setMaxWidth(100);
 
         Label centerPop = new Label("");
-        // Additional fields
-        String moneyamtlabel = String.format("%.2f", money);
 
+        // label that shows money total money amount throughout the game
+        String moneyamtlabel = String.format("%.2f", money);
         moneyAmount = new Label(moneyamtlabel);
         moneyAmount.setStyle("-fx-text-fill: white;-fx-font-size: 14;");
         VBox.setMargin(moneyAmount, new Insets(70, 0, 0, 0));
 
+        // player cards box, saved for the players cards throughout the game, styling
         pCards = new HBox(16);
         pCards.setAlignment(Pos.CENTER);
         pCards.setMinWidth(800);
@@ -309,15 +323,17 @@ public class javaFxFront extends Application {
         pCards.setStyle("-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 1px; " +
                 "-fx-border-radius: 5px;");
 
+        // input all the elements that will take up the center into a VBox
         VBox centerGame = new VBox(dCards, betLabel, betInput, centerPop, moneyAmount, pCards);
 
+        // stay button styling and placement into a VBox by its self
         stay = new Button("STAY");
         VBox.setMargin(stay, new Insets(144, 20, 20, 20));
         stay.setStyle("-fx-font-size: 30px; -fx-padding: 10px 15px; -fx-border-radius: 15px; " +
                 "-fx-background-radius: 15px; -fx-background-color: black; -fx-text-fill: white;");
-
         VBox rightGame = new VBox(stay);
 
+        // borderpane for the gamescene set up and alignment
         BorderPane gamePane = new BorderPane();
         centerGame.setAlignment(Pos.CENTER);
         leftGame.setAlignment(Pos.BOTTOM_LEFT);

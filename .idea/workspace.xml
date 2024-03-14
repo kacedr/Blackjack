@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c868ad42-8da6-4b3a-85e4-405ff5ae5850" name="Changes" comment="Added test cases to the backend" />
+    <list default="true" id="c868ad42-8da6-4b3a-85e4-405ff5ae5850" name="Changes" comment="Added test cases to the backend">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/javaFxFront.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javaFxFront.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/TestGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestGame.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -37,8 +41,18 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "JUnit.TestGame.executor": "Run",
+    "JUnit.TestGame.testAcesInHandTotal.executor": "Run",
+    "JUnit.TestGame.testBlackjackWinCondition.executor": "Run",
+    "JUnit.TestGame.testDealerHitsUntilSeventeen.executor": "Run",
+    "JUnit.TestGame.testEvaluateWinnings.executor": "Run",
+    "JUnit.TestGame.testPlayerBust.executor": "Run",
+    "JUnit.TestGame.testPlayerHitWithAceAdjustment.executor": "Run",
+    "JUnit.TestGame.testPlayerStayAndDealerAction.executor": "Run",
+    "JUnit.TestGame.testPlayerStayThenDealerAction.executor": "Run",
+    "JUnit.TestGame.testPushDoesNotAffectWinnings.executor": "Run",
     "JUnit.TestGame.testShuffleDeck.executor": "Debug",
     "Maven.project2 [clean,compile,exec:java].executor": "Run",
+    "Maven.project2 [clean,test].executor": "Run",
     "Maven.project2 [mvn,clean,compile,exec:java].executor": "Run",
     "Maven.project2 [org.apache.maven.plugins:maven-clean-plugin:3.2.0:clean].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
@@ -63,7 +77,57 @@
       <recent name="$PROJECT_DIR$/src/main/resources" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Maven.project2 [clean,test]">
+    <configuration name="TestGame.testEvaluateWinnings" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="project2" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="TestGame" />
+      <option name="METHOD_NAME" value="testEvaluateWinnings" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestGame.testPlayerHitWithAceAdjustment" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="project2" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="TestGame" />
+      <option name="METHOD_NAME" value="testPlayerHitWithAceAdjustment" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestGame.testPlayerStayAndDealerAction" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="project2" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="TestGame" />
+      <option name="METHOD_NAME" value="testPlayerStayAndDealerAction" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestGame.testPlayerStayThenDealerAction" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="project2" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="TestGame" />
+      <option name="METHOD_NAME" value="testPlayerStayThenDealerAction" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestGame.testPushDoesNotAffectWinnings" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="project2" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="TestGame" />
+      <option name="METHOD_NAME" value="testPushDoesNotAffectWinnings" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="project2 [clean,compile,exec:java]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
       <MavenSettings>
         <option name="myGeneralSettings" />
@@ -96,12 +160,60 @@
       </MavenSettings>
       <method v="2" />
     </configuration>
+    <configuration name="project2 [clean,test]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="cmdOptions" />
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="clean" />
+                <option value="test" />
+              </list>
+            </option>
+            <option name="multimoduleDir" />
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="projectsCmdOptionValues">
+              <list />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="JUnit.TestGame.testEvaluateWinnings" />
+      <item itemvalue="JUnit.TestGame.testPlayerHitWithAceAdjustment" />
+      <item itemvalue="JUnit.TestGame.testPlayerStayAndDealerAction" />
+      <item itemvalue="JUnit.TestGame.testPlayerStayThenDealerAction" />
+      <item itemvalue="JUnit.TestGame.testPushDoesNotAffectWinnings" />
+      <item itemvalue="Maven.project2 [clean,compile,exec:java]" />
+      <item itemvalue="Maven.project2 [clean,test]" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.TestGame.testPlayerStayThenDealerAction" />
+        <item itemvalue="JUnit.TestGame.testPushDoesNotAffectWinnings" />
+        <item itemvalue="JUnit.TestGame.testPlayerHitWithAceAdjustment" />
+        <item itemvalue="JUnit.TestGame.testPlayerStayAndDealerAction" />
+        <item itemvalue="JUnit.TestGame.testEvaluateWinnings" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-21.0.1-openjdk-21.0.1-f644763e9732-76dd8dae" />
-        <option value="jdk-21.0.2-openjdk-21.0.2-f644763e9732-563d888c" />
+        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021" />
       </set>
     </attachedChunks>
   </component>
@@ -498,6 +610,17 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Implemented most of the back end. Need to finish BlackjackGame.java and then I will start on the actual game. Will create a bare-bones UI to start working on the game." />

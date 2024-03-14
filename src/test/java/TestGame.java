@@ -185,4 +185,65 @@ public class TestGame {
         assertFalse("Dealer should not draw another card", gameLogic.evaluateBankerDraw(dealerHand));
     }
 
+    @Test
+    public void testDealerHitsUntilSeventeen() {
+        ArrayList<Card> dealerHand = new ArrayList<>();
+        dealerHand.add(new Card("Hearts", 2));
+        dealerHand.add(new Card("Diamonds", 3));
+        game.bankerHand = dealerHand;
+
+        while (gameLogic.evaluateBankerDraw(game.bankerHand)) {
+            game.bankerHand.add(game.theDealer.drawOne());
+        }
+
+        assertTrue("Dealer should stop drawing at 17 or more, not before", gameLogic.handTotal(game.bankerHand) >= 17);
+    }
+    @Test
+    public void testBlackjackForPlayerWin() {
+        ArrayList<Card> playerHand = new ArrayList<>();
+        ArrayList<Card> dealerHand = new ArrayList<>();
+        playerHand.add(new Card("Hearts", 11)); // 11 (Ace)
+        playerHand.add(new Card("Diamonds", 10)); // 21
+        dealerHand.add(new Card("Spades", 9)); // dealer 9
+        dealerHand.add(new Card("Clubs", 9)); // dealer 18
+        assertEquals("Player should win with Blackjack", "player", gameLogic.whoWon(playerHand, dealerHand));
+    }
+    @Test
+    public void testWinningsWithBlackJack() {
+        // Given
+        BlackjackGame game = new BlackjackGame();
+        game.currentBet = 100;
+        game.totalWinnings = 500;
+
+        // Player has blackjack
+        game.playerHand.add(new Card("Hearts", 11)); // 11 (Ace)
+        game.playerHand.add(new Card("Diamonds", 10)); // 21
+
+        // Dealer does not have blackjack and should stay on 17
+        game.bankerHand.add(new Card("Spades", 10)); // Dealer 10
+        game.bankerHand.add(new Card("Clubs", 7)); // Dealer 17
+
+
+        double winnings = game.evaluateWinnings();
+
+
+        assertEquals("Player wins with blackjack should increase winnings", 150, winnings, 0.0); // test that blackjack pays 150%
+        assertEquals("Total winnings should be updated correctly", 650, game.totalWinnings, 0.0);
+    }
+    @Test
+    public void testPushDoesNotAffectWinnings() {
+        game.totalWinnings = 500;
+        game.currentBet = 100;
+
+        game.playerHand.add(new Card("Hearts", 10));
+        game.playerHand.add(new Card("Diamonds", 7)); // 17
+        game.bankerHand.add(new Card("Clubs", 10));
+        game.bankerHand.add(new Card("Spades", 7)); // also 17
+
+        double winnings = game.evaluateWinnings(); // check winnings on push
+        // use .01 pad since working with double
+        assertEquals("Winnings should be 0 on a push", 0, winnings, 0.01);
+        assertEquals("Total winnings should remain unchanged on a push", 500, game.totalWinnings, 0.01);
+    }
+
 }
