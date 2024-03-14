@@ -90,7 +90,6 @@ public class BlackjackGame {
     // this will determine if we need to shuffle or not. Must be called before every hand
     // returns true if the deck('s) where shuffled, false otherwise. Other than that, this deals the hands
     public boolean newHand() {
-        // clear hands todo might need to change location
         this.playerHand = new ArrayList<>();
         this.bankerHand = new ArrayList<>();
 
@@ -156,7 +155,7 @@ public class BlackjackGame {
     // takes in a hand and checks if any of the aces can be converted to 1 to keep the total 21 and under
     private boolean checkAces(ArrayList<Card> hand) {
         boolean converted = false;
-        // This will continue to attempt to convert Aces from 11 to 1 as long as the hand is over 21.
+        // This will continue to attempt to convert aces from 11 to 1 as long as the hand is over 21
         while (gameLogic.handTotal(hand) > 21) {
             boolean foundAceToConvert = false;
             for (Card card : hand) {
@@ -164,15 +163,15 @@ public class BlackjackGame {
                     card.value = 1; // Convert the Ace from 11 to 1
                     foundAceToConvert = true;
                     converted = true;
-                    break; // Break after converting one Ace to recheck the total hand value
+                    break; // break after converting one ace to recheck the total hand value
                 }
             }
-            // if no Aces were converted in this pass, break out of the while loop to avoid infinite loop
+            // if no aces were converted in this pass, break out of the while loop to avoid infinite loop
             if (!foundAceToConvert) {
                 break;
             }
         }
-        return converted; // Return true if at least one Ace was converted
+        return converted;
     }
 
     // if a player chooses to stay or dealt 21, this will be called and the dealer will hit until he can not
@@ -199,7 +198,6 @@ public class BlackjackGame {
         String whoWonRes = (gameLogic.whoWon(playerHand, bankerHand));
         System.out.println(whoWonRes);
         if (whoWonRes.compareTo("dealer") == 0 ) {
-            // todo Do we minus the bet from the totalWinnings here? for now yes
             totalWinnings = totalWinnings - currentBet;
 
             // player can not go negative

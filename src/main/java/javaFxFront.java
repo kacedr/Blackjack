@@ -23,11 +23,6 @@ import java.util.Optional;
 
 
 public class javaFxFront extends Application {
-
-    public javaFxFront() {
-        // Scene components: setup scene
-    }
-
     public static void main(String[] args) {
         launch(args);
     }
@@ -36,8 +31,6 @@ public class javaFxFront extends Application {
     private BlackjackGame bGame; // Initialize like: bGame = new BlackjackGame()
     private HashMap<String, Scene> sceneMap = new HashMap<>();
     private Stage primary;
-
-    // Background elements
 
     // User input
     private TextField moneyPrompt;
@@ -149,7 +142,7 @@ public class javaFxFront extends Application {
 
             dialog.getDialogPane().setContent(grid);
 
-            // Convert the result to a pair of cut card and deck amount when the apply button is clicked.
+            // Convert the result to a pair of cut card and deck amount when the apply button is clicked
             dialog.setResultConverter(dialogButton -> {
                 if (dialogButton == applyButtonType) {
                     return new Pair<>(cutCardInput.getText(), deckAmountInput.getText());
@@ -229,17 +222,16 @@ public class javaFxFront extends Application {
         return blackjacktitle;
     }
 
-
     private void handlePlayAction() {
         // check for money input to be valid
         validateMoneyInput();
     }
 
     private void validateMoneyInput() {
-        // try catch to show an alert if the moneyprompt is valid or not
+        // try catch to show an alert if the moneyPrompt is valid or not
         try {
             money = Double.parseDouble(moneyPrompt.getText());
-            if (money > 0) {
+            if (money > 0 && money < Double.MAX_VALUE) {
                 primary.setScene(sceneMap.get("game"));
                 primary.show();
                 gameplay(); // this will start the game
@@ -338,7 +330,7 @@ public class javaFxFront extends Application {
                 "-fx-background-radius: 15px; -fx-background-color: black; -fx-text-fill: white;");
         VBox rightGame = new VBox(stay);
 
-        // borderpane for the gamescene set up and alignment
+        // borderpane for the gameScene set up and alignment
         BorderPane gamePane = new BorderPane();
         centerGame.setAlignment(Pos.CENTER);
         leftGame.setAlignment(Pos.BOTTOM_LEFT);
@@ -387,7 +379,7 @@ public class javaFxFront extends Application {
                     showAlert("Can not change bet during hand");
                 } else if (Double.parseDouble(betAsString[0]) > bGame.totalWinnings) {
                     showAlert("Must change bet amount, not enough winnings");
-                } else if (Double.parseDouble(betAsString[0]) <= 0) {
+                } else if (Double.parseDouble(betAsString[0]) <= 0 || Double.parseDouble(betAsString[0]) > Double.MAX_VALUE) {
                     showAlert("Bet Must Be Valid");
                 } else {
                     bGame.currentBet = Double.parseDouble(betAsString[0]);
@@ -487,7 +479,6 @@ public class javaFxFront extends Application {
                 // if bet is greater than winnings
                 if (Double.parseDouble(betAsString[0]) > bGame.totalWinnings) {
                     betInput.setText(String.valueOf(bGame.totalWinnings));
-
                 }
             }
         });
@@ -627,7 +618,8 @@ public class javaFxFront extends Application {
         Text help7 = new Text("• If you wish to leave before that there is an exit button available.");
         help7.setStyle("-fx-font-size: 14px; -fx-fill: white;");
         // Adding rules to VBox
-        VBox centerV = new VBox(15, rulesLabel, rule1, rule2, rule3, rule4, rule5, rule6, rule7, rule8, htp, help1, help2, help3, help4, help5, help6, help7);
+        VBox centerV = new VBox(15, rulesLabel, rule1, rule2, rule3, rule4, rule5, rule6, rule7, rule8, htp,
+                help1, help2, help3, help4, help5, help6, help7);
         centerV.setAlignment(Pos.TOP_CENTER);
 
         BorderPane helpBorder = new BorderPane();

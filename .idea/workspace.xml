@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c868ad42-8da6-4b3a-85e4-405ff5ae5850" name="Changes" comment="Added test cases to the backend" />
+    <list default="true" id="c868ad42-8da6-4b3a-85e4-405ff5ae5850" name="Changes" comment="Set min size of GUI">
+      <change beforePath="$PROJECT_DIR$/src/main/java/javaFxFront.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javaFxFront.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -493,14 +495,21 @@
       <option name="project" value="LOCAL" />
       <updated>1710375473427</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="Set min size of GUI">
+      <option name="closed" value="true" />
+      <created>1710435777190</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1710435777190</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Implemented most of the back end. Need to finish BlackjackGame.java and then I will start on the actual game. Will create a bare-bones UI to start working on the game." />
     <MESSAGE value="Finished back end but a lot of logic is still on the table and where it should be implemented. Creating a crap test UI." />
     <MESSAGE value="Ok im understanding more where we are going with this project now. The way we are required to adhere to certain classes definitely limits how I would like to construct this. Player.java (name should be changed probably) will hold most not if all the actual gameplay mechanics." />
     <MESSAGE value="Forgot that last commit. BlackjackGame will hold the actual gameplay mechanics." />
@@ -525,6 +534,7 @@
     <MESSAGE value="Cleaning up code" />
     <MESSAGE value="Fixed margins" />
     <MESSAGE value="Added test cases to the backend" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added test cases to the backend" />
+    <MESSAGE value="Set min size of GUI" />
+    <option name="LAST_COMMIT_MESSAGE" value="Set min size of GUI" />
   </component>
 </project>
