@@ -6,9 +6,8 @@ public class HiLowCount {
     double trueCount = 0.0;
     int deckAmount = 1;
 
-
     HiLowCount () {
-        
+
     }
 
     // updates the deck of cards

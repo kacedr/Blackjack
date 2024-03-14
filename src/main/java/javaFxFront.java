@@ -63,10 +63,15 @@ public class javaFxFront extends Application {
         sceneMap.put("setup", startScene());
         sceneMap.put("game", gameScene());
         sceneMap.put("help", helpScene());
+
         // sets the scene to the setup/start screen
         primaryStage.setTitle("Blackjack");
         primaryStage.setScene(sceneMap.get("setup"));
         primaryStage.show();
+
+        // Set the minimum size to the size of the window at launch
+        primaryStage.setMinWidth(primaryStage.getWidth());
+        primaryStage.setMinHeight(primaryStage.getHeight());
     }
     private Scene startScene() {
         // set cards image
@@ -353,6 +358,8 @@ public class javaFxFront extends Application {
 
         // starts a new game with the desired deck amount and shuffle point (cutCard)
         bGame = new BlackjackGame(deckAmount, cutCard);
+        System.out.println(deckAmount);
+        System.out.println(cutCard);
 
         // double for bet, string for bet (when taken from text field)
         final String[] betAsString = new String[1];

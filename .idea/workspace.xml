@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c868ad42-8da6-4b3a-85e4-405ff5ae5850" name="Changes" comment="Added test cases to the backend">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/javaFxFront.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javaFxFront.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/TestGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestGame.java" afterDir="false" />
-    </list>
+    <list default="true" id="c868ad42-8da6-4b3a-85e4-405ff5ae5850" name="Changes" comment="Added test cases to the backend" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -38,96 +34,36 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "JUnit.TestGame.executor": "Run",
-    "JUnit.TestGame.testAcesInHandTotal.executor": "Run",
-    "JUnit.TestGame.testBlackjackWinCondition.executor": "Run",
-    "JUnit.TestGame.testDealerHitsUntilSeventeen.executor": "Run",
-    "JUnit.TestGame.testEvaluateWinnings.executor": "Run",
-    "JUnit.TestGame.testPlayerBust.executor": "Run",
-    "JUnit.TestGame.testPlayerHitWithAceAdjustment.executor": "Run",
-    "JUnit.TestGame.testPlayerStayAndDealerAction.executor": "Run",
-    "JUnit.TestGame.testPlayerStayThenDealerAction.executor": "Run",
-    "JUnit.TestGame.testPushDoesNotAffectWinnings.executor": "Run",
-    "JUnit.TestGame.testShuffleDeck.executor": "Debug",
-    "Maven.project2 [clean,compile,exec:java].executor": "Run",
-    "Maven.project2 [clean,test].executor": "Run",
-    "Maven.project2 [mvn,clean,compile,exec:java].executor": "Run",
-    "Maven.project2 [org.apache.maven.plugins:maven-clean-plugin:3.2.0:clean].executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "extract.method.default.visibility": "private",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/kyle/Documents/csSpring24/cs342/projects/project2/src/main/resources",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JUnit.TestGame.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TestGame.testShuffleDeck.executor&quot;: &quot;Debug&quot;,
+    &quot;Maven.project2 [clean,compile,exec:java].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.project2 [mvn,clean,compile,exec:java].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.project2 [org.apache.maven.plugins:maven-clean-plugin:3.2.0:clean].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/kyle/Documents/csSpring24/cs342/projects/project2/src/main/resources&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources" />
     </key>
   </component>
-  <component name="RunManager" selected="Maven.project2 [clean,test]">
-    <configuration name="TestGame.testEvaluateWinnings" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="project2" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="TestGame" />
-      <option name="METHOD_NAME" value="testEvaluateWinnings" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestGame.testPlayerHitWithAceAdjustment" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="project2" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="TestGame" />
-      <option name="METHOD_NAME" value="testPlayerHitWithAceAdjustment" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestGame.testPlayerStayAndDealerAction" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="project2" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="TestGame" />
-      <option name="METHOD_NAME" value="testPlayerStayAndDealerAction" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestGame.testPlayerStayThenDealerAction" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="project2" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="TestGame" />
-      <option name="METHOD_NAME" value="testPlayerStayThenDealerAction" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestGame.testPushDoesNotAffectWinnings" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="project2" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="TestGame" />
-      <option name="METHOD_NAME" value="testPushDoesNotAffectWinnings" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager">
     <configuration name="project2 [clean,compile,exec:java]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
       <MavenSettings>
         <option name="myGeneralSettings" />
@@ -160,60 +96,12 @@
       </MavenSettings>
       <method v="2" />
     </configuration>
-    <configuration name="project2 [clean,test]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
-      <MavenSettings>
-        <option name="myGeneralSettings" />
-        <option name="myRunnerSettings" />
-        <option name="myRunnerParameters">
-          <MavenRunnerParameters>
-            <option name="cmdOptions" />
-            <option name="profiles">
-              <set />
-            </option>
-            <option name="goals">
-              <list>
-                <option value="clean" />
-                <option value="test" />
-              </list>
-            </option>
-            <option name="multimoduleDir" />
-            <option name="pomFileName" />
-            <option name="profilesMap">
-              <map />
-            </option>
-            <option name="projectsCmdOptionValues">
-              <list />
-            </option>
-            <option name="resolveToWorkspace" value="false" />
-            <option name="workingDirPath" value="$PROJECT_DIR$" />
-          </MavenRunnerParameters>
-        </option>
-      </MavenSettings>
-      <method v="2" />
-    </configuration>
-    <list>
-      <item itemvalue="JUnit.TestGame.testEvaluateWinnings" />
-      <item itemvalue="JUnit.TestGame.testPlayerHitWithAceAdjustment" />
-      <item itemvalue="JUnit.TestGame.testPlayerStayAndDealerAction" />
-      <item itemvalue="JUnit.TestGame.testPlayerStayThenDealerAction" />
-      <item itemvalue="JUnit.TestGame.testPushDoesNotAffectWinnings" />
-      <item itemvalue="Maven.project2 [clean,compile,exec:java]" />
-      <item itemvalue="Maven.project2 [clean,test]" />
-    </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="JUnit.TestGame.testPlayerStayThenDealerAction" />
-        <item itemvalue="JUnit.TestGame.testPushDoesNotAffectWinnings" />
-        <item itemvalue="JUnit.TestGame.testPlayerHitWithAceAdjustment" />
-        <item itemvalue="JUnit.TestGame.testPlayerStayAndDealerAction" />
-        <item itemvalue="JUnit.TestGame.testEvaluateWinnings" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021" />
+        <option value="jdk-21.0.1-openjdk-21.0.1-f644763e9732-76dd8dae" />
+        <option value="jdk-21.0.2-openjdk-21.0.2-f644763e9732-563d888c" />
       </set>
     </attachedChunks>
   </component>
@@ -610,17 +498,6 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Implemented most of the back end. Need to finish BlackjackGame.java and then I will start on the actual game. Will create a bare-bones UI to start working on the game." />
