@@ -82,11 +82,7 @@ public class BlackjackDealer {
     }
 
     // Just draws a card off the top of the deck, sends in card value for hi-low counter
-    public Card drawOne() {
-        Card drawnCard = deckOfCards.removeLast();
-
-        return drawnCard;
-    }
+    public Card drawOne() {return deckOfCards.removeLast();}
 
     // Uses collections to shuffle deck of cards
     public void shuffleDeck() {Collections.shuffle(deckOfCards);}

@@ -6,12 +6,17 @@ import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Objects;
 
+import static org.junit.Assert.*;
+
 public class TestGame {
     // this test file will serve as a basis for basic testing and extremely rare edge cases
     // the best possible way to test the game is playing it for hours on end
     // testing actual gameplay is hard since shuffle is random and seeding would require changing the class files
 
-    private BlackjackGame game, gameDSize, gameDSizeShuf;
+    private BlackjackGame game, gameDSize;
+    private BlackjackGameLogic gameLogic;
+    private ArrayList<Card> playerHand;
+    private ArrayList<Card> dealerHand;
 
     @Before
     public void setUp() {
@@ -21,29 +26,30 @@ public class TestGame {
         // deck amount, no shuffle point
         gameDSize = new BlackjackGame(6);
 
-        // deck amount, shuffle point
-        gameDSizeShuf = new BlackjackGame(6, 0.60);
+        gameLogic = new BlackjackGameLogic();
+        playerHand = new ArrayList<>();
+        dealerHand = new ArrayList<>();
     }
 
     @Test
     public void testDeckGeneration() {
         // test its 52 cards
-        Assert.assertEquals(52, game.theDealer.deckSize());
+        assertEquals(52, game.theDealer.deckSize());
 
         // test the values are set correctly, direct access of the deck should not be allowed but for
         // the sake of this project and testing, it will be allowed here
         ArrayList<Card> testDeck = game.theDealer.deckOfCards; // direct access to deck
-        Assert.assertEquals(380, game.gameLogic.handTotal(testDeck));
+        assertEquals(380, game.gameLogic.handTotal(testDeck));
 
-        Assert.assertEquals(312, gameDSize.theDealer.deckSize());
+        assertEquals(312, gameDSize.theDealer.deckSize());
         ArrayList<Card> testDDeck = gameDSize.theDealer.deckOfCards;
-        Assert.assertEquals(2280, gameDSize.gameLogic.handTotal(testDDeck));
+        assertEquals(2280, gameDSize.gameLogic.handTotal(testDDeck));
     }
 
     @Test
     public void testDeckContents() {
         int deckAmount = 6;
-        Assert.assertEquals(52 * deckAmount, gameDSize.theDealer.deckSize());
+        assertEquals(52 * deckAmount, gameDSize.theDealer.deckSize());
 
         // test there's exactly one card for each suit (except for 10s, there should be 4)
         ArrayList<Card> testDeck = gameDSize.theDealer.deckOfCards; // direct access to deck
@@ -53,36 +59,36 @@ public class TestGame {
         ArrayList<Card> club = new ArrayList<>();
         for (Card card : testDeck) {
             switch (card.suit) {
-                case "spade":
+                case "Spades":
                     spade.add(card);
                     break;
-                case "heart":
+                case "Hearts":
                     heart.add(card);
                     break;
-                case "diamond":
+                case "Diamond":
                     diamond.add(card);
                     break;
-                case "club":
+                case "Clubs":
                     club.add(card);
                     break;
             }
         }
 
-        Assert.assertEquals(spade.size(), 13 * deckAmount);
-        Assert.assertEquals(heart.size(), 13 * deckAmount);
-        Assert.assertEquals(diamond.size(), 13 * deckAmount);
-        Assert.assertEquals(club.size(), 13 * deckAmount);
+        assertEquals(spade.size(), 13 * deckAmount);
+        assertEquals(heart.size(), 13 * deckAmount);
+        assertEquals(diamond.size(), 13 * deckAmount);
+        assertEquals(club.size(), 13 * deckAmount);
 
-        Assert.assertEquals(game.gameLogic.handTotal(spade), 95 * deckAmount);
-        Assert.assertEquals(game.gameLogic.handTotal(heart), 95 * deckAmount);
-        Assert.assertEquals(game.gameLogic.handTotal(diamond), 95 * deckAmount);
-        Assert.assertEquals(game.gameLogic.handTotal(club), 95* deckAmount);
+        assertEquals(game.gameLogic.handTotal(spade), 95 * deckAmount);
+        assertEquals(game.gameLogic.handTotal(heart), 95 * deckAmount);
+        assertEquals(game.gameLogic.handTotal(diamond), 95 * deckAmount);
+        assertEquals(game.gameLogic.handTotal(club), 95* deckAmount);
     }
 
     @Test
     public void testHandGeneration() {
         // tests its 52 cards
-        Assert.assertEquals(52, game.theDealer.deckSize());
+        assertEquals(52, game.theDealer.deckSize());
 
         // deal two hands, should return false as we do not need to shuffle (initially it shuffled)
         Assert.assertFalse(game.newHand());
@@ -92,7 +98,91 @@ public class TestGame {
     }
 
     @Test
-    public void testShufflePoint() {
-
+    public void testDrawOne() {
+        assertNotNull("Drawing a card should not return null", game.theDealer.drawOne());
+        assertEquals("Deck should have 51 cards after drawing one card", 51, game.theDealer.deckSize());
     }
+
+    @Test
+    public void testShuffleDeck() {
+        ArrayList<Card> beforeShuffle = new ArrayList<>();
+        for (int i = 0; i < 52; i++) {
+            beforeShuffle.add(game.theDealer.drawOne());
+        }
+        game.theDealer.generateDeck();
+        game.theDealer.shuffleDeck();
+        ArrayList<Card> afterShuffle = new ArrayList<>();
+        for (int i = 0; i < 52; i++) {
+            afterShuffle.add(game.theDealer.drawOne());
+        }
+        assertNotEquals(beforeShuffle, afterShuffle);
+        assertEquals("Deck should be 0 cards after shuffle and empty", 0, game.theDealer.deckSize());
+    }
+
+    @Test
+    public void testDeckSize() {
+        assertEquals("Deck should be 52 cards initially", 52, game.theDealer.deckSize());
+        game.theDealer.dealHand();
+        assertEquals("Deck should have 50 cards after dealing a hand", 50, game.theDealer.deckSize());
+        game.theDealer.drawOne();
+        assertEquals("Deck should have 49 cards after drawing one card", 49, game.theDealer.deckSize());
+    }
+
+    @Test
+    public void testWhoWon() {
+        // Player wins
+        playerHand.add(new Card("Hearts", 10));
+        playerHand.add(new Card("Diamonds", 8));
+        dealerHand.add(new Card("Spades", 10));
+        dealerHand.add(new Card("Clubs", 7));
+        assertEquals("Player should win", "player", gameLogic.whoWon(playerHand, dealerHand));
+
+        // Dealer wins
+        playerHand.clear();
+        dealerHand.clear();
+        playerHand.add(new Card("Hearts", 7));
+        playerHand.add(new Card("Diamonds", 8));
+        dealerHand.add(new Card("Spades", 9));
+        dealerHand.add(new Card("Clubs", 9));
+        assertEquals("Dealer should win", "dealer", gameLogic.whoWon(playerHand, dealerHand));
+
+        // Push
+        playerHand.clear();
+        dealerHand.clear();
+        playerHand.add(new Card("Hearts", 10));
+        playerHand.add(new Card("Diamonds", 7));
+        dealerHand.add(new Card("Spades", 10));
+        dealerHand.add(new Card("Clubs", 7));
+        assertEquals("Should be a push", "push", gameLogic.whoWon(playerHand, dealerHand));
+    }
+
+    @Test
+    public void testHandTotal() {
+        // Regular cards
+        playerHand.add(new Card("Hearts", 2));
+        playerHand.add(new Card("Diamond", 3));
+        assertEquals("Hand total should be 5", 5, gameLogic.handTotal(playerHand));
+
+        // Face cards
+        playerHand.clear();
+        playerHand.add(new Card("Hearts", 10));
+        playerHand.add(new Card("Diamond", 10));
+        playerHand.add(new Card("Spades", 10));
+        assertEquals("Hand total should be 30", 30, gameLogic.handTotal(playerHand));
+    }
+
+    @Test
+    public void testEvaluateBankerDraw() {
+        // Should draw
+        dealerHand.add(new Card("Hearts", 2));
+        dealerHand.add(new Card("Diamonds", 3));
+        assertTrue("Dealer should draw another card", gameLogic.evaluateBankerDraw(dealerHand));
+
+        // Should not draw
+        dealerHand.clear();
+        dealerHand.add(new Card("Hearts", 10));
+        dealerHand.add(new Card("Diamonds", 7));
+        assertFalse("Dealer should not draw another card", gameLogic.evaluateBankerDraw(dealerHand));
+    }
+
 }
